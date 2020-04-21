@@ -6,6 +6,7 @@ entity "Buildings" as buildings {
   map_id: string
   description: integer
   image: integer
+  properties: JSON
 }
 
 entity "Features" as features {

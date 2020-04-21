@@ -1,0 +1,44 @@
+@startuml VuexSustainabilityMap
+entity "Root" as root {
+  --
+  - features
+  - buildings
+  - paths
+}
+
+entity "Buildings" as buildings {
+  + name: string
+  + map_id: string
+  + description: integer
+  + image: integer
+  + properties: Object {\n\
+      leed_rank: Integer,\n\
+      leed_image: String\n\
+    }
+  --
+  - features
+}
+
+entity "Features" as features {
+  + coordinates: Object {\n\
+      lat: Number,\n\
+      lng: Number\n\
+    }
+  + images: Array <String>
+  + description: String
+}
+
+entity "Paths" as paths {
+  + name: string
+  + description: integer
+  --
+  ~ features: Array <path ref>
+  ~ buildings: Array <path ref>
+}
+root }o-right- features
+root }o-right- buildings
+root }o-right- paths
+paths }|-left[dashed]- features
+paths }|-left[dashed]- buildings
+buildings }|-- features
+@enduml
