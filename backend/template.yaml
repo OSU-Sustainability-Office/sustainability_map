@@ -23,15 +23,30 @@ Globals:
       - multipart/form-data
 
 Resources:
-  test:
+  features:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 128
       CodeUri: app/
-      Handler: test.test
+      Handler: feature.all
+      Layers:
+        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:84
+        - !Ref SusMapModelLayer
       Events:
         Building:
           Type: Api
           Properties:
-            Path: /test
+            Path: /features
             Method: get
+  SusMapModelLayer:
+        Type: AWS::Serverless::LayerVersion
+        Properties:
+            LayerName: SusMapModelLayer
+            Description: DB Model Defs
+            ContentUri: dependencies/
+            CompatibleRuntimes:
+              - nodejs6.10
+              - nodejs8.10
+              - nodejs10.x
+            LicenseInfo: 'MIT'
+            RetentionPolicy: Retain
