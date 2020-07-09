@@ -12,20 +12,8 @@
         <img src="/images/logo.png" height=50 width=auto alt="" class='sus-nav-image' @click='$router.push({path: "/"})'>
       </el-col>
       <el-col :xs="13" :sm="15" :md="15" :lg="18" :xl="20">
-        <el-menu :default-active='activeIndex' mode='horizontal' backgroundColor='rgba(0,0,0,0)' class='sus-nav-menu' text-color='#FFFFFF' active-text-color='#1A1A1A' :router='true'>
-          <!-- Put menu items here, energy dashboard navigation left for reference -->
-
-          <!-- <el-menu-item index="map" :route='{path: "/map"}' ref='mapItem'>Map</el-menu-item>
-          <el-menu-item index="buildings" :route='{path: "/buildings"}' ref='buildingItem'>Building List</el-menu-item>
-          <el-menu-item index="campaigns" :route='{path: "/campaigns"}' ref='buildingItem'>Campaigns</el-menu-item>
-          <el-menu-item v-if='onid' index="dashboard" :route='{path: "/dashboard"}' ref='dashboardItem'>My Dashboard</el-menu-item> -->
-        </el-menu>
       </el-col>
       <el-col :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
-        <!-- Sign in if application needs it -->
-
-        <!-- <a class='sus-nav-sign' v-if='onid && $route.path !== "/"' @click='logOut()'>Sign Out</a>
-        <a class='sus-nav-sign' v-if='!onid && $route.path !== "/"' :href='loginLink'>Sign In</a> -->
       </el-col>
     </el-row>
 </template>
@@ -35,16 +23,54 @@ export default {
   name: 'navigbar',
   components: {},
   data () {
+    return {
+      loginLink: 'https://api.sustainability.oregonstate.edu/v2/auth/login?returnURI=' + process.env.VUE_APP_HOST_ADDRESS + '/#/map',
+      activeIndex: ''
+    }
   },
   computed: {
+    // ...mapGetters([
+    //   'user'
+    // ])
+    onid: {
+      get () {
+        return this.$store.getters['user/onid']
+      }
+    }
   },
   created () {
+    // this.$store.dispatch('user/user').then( user => {
+    //   console.log(user)
+    //   this.user = user
+    // })
   },
   mounted () {
+    this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {
+    '$route.path': function (path) {
+      this.activeIndex = path.split('/')[1]
+      const buttons = [this.$refs.mapItem, this.$refs.buildingItem, this.$refs.dashboardItem]
+      for (const item of buttons) {
+        if (!item) {
+          continue
+        }
+        if (this.activeIndex !== item.index) {
+          item.$el.classList.remove('is-active')
+        } else {
+          item.$el.classList.add('is-active')
+        }
+      }
+    }
   },
   methods: {
+    logOut: function () {
+      // this.$store.dispatch('logout')
+    },
+    handleSelect: function (select) {
+      this.$router.push({ path: '/' + select })
+      this.activeIndex = select
+    }
   }
 }
 </script>

@@ -9,11 +9,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import notfound from '@/components/extras/404.vue'
+import map from '@/components/map/map.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'map',
+      component: map
+    },
     {
       path: '*',
       component: notfound

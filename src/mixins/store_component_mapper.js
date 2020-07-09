@@ -11,22 +11,22 @@ export default {
   props: ['nameSpace'],
   beforeCreate () {
     const moduleName = `${this.$options.propsData.nameSpace}/`
-    let getterKeys = Reflect.ownKeys(this.$store.getters).reduce((prev, current) => {
-      let splitString = current.split(moduleName)
+    const getterKeys = Reflect.ownKeys(this.$store.getters).reduce((prev, current) => {
+      const splitString = current.split(moduleName)
       if (splitString.length === 2 && splitString[1].split('/').length === 1) {
         prev[splitString[1]] = current
       }
       return prev
     }, {})
-    let mutationKeys = Reflect.ownKeys(this.$store._mutations).reduce((prev, current) => {
-      let splitString = current.split(moduleName)
+    const mutationKeys = Reflect.ownKeys(this.$store._mutations).reduce((prev, current) => {
+      const splitString = current.split(moduleName)
       if (splitString.length === 2 && splitString[1].split('/').length === 1) {
         prev[splitString[1]] = current
       }
       return prev
     }, {})
-    let actionKeys = Reflect.ownKeys(this.$store._actions).reduce((prev, current) => {
-      let splitString = current.split(moduleName)
+    const actionKeys = Reflect.ownKeys(this.$store._actions).reduce((prev, current) => {
+      const splitString = current.split(moduleName)
       if (splitString.length === 2 && splitString[1].split('/').length === 1) {
         prev[splitString[1]] = current
       }

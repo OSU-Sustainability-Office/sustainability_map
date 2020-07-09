@@ -28,6 +28,11 @@ export default {
   async created () {
   },
   data () {
+    return {
+      card: {
+        name: 'foo'
+      }
+    }
   },
   beforeDestroy () {
   },
