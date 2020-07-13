@@ -5,12 +5,11 @@
 @Last modified by:   Brogan
 @Last modified time: 2019-03-27T17:30:21-07:00
 -->
-
 <template>
-    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' v-loading="!this.queryFeatures(this.queryString).length > 0 || !this.queryBuildings(this.queryString).length > 0">
+    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' v-loading="false">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-geo-json v-for='(item, index) of this.queryFeatures(this.queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
-        <l-geo-json v-for='(item, index) of this.queryBuildings(this.queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
+        <!-- <l-geo-json v-for='(item, index) of this.queryFeatures(this.queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json> -->
+        <!-- <l-geo-json v-for='(item, index) of this.queryBuildings(this.queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json> -->
     </l-map>
 </template>
 <script>
