@@ -7,7 +7,7 @@
 -->
 
 <template>
-  <el-container class="app">
+  <el-container id="app" class="app">
     <el-header class='header'>
       <navigbar />
     </el-header>
@@ -88,7 +88,7 @@ body {
 }
 .main {
   position: absolute;
-  top: $--nav-height;
+  top: 0;
   left: 0;
   min-height: calc(100% - #{$--nav-height});
   margin: 0;

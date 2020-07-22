@@ -7,6 +7,7 @@ import Vuei18n from 'vue-i18n'
 import locale from 'element-ui/lib/locale/lang/en'
 
 import 'element-ui/lib/theme-chalk/reset.css'
+import 'leaflet/dist/leaflet.css'
 import '@/assets/style-variables.scss'
 
 Vue.use(Vuei18n)
@@ -20,5 +21,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
