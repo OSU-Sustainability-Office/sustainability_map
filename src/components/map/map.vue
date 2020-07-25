@@ -12,20 +12,22 @@
         :zoom="zoom"
         :center="center"
         ref='map'
-        v-loading="false"
+        v-loading="!queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0"
         @update:zoom="zoomUpdated"
         @update:center="centerUpdated"
-        @update:bounds="boundsUpdated">
+        @update:bounds="boundsUpdated"
+        >
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
+        <l-geo-json v-for='(item, index) of queryBuildings(queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
       </l-map>
     </div>
   </div>
 </template>
 
-
 <script>
 import L from 'leaflet'
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
 // import Cluster from '../assets/clustering.js'
 
@@ -63,6 +65,12 @@ export default {
   },
   mounted () {
   },
+  computed: {
+    ...mapGetters([
+      'queryFeatures',
+      'queryBuildings'
+    ])
+  },
   created () {
     // this.clusterController = new Cluster()
     // this.$nextTick(() => {
@@ -75,13 +83,13 @@ export default {
   },
   methods: {
     zoomUpdated (zoom) {
-      this.zoom = zoom;
+      this.zoom = zoom
     },
     centerUpdated (center) {
-      this.center = center;
+      this.center = center
     },
     boundsUpdated (bounds) {
-      this.bounds = bounds;
+      this.bounds = bounds
     }
   }
 }

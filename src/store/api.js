@@ -1,16 +1,22 @@
-/*
- * @Author: you@you.you
- * @Date:   Tuesday May 5th 2020
- * @Last Modified By:  Brogan Miner
- * @Last Modified Time:  Tuesday May 5th 2020
- * @Copyright:  (c) Oregon State University 2020
+/**
+ * @Author: Brogan Miner <Brogan>
+ * @Date:   2019-03-26T10:38:48-07:00
+ * @Email:  brogan.miner@oregonstate.edu
+ * @Last modified by:   Brogan
+ * @Last modified time: 2019-03-27T15:17:17-07:00
  */
-import axios from 'axios'
-axios.defaults.withCredentials = true
 
-function callAPI (route, data = null, method = 'get', base = process.env.VUE_APP_ROOT_API, headers = null) {
-  if (headers) {
-    return axios(base + '/' + route, { method: method, data: data, withCredentials: true, timeout: 72000, headers: headers })
+import axios from 'axios'
+
+function callAPI (route, data = null, method = 'get', base = '/map/') {
+  return axios(process.env.VUE_APP_ROOT_API + base + route, { method: method, data: data, withCredentials: true })
+}
+
+export default {
+  features: async () => {
+    return (await callAPI('features')).data[0].features
+  },
+  buildings: async () => {
+    return (await callAPI('buildings')).data.data
   }
-  return axios(base + '/' + route, { method: method, data: data, withCredentials: true, timeout: 72000 })
 }

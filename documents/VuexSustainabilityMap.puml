@@ -1,5 +1,5 @@
 @startuml VuexSustainabilityMap
-entity "Root" as root {
+entity "Root" as root  {
   --
   - features
   - buildings
