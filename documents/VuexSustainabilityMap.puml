@@ -1,12 +1,12 @@
 @startuml VuexSustainabilityMap
-entity "Root" as root  {
+class "Root" as root  {
   --
   - features
   - buildings
   - paths
 }
 
-entity "Buildings" as buildings {
+class "Buildings" as buildings {
   + name: string
   + map_id: string
   + description: integer
@@ -19,26 +19,35 @@ entity "Buildings" as buildings {
   - features
 }
 
-entity "Features" as features {
-  + coordinates: Object {\n\
-      lat: Number,\n\
-      lng: Number\n\
-    }
+class "Features" as features {
   + images: Array <String>
   + description: String
 }
 
-entity "Paths" as paths {
+class "Paths" as paths {
   + name: string
   + description: integer
+  - pathPoint
   --
   ~ features: Array <path ref>
   ~ buildings: Array <path ref>
+  ~ pathPoint: Array <path ref>
 }
-root }o-right- features
+class "Path Point" as pathPoint {
+  + coordinates: Object {\n\
+      lat: Number,\n\
+      lng: Number\n\
+    }
+ + name: String
+ + description: integer
+ --
+ ~ features: Array <path ref>
+ ~ buildings: Array <path ref>
+}
+paths }o-right- pathPoint
 root }o-right- buildings
 root }o-right- paths
-paths }|-left[dashed]- features
-paths }|-left[dashed]- buildings
+pathPoint }|-left[dashed]- features
+pathPoint }|-left[dashed]- buildings
 buildings }|-- features
 @enduml
