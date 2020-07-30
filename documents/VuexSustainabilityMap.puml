@@ -7,11 +7,11 @@ class "Root" as root  {
 }
 
 class "Buildings" as buildings {
-  + name: string
-  + map_id: string
-  + description: integer
-  + image: integer
-  + properties: Object {\n\
+  - name: string
+  - map_id: string
+  - description: integer
+  - image: integer
+  - properties: Object {\n\
       leed_rank: Integer,\n\
       leed_image: String\n\
     }
@@ -20,30 +20,32 @@ class "Buildings" as buildings {
 }
 
 class "Features" as features {
-  + images: Array <String>
-  + description: String
+  - images: Array <String>
+  - description: String
 }
 
 class "Paths" as paths {
-  + name: string
-  + description: integer
+  - name: string
+  - description: integer
   - pathPoint
   --
   ~ features: Array <path ref>
   ~ buildings: Array <path ref>
   ~ pathPoint: Array <path ref>
 }
+
 class "Path Point" as pathPoint {
   + coordinates: Object {\n\
       lat: Number,\n\
       lng: Number\n\
     }
- + name: String
- + description: integer
+ - name: String
+ - description: integer
  --
  ~ features: Array <path ref>
  ~ buildings: Array <path ref>
 }
+
 paths }o-right- pathPoint
 root }o-right- buildings
 root }o-right- paths
