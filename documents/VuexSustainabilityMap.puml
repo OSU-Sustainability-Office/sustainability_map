@@ -8,7 +8,6 @@ class "Root" as root  {
 
 class "Buildings" as buildings {
   - name: string
-  - map_id: string
   - description: integer
   - image: integer
   - properties: Object {\n\
@@ -24,7 +23,7 @@ class "Features" as features {
   - description: String
 }
 
-class "Paths" as paths {
+class "Layer" as layer {
   - name: string
   - description: integer
   - pathPoint
@@ -34,22 +33,22 @@ class "Paths" as paths {
   ~ pathPoint: Array <path ref>
 }
 
-class "Path Point" as pathPoint {
+class "Point of Interest" as pointInterest {
   + coordinates: Object {\n\
       lat: Number,\n\
       lng: Number\n\
     }
  - name: String
  - description: integer
+   - map_id: string
  --
  ~ features: Array <path ref>
  ~ buildings: Array <path ref>
 }
 
-paths }o-right- pathPoint
-root }o-right- buildings
-root }o-right- paths
-pathPoint }|-left[dashed]- features
-pathPoint }|-left[dashed]- buildings
+root }o-- layer
+layer }o-- pointInterest
+pointInterest }|-[dashed]- features
+pointInterest }|-- buildings
 buildings }|-- features
 @enduml
