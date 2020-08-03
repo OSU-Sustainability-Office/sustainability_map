@@ -12,8 +12,10 @@ import SMBuilding from '@/assets/SMBuilding.js'
 import L from 'leaflet'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { Geoloc } from 'vuelayers'
 
 Vue.use(Vuex)
+Vue.use(Geoloc)
 
 const state = {
   features: [], //  Of type SMFeature

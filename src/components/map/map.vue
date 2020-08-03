@@ -12,14 +12,15 @@
         :zoom="zoom"
         :center="center"
         ref='map'
-        v-loading="!queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0"
+        v-loading="false"
         @update:zoom="zoomUpdated"
         @update:center="centerUpdated"
         @update:bounds="boundsUpdated"
         >
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
+        <!-- <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
         <l-geo-json v-for='(item, index) of queryBuildings(queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
+      !queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0-->
       </l-map>
     </div>
   </div>
@@ -95,9 +96,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
+@import "../../../node_modules/leaflet/dist/leaflet.css";
+</style>
+
+<style scoped lang='scss'> //Fixed --nav-hight by addding the import above and scoped lang='scss'
 .mapFrame {
-  padding-top: $--nav-height;
+  margin-top: $--nav-height;
   height: 100%;
   width: 100%;
 }
