@@ -12,15 +12,15 @@
         :zoom="zoom"
         :center="center"
         ref='map'
-        v-loading="false"
+        v-loading="!queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0"
         @update:zoom="zoomUpdated"
         @update:center="centerUpdated"
         @update:bounds="boundsUpdated"
         >
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-        <!-- <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
+        <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
         <l-geo-json v-for='(item, index) of queryBuildings(queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
-      !queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0-->
+
       </l-map>
     </div>
   </div>
