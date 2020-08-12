@@ -2,8 +2,8 @@
 @Author: Brogan Miner <Brogan>
 @Date:   2018-11-29T12:53:21-08:00
 @Email:  brogan.miner@oregonstate.edu
-@Last modified by:   Brogan
-@Last modified time: 2019-02-13T11:06:31-08:00
+@Last modified by:   Adam
+@Last modified time: 2020-08-12T11:06:31-08:00
 -->
 
 <template>
@@ -11,10 +11,14 @@
       <el-col :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
         <img src="/images/logo.png" height=50 width=auto alt="" class='sus-nav-image' @click='$router.push({path: "/"})'>
       </el-col>
-      <el-col :xs="13" :sm="15" :md="15" :lg="18" :xl="20">
+      <el-col class="sus-title" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
+        The Sustainability Map
       </el-col>
-      <el-col :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
-      </el-col>
+      <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
+        <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
+          <i slot="suffix" class="el-input__icon el-icon-search"> </i>
+        </el-input>
+    </el-col>
     </el-row>
 </template>
 <script>
@@ -25,7 +29,8 @@ export default {
   data () {
     return {
       loginLink: 'https://api.sustainability.oregonstate.edu/v2/auth/login?returnURI=' + process.env.VUE_APP_HOST_ADDRESS + '/#/map',
-      activeIndex: ''
+      activeIndex: '',
+      input: ''
     }
   },
   computed: {
@@ -132,5 +137,18 @@ export default {
 .sus-nav-sign:hover {
   color: #000000 !important;
   text-decoration: none;
+}
+.sus-title{
+  font-size: $--font-size-large;
+  font-family: StratumNo2;
+  color: $--color-black;
+  padding-top: 1.1em;
+}
+.sus-nav-search{
+  padding-top: 1em;
+  width: 15em;
+}
+.el-input__icon:hover{
+  cursor: pointer;
 }
 </style>
