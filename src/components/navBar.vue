@@ -12,7 +12,6 @@
         <img src="/images/logo.png" height=50 width=auto alt="" class='sus-nav-image' @click='$router.push({path: "/"})'>
       </el-col>
       <el-col class="sus-title" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
-        The Sustainability Map
       </el-col>
       <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
         <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
