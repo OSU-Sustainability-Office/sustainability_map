@@ -13,7 +13,7 @@ class Point {
     this.name = ""
     this.image = ""
     this.description = ""
-    this.visable = ""
+    this.visible = ""
     this.type = ""
     this.tags = []
 
@@ -27,7 +27,7 @@ class Point {
     this.name = name
     this.description = desc
     this.image = image
-    this.visable = vis
+    this.visible = vis
     this.type = type
 
   }
@@ -39,7 +39,7 @@ class Point {
       name: this.name,
       image: this.image,
       description: this.description,
-      visable: this.visable,
+      visible: this.visible,
       type: this.type,
       tags: this.tags
     }

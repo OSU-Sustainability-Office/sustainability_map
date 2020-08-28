@@ -1,10 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  sam-app
 
-  Sample SAM Template for sam-app
-  
+  API routes for the sustainability map
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -15,12 +14,6 @@ Globals:
     # to a particular domain name, e.g. "'www.example.com'"
     Cors:
       AllowOrigin: "'http://localhost:8080'"
-    BinaryMediaTypes:
-      - image~1gif
-      - image~1png
-      - image~1jpeg
-      - application/octet-stream
-      - multipart/form-data
 
 Resources:
   features:
@@ -28,15 +21,15 @@ Resources:
     Properties:
       MemorySize: 128
       CodeUri: app/
-      Handler: feature.all
+      Handler: layer.get
       Layers:
-        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:84
+        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:88
         - !Ref SusMapModelLayer
       Events:
         Building:
           Type: Api
           Properties:
-            Path: /features
+            Path: /layers
             Method: get
   SusMapModelLayer:
         Type: AWS::Serverless::LayerVersion
