@@ -22,7 +22,7 @@ class Layer {
 
   async download(layer_id){
     await DB.connect()
-    let data = await DB.query('SELECT * FROM layer WHERE layer_id = ?', [this.layer_id])
+    let data = await DB.query('SELECT * FROM layer WHERE layer_id = ?', [layer_id])
     return(data)
   }
 

@@ -23,13 +23,28 @@ Resources:
       CodeUri: app/
       Handler: layer.get
       Layers:
-        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:88
+        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:89
         - !Ref SusMapModelLayer
       Events:
         Building:
           Type: Api
           Properties:
             Path: /layers
+            Method: get
+        Building:
+          Type: Api
+          Properties:
+            Path: /point
+            Method: get
+        Building:
+          Type: Api
+          Properties:
+            Path: /point?=id
+            Method: get
+        Building:
+          Type: Api
+          Properties:
+            Path: /tag
             Method: get
   SusMapModelLayer:
         Type: AWS::Serverless::LayerVersion
