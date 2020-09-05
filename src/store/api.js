@@ -8,13 +8,13 @@
 
 import axios from 'axios'
 
-function callAPI (route, data = null, method = 'get', base = '/map/') {
-  return axios(process.env.VUE_APP_ROOT_API + base + route, { method: method, data: data, withCredentials: true })
+function callAPI (route, data = null, method = 'get') {
+  return axios(process.env.VUE_APP_ROOT_API + route, { method: method, data: data, withCredentials: true })
 }
 
 export default {
-  features: async () => {
-    return (await callAPI('features')).data[0].features
+  layers: async () => {
+    return (await callAPI('layers'))
   },
   buildings: async () => {
     return (await callAPI('buildings')).data.data

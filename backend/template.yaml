@@ -16,7 +16,7 @@ Globals:
       AllowOrigin: "'http://localhost:8080'"
 
 Resources:
-  features:
+  Layer:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 128
@@ -31,20 +31,36 @@ Resources:
           Properties:
             Path: /layers
             Method: get
+  Points:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 128
+      CodeUri: app/
+      Handler: point.get
+      Layers:
+        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:89
+        - !Ref SusMapModelLayer
+      Events:
         Building:
           Type: Api
           Properties:
-            Path: /point
+            Path: /points
             Method: get
+
+  Tag:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 128
+      CodeUri: app/
+      Handler: layer.get
+      Layers:
+        - arn:aws:lambda:us-west-2:005937143026:layer:LambdaCommonLayer:89
+        - !Ref SusMapModelLayer
+      Events:
         Building:
           Type: Api
           Properties:
-            Path: /point?=id
-            Method: get
-        Building:
-          Type: Api
-          Properties:
-            Path: /tag
+            Path: /tag?id=
             Method: get
   SusMapModelLayer:
         Type: AWS::Serverless::LayerVersion

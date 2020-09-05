@@ -5,31 +5,39 @@
  * @Last Modified Time:  Aug 21th 2020
  * @Copyright:  (c) Oregon State University 2020
  */
-
+const DB = require('/opt/nodejs/test-sql-access.js')
 
 class Point {
-  constructor (mapId) {
+  constructor (mapId, name = null, image = null, description = null, visible = null, type = null, tags = null) {
     this.mapId = mapId
-    this.name = ""
-    this.image = ""
-    this.description = ""
-    this.visible = ""
-    this.type = ""
-    this.tags = []
-
+    this.name = name
+    this.image = image
+    this.description = description
+    this.visible = visible
+    this.type = type
+    this.tags = tags
   }
 
   addTag (tag_id) {
     this.tags.push(tag_id)
   }
 
-  setVariables(name, desc, image, vis, type) {
-    this.name = name
-    this.description = desc
-    this.image = image
-    this.visible = vis
-    this.type = type
+  async download () {
+    // Connect to the database
+    await DB.connect()
 
+    // Download this point's data
+    const data = await DB.query("SELECT * FROM point WHERE mapId = ?", [this.mapId])
+    if (data.length === 1) {
+      this.name = data[0].name
+      this.image = data[0].image
+      this.description = data[0].description
+      this.visible = data[0].visible
+      this.type = data[0].type
+      this.tags = data[0].tags
+    } else {
+      throw "Point not found."
+    }
   }
 
   get

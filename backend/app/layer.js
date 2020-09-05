@@ -11,16 +11,20 @@ const Layer = require('/opt/nodejs/models/layer.js')
 const Response = require('/opt/nodejs/response.js')
 const User = require('/opt/nodejs/user.js')
 
+// return all of the layers
 exports.get = async (event, context) => {
   let response = new Response(event)
-  // response.body = JSON.stringify(event)
-  // console.log(response)
-  // await DB.connect()
-  // let data = await DB.query('SELECT * FROM layer WHERE layer_id = ?', [event.queryStringParameters.id])
-  // response.body = JSON.stringify(data)
 
-  response.body = JSON.stringify(await new Layer().download(event.queryStringParameters.id))
+  // Connect to the database
+  await DB.connect()
 
+  // Get a list of all layers
+  const data = await DB.query("SELECT * FROM layer")
 
+  // Create an array of Layer instances
+  const layers = data.map( layer => new Layer(layer.layer_id, layer.name, layer.color, layer.icon) )
+
+  // Return the array to the user
+  response.body = JSON.stringify(layers)
   return response
 }
