@@ -8,10 +8,10 @@
 const DB = require('/opt/nodejs/test-sql-access.js')
 
 class Point {
-  constructor (mapId, name = null, image = null, description = null, visible = null, type = null, tags = null) {
+  constructor (mapId, name = null, img = null, description = null, visible = null, type = null, tags = null) {
     this.mapId = mapId
     this.name = name
-    this.image = image
+    this.img = img
     this.description = description
     this.visible = visible
     this.type = type
@@ -30,7 +30,7 @@ class Point {
     const data = await DB.query("SELECT * FROM point WHERE mapId = ?", [this.mapId])
     if (data.length === 1) {
       this.name = data[0].name
-      this.image = data[0].image
+      this.img = data[0].img
       this.description = data[0].description
       this.visible = data[0].visible
       this.type = data[0].type
@@ -45,7 +45,7 @@ class Point {
     return {
       id: this.mapId,
       name: this.name,
-      image: this.image,
+      img: this.img,
       description: this.description,
       visible: this.visible,
       type: this.type,

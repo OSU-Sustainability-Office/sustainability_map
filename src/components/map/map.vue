@@ -11,9 +11,13 @@
     <!-- Side Menu or 'Key' -->
   <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
     <div class='colorByTitle'>Sort</div>
-       <el-menu-item-group>
+       <el-menu-item-group class='buttonGroup'>
          <!-- <el-col v-for='layers of this.$store.api["/layers"]' :key='layer.id * rKey'></el-col> -->
-         <el-button class='sortButtons' type="warning" icon="el-icon-star-off" > </el-button>
+          <el-col class='buttonItem'>
+            Button One
+           <el-button class="sortButton" type="warning" icon="el-icon-star-on" size="small" > </el-button>
+          </el-col>
+
        </el-menu-item-group>
     </el-menu>
 
@@ -29,8 +33,6 @@
         @update:bounds="boundsUpdated"
         >
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-        <l-geo-json v-for='(item, index) of queryFeatures(queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
-        <l-geo-json v-for='(item, index) of queryBuildings(queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
 
       </l-map>
     </div>
@@ -77,6 +79,8 @@ export default {
     }
   },
   mounted () {
+    console.log(process.env.VUE_APP_ROOT_API)
+    this.$store.dispatch('downloadLayers')
   },
   computed: {
     ...mapGetters([
@@ -118,7 +122,7 @@ $sideMenu-width: 250px;
 .sideMenu {
   background-color: $--color-black;
   margin-top: $--nav-height;
-  height: calc(100vh - $--nav-height);
+  height: calc(100vh - 80px);
   position: absolute;
   top: 0;
   left: 0;
@@ -138,6 +142,21 @@ $sideMenu-width: 250px;
   width: 100%;
 }
 .sortButtons{
+  width: 1em;
+  height: 20px;
+
+}
+.buttonGroup{
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  color: $--color-white;
+  font-family: 'stratumno2';
+  font-size: 13px;
+  justify-content: space-around;
+  width: 100%;
+}
+.buttonItem{
 
 }
 </style>

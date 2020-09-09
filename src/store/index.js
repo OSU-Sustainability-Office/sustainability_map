@@ -6,89 +6,51 @@
  * @Last modified time: 2019-03-27T16:47:48-07:00
  */
 
-import API from '../store/api.js'
-import SMFeature from '@/assets/SMFeature.js'
-import SMBuilding from '@/assets/SMBuilding.js'
+
 import L from 'leaflet'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { Geoloc } from 'vuelayers'
+import Layer from './models/layer'
+import Point from './models/point'
+import Tag from './models/tag'
+
+const axios = require('axios');
 
 Vue.use(Vuex)
 Vue.use(Geoloc)
 
 const state = {
-  features: [], //  Of type SMFeature
-  buildings: []
+  'Layers': [], //Array of the Layer object  from models/layer
+  'Points': [], //Array of the Point object  from models/point
+  'Tags': [] //Array of the Tag object  from models/tag
+
 }
 
 const getters = {
-  queryFeatures: state => query => {
-    let matchedItems = []
-    for (let feature of state.features) {
-      matchedItems = matchedItems.concat(feature.queryItems(query))
-    }
-    return matchedItems
-  },
-  queryFeaturesByBounds: state => (bounds, features) => {
-    return features.reduce((accm, feature) => {
-      if (bounds.contains(L.geoJSON(feature).getBounds().getCenter())) {
-        accm.push(feature)
-      }
-      return accm
-    }, [])
-  },
-  queryBuildings: state => queryString => {
-    return state.buildings.reduce((accm, building) => {
-      if (building.query(queryString)) {
-        accm.push(building)
-      }
-      return accm
-    }, [])
-  },
-  queryBuildingFeatures: (state, getters) => buildingID => {
-    let building = state.buildings.find(el => {
-      return el.properties.id === buildingID
-    })
-    return getters.queryFeaturesByBounds(L.geoJSON(building).getBounds())
-  }
+
 }
 
 const mutations = {
-  addFeature: (state, feature) => {
-    state.features.push(feature)
-  },
-  addBuilding: (state, building) => {
-    try {
-      L.geoJSON(building)
-      state.buildings.push(building)
-    } catch (err) {
-      // Do nothing for bad json
-    }
+  addLayers: (state, layers) => {
+    state['Layers'].concat(layers)
   }
-}
 
+
+}
 const actions = {
-  loadAllFeatures: async ({ dispatch, commit, getters }, payload) => {
-    let features = await API.features()
-    for (let feature of features) {
-      commit('addFeature', new SMFeature(feature.name, feature.items, feature.color))
-    }
-    return Promise.resolve()
-  },
-  loadAllBuildings: async ({ dispatch, commit, getters }, pawload) => {
-    let buildings = await API.buildings()
-    for (let buildingJSON of buildings) {
-      let building = new SMBuilding(buildingJSON)
-      try {
-        if (getters.queryFeaturesByBounds(L.geoJSON(building).getBounds(), getters.queryFeatures(/.*/)).length > 0) {
-          commit('addBuilding', building)
-        }
-      } catch (err) {
-        continue
-      }
-    }
-    return Promise.resolve()
+  downloadLayers: (context) => {
+    // Make a request for a user with a given ID
+    axios.get(process.env.VUE_APP_ROOT_API + '/layers')
+      .then(function(response) {
+        // handle success
+        console.log(response)
+        context.commit('addLayers', response.data)
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error)
+      })
   }
 }
 

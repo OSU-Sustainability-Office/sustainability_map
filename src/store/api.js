@@ -16,7 +16,7 @@ export default {
   layers: async () => {
     return (await callAPI('layers'))
   },
-  buildings: async () => {
-    return (await callAPI('buildings')).data.data
+  points: async () => {
+    return (await callAPI('points')).data.data
   }
 }
