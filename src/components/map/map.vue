@@ -10,14 +10,21 @@
 
     <!-- Side Menu or 'Key' -->
   <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
-    <div class='colorByTitle'>Sort</div>
-       <el-menu-item-group class='buttonGroup'>
+       <el-menu-item-group>
          <!-- <el-col v-for='layers of this.$store.api["/layers"]' :key='layer.id * rKey'></el-col> -->
-          <el-col class='buttonItem'>
-            Button One
-           <el-button class="sortButton" type="warning" icon="el-icon-star-on" size="small" > </el-button>
-          </el-col>
+         <el-col class='buttonGroup'>
+           <div class='colorByTitle'>Select Layer</div>
+           <el-button class="sortButton"  icon="el-icon-star-on" size="small" >Buildings</el-button>
+           <el-button class="sortButton" icon="el-icon-star-on" size="small" >Transportation</el-button>
+           <el-button class="sortButton" icon="el-icon-star-on" size="small" >Layer Three</el-button>
+         </el-col>
+         <el-col class='toggleGroup'>
+           <div class='colorByTitle'>Toggle Options</div>
+           <el-button class="toggleButton" icon="el-icon-check" size="small" >Bottle-Refil Stations</el-button>
+           <el-button class="toggleButton" icon="el-icon-check" size="small" >Bike Lockers</el-button>
+           <el-button class="toggleButton" icon="el-icon-check" size="small" >Buildings</el-button>
 
+         </el-col>
        </el-menu-item-group>
     </el-menu>
 
@@ -141,22 +148,34 @@ $sideMenu-width: 250px;
   height: 100%;
   width: 100%;
 }
-.sortButtons{
-  width: 1em;
-  height: 20px;
-
+.sideMenu{
+  display: flex;
+}
+.el-button{
+  font-family: 'stratumno2';
+  margin: 5px;
+  width: 15em;
 }
 .buttonGroup{
   display: flex;
-  justify-content: top;
-  align-items: center;
   color: $--color-white;
   font-family: 'stratumno2';
   font-size: 13px;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.buttonItem{
+.toggleButton{
 
+}
+.toggleGroup{
+  padding-top: 3em;
+  display: flex;
+  color: $--color-white;
+  font-family: 'stratumno2';
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
