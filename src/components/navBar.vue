@@ -146,6 +146,7 @@ export default {
 .sus-nav-search{
   padding-top: 1em;
   width: 15em;
+  font-family: 'stratumno2';
 }
 .el-input__icon:hover{
   cursor: pointer;

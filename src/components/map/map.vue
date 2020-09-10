@@ -11,12 +11,10 @@
     <!-- Side Menu or 'Key' -->
   <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
        <el-menu-item-group>
-         <!-- <el-col v-for='layers of this.$store.api["/layers"]' :key='layer.id * rKey'></el-col> -->
          <el-col class='buttonGroup'>
            <div class='colorByTitle'>Select Layer</div>
-           <el-button class="sortButton"  icon="el-icon-star-on" size="small" >Buildings</el-button>
-           <el-button class="sortButton" icon="el-icon-star-on" size="small" >Transportation</el-button>
-           <el-button class="sortButton" icon="el-icon-star-on" size="small" >Layer Three</el-button>
+           <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
+           <el-button class="sortButton"  icon="el-icon-star-on" size="small" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
          </el-col>
          <el-col class='toggleGroup'>
            <div class='colorByTitle'>Toggle Options</div>
@@ -40,16 +38,16 @@
         @update:bounds="boundsUpdated"
         >
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-
+        <!-- <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON"></l-geo-json> -->
+        <l-polygon v-for="(point, index) in getPoints" :key="index" :lat-lngs="point.geoJSON.elements.map(coords => ([coords.lat, coords.lon])).filter(coords => coords[0] && coords[1])"></l-polygon>
       </l-map>
     </div>
   </div>
 </template>
-    <!-- v-loading="!queryFeatures(queryString).length > 0 || !queryBuildings(queryString).length > 0" -->
 <script>
 import L from 'leaflet'
 import { mapGetters } from 'vuex'
-import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
+import { LMap, LTileLayer, LGeoJson, LPolygon } from 'vue2-leaflet'
 
 // import Cluster from '../assets/clustering.js'
 
@@ -58,7 +56,8 @@ export default {
   components: {
     LMap,
     LTileLayer,
-    LGeoJson
+    LGeoJson,
+    LPolygon
   },
   data () {
     return {
@@ -88,11 +87,13 @@ export default {
   mounted () {
     console.log(process.env.VUE_APP_ROOT_API)
     this.$store.dispatch('downloadLayers')
+    this.$store.dispatch('downloadPoints')
   },
   computed: {
     ...mapGetters([
-      'queryFeatures',
-      'queryBuildings'
+      'getLayers',
+      'getPoints',
+      'getTags'
     ])
   },
   created () {

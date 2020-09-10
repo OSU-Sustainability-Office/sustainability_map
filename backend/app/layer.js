@@ -26,9 +26,6 @@ exports.get = async (event, context) => {
 
   // Return the array to the user
   response.body = JSON.stringify(layers)
-  response.headers = {
-    'Access-Control-Allow-Origin': '*'
-    'Access-Control-Allow-Credentials': 'true'
-  }
+
   return response
 }
