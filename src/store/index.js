@@ -17,7 +17,8 @@ import Layer from './models/layer'
 import Point from './models/point'
 import Tag from './models/tag'
 
-const axios = require('axios');
+const axios = require('axios')
+var osmtogeojson = require('osmtogeojson')
 
 Vue.use(Vuex)
 Vue.use(Geoloc)
@@ -25,21 +26,28 @@ Vue.use(Geoloc)
 const state = {
   'Layers': [], //Array of the Layer object  from models/layer
   'Points': [], //Array of the Point object  from models/point
-  'Tags': [] //Array of the Tag object  from models/tag
-
+  'Tags': [], //Array of the Tag object  from models/tag
+  'ModalName': ''
 }
 
 const getters = {
+  modalName: (state)=> 'ModalName',
   getLayers: (state) => state['Layers'],
   getPoints: (state) => state['Points'],
   getTags: (state) => state['Tags']
 
-
 }
 
 const mutations = {
+  modalName (state, name) {
+   state.modalName = name
+ },
   addLayers: (state, layers) => {
     state['Layers'] = state['Layers'].concat(layers)
+    state['Layers'] = state['Layers'].map(layer => {
+      layer.color = '#' + layer.color
+      return layer
+    })
   },
   addPoint: (state, point) => {
     const index = state['Points'].map(point => point['mapId']).indexOf(point['mapId'])
@@ -54,10 +62,15 @@ const mutations = {
   addTags: (state, tags) => {
     state['Tags'] = state['Tags'].concat(tags)
   }
-
-
 }
 const actions = {
+  openModal (store, payload) {
+    store.commit('modalName', payload['name'])
+  },
+
+  closeModal (store) {
+    store.commit('modalName', '')
+    },
   downloadLayers: (context) => {
     axios.get(process.env.VUE_APP_ROOT_API + '/layers')
       .then(function(response) {
@@ -80,7 +93,7 @@ const actions = {
             // have access to both:
             // 1. "point" - defined by the database schema
             // 2. response.data - an object corresponding to the point's mapid
-            point.geoJSON = response.data
+            point.geoJSON = osmtogeojson(response.data)
             context.commit('addPoint', point)
           })
           .catch(error => {

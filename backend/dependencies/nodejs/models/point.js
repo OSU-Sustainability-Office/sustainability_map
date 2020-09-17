@@ -8,7 +8,7 @@
 const DB = require('/opt/nodejs/test-sql-access.js')
 
 class Point {
-  constructor (mapId, name = null, img = null, description = null, visible = null, type = null, tags = null) {
+  constructor (mapId, name = null, img = null, description = null, visible = null, type = null, tags = null, layer_id = null) {
     this.mapId = mapId
     this.name = name
     this.img = img
@@ -16,6 +16,7 @@ class Point {
     this.visible = visible
     this.type = type
     this.tags = tags
+    this.layer_id = layer_id
   }
 
   addTag (tag_id) {
@@ -35,6 +36,7 @@ class Point {
       this.visible = data[0].visible
       this.type = data[0].type
       this.tags = data[0].tags
+      this.layer_id = data[0].layer_id
     } else {
       throw "Point not found."
     }
@@ -49,7 +51,8 @@ class Point {
       description: this.description,
       visible: this.visible,
       type: this.type,
-      tags: this.tags
+      tags: this.tags,
+      layer_id: this.layer_id
     }
   }
 }

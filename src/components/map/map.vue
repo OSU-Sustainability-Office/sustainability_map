@@ -6,48 +6,48 @@
 @Last modified time: 2019-03-27T17:30:21-07:00
 -->
 <template>
-  <div style="height: 100vh; overflow: hidden;">
+<div style="height: 100vh; overflow: hidden;">
 
-    <!-- Side Menu or 'Key' -->
+  <!-- Side Menu or 'Key' -->
   <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
-       <el-menu-item-group>
-         <el-col class='buttonGroup'>
-           <div class='colorByTitle'>Select Layer</div>
-           <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
-           <el-button class="sortButton"  icon="el-icon-star-on" size="small" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
-         </el-col>
-         <el-col class='toggleGroup'>
-           <div class='colorByTitle'>Toggle Options</div>
-           <el-button class="toggleButton" icon="el-icon-check" size="small" >Bottle-Refil Stations</el-button>
-           <el-button class="toggleButton" icon="el-icon-check" size="small" >Bike Lockers</el-button>
-           <el-button class="toggleButton" icon="el-icon-check" size="small" >Buildings</el-button>
+    <el-menu-item-group>
+      <el-col class='buttonGroup'>
+        <div class='colorByTitle'>Toggle Layers</div>
+        <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
+        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
+      </el-col>
+    </el-menu-item-group>
+  </el-menu>
 
-         </el-col>
-       </el-menu-item-group>
-    </el-menu>
 
-     <!-- Map Code -->
-    <div class="mapFrame">
-      <l-map :style="mapStyle"
-        :zoom="zoom"
-        :center="center"
-        ref='map'
-
-        @update:zoom="zoomUpdated"
-        @update:center="centerUpdated"
-        @update:bounds="boundsUpdated"
-        >
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-        <!-- <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON"></l-geo-json> -->
-        <l-polygon v-for="(point, index) in getPoints" :key="index" :lat-lngs="point.geoJSON.elements.map(coords => ([coords.lat, coords.lon])).filter(coords => coords[0] && coords[1])"></l-polygon>
-      </l-map>
-    </div>
+  <!-- Map Code -->
+  <div class="mapFrame">
+    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
+      <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)"></l-geo-json>
+      <!-- <l-polygon v-for="(point, index) in getPoints" :color="orange" :key="index" :lat-lngs="point.geoJSON.elements.map(coords => ([coords.lat, coords.lon])).filter(coords => coords[0] && coords[1])"></l-polygon> -->
+    </l-map>
   </div>
+  <transition name='side'>
+    <!-- <sideView ref='sideview' v-if='showSide' @hide='showSide = false'></sideView> -->
+  </transition>
+</div>
 </template>
 <script>
+// The order in which we load these leaflet files matters
+// https://github.com/ghybs/leaflet-defaulticon-compatibility
 import L from 'leaflet'
-import { mapGetters } from 'vuex'
-import { LMap, LTileLayer, LGeoJson, LPolygon } from 'vue2-leaflet'
+import 'leaflet-defaulticon-compatibility'
+import {
+  mapGetters
+} from 'vuex'
+import {
+  LMap,
+  LTileLayer,
+  LGeoJson,
+  LPolygon
+} from 'vue2-leaflet'
+import sideView from '@/components/map/sideView'
 
 // import Cluster from '../assets/clustering.js'
 
@@ -57,9 +57,10 @@ export default {
     LMap,
     LTileLayer,
     LGeoJson,
+    sideView,
     LPolygon
   },
-  data () {
+  data() {
     return {
       zoom: 15.5,
       center: L.latLng(44.565, -123.2785),
@@ -83,8 +84,9 @@ export default {
         }
       }
     }
+
   },
-  mounted () {
+  mounted() {
     console.log(process.env.VUE_APP_ROOT_API)
     this.$store.dispatch('downloadLayers')
     this.$store.dispatch('downloadPoints')
@@ -94,9 +96,14 @@ export default {
       'getLayers',
       'getPoints',
       'getTags'
-    ])
+    ]),
+    showSide: {
+      get() {
+        return (this.$store.getters['index'] === 'map_side_view')
+      }
+    }
   },
-  created () {
+  created() {
     // this.clusterController = new Cluster()
     // this.$nextTick(() => {
     //   this.clusterController.addMap(this.$refs.map.mapObject)
@@ -107,14 +114,65 @@ export default {
     // })
   },
   methods: {
-    zoomUpdated (zoom) {
+    zoomUpdated(zoom) {
       this.zoom = zoom
     },
-    centerUpdated (center) {
+    centerUpdated(center) {
       this.center = center
     },
-    boundsUpdated (bounds) {
+    boundsUpdated(bounds) {
       this.bounds = bounds
+    },
+    pointOptions(point) {
+      // Get the layer corresponding to this point
+      const layers = this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
+      // If the layer is not found, use this default style
+      let style = {
+        weight: 2,
+        color: '#000',
+        opacity: 1,
+        fillColor: '#000',
+        fillOpacity: 0.7
+      }
+      if (layers.length > 0) {
+        // If a matching layer was found, overwrite the style variables with this layer's style
+        style.fillColor = layers[0].color
+        style.color = layers[0].color
+      }
+      console.log(style)
+      // Return a leaflet options object
+      return {
+        onEachFeature: (feature, layer) => {
+          layer.on('click', e => {
+            this.polyClick(e.target.feature.properties.id, e.target.feature, layer.getBounds().getCenter())
+          })
+          layer.on('mouseover', function(e) {
+            if (!e.target.setStyle) return
+            e.target.oldStyle = {
+              fillColor: e.target.options.fillColor,
+              color: e.target.options.color
+            }
+            e.target.setStyle({
+              fillColor: '#000',
+              color: '#000'
+            })
+            // e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
+          })
+          layer.on('mouseout', e => {
+            if (!e.target.setStyle) return
+            e.target.setStyle({
+              ...e.target.oldStyle
+            })
+          })
+        },
+        style
+      }
+    },
+    polyClick: function(id, feature) {
+      window.vue.$store.dispatch('index', {
+        name: 'Points',
+        id: mapId
+      })
     }
   }
 }
@@ -124,59 +182,58 @@ export default {
 @import "../../../node_modules/leaflet/dist/leaflet.css";
 </style>
 
-<style scoped lang='scss'> //Fixed --nav-hight by addding the import above and scoped lang='scss'
+<style scoped lang='scss'>
+//Fixed --nav-hight by addding the import above and scoped lang='scss'
 
 $sideMenu-width: 250px;
 .sideMenu {
-  background-color: $--color-black;
-  margin-top: $--nav-height;
-  height: calc(100vh - 80px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2000;
-  width: $sideMenu-width;
-  padding-top: 1em;
+    background-color: $--color-black;
+    margin-top: $--nav-height;
+    height: calc(100vh - 80px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: $sideMenu-width;
+    padding-top: 1em;
 }
-.colorByTitle{
-  color: $--color-white;
-  font-size: 26px;
-  text-align: center;
-  font-family: 'stratumno2';
+.colorByTitle {
+    color: $--color-white;
+    font-size: 26px;
+    text-align: center;
+    font-family: 'stratumno2';
 }
 .mapFrame {
-  margin-top: $--nav-height;
-  height: 100%;
-  width: 100%;
+    margin-top: $--nav-height;
+    height: 100%;
+    width: 100%;
 }
-.sideMenu{
-  display: flex;
+.sideMenu {
+    display: flex;
 }
-.el-button{
-  font-family: 'stratumno2';
-  margin: 5px;
-  width: 15em;
+.el-button {
+    font-family: 'stratumno2';
+    margin: 5px;
+    width: 15em;
 }
-.buttonGroup{
-  display: flex;
-  color: $--color-white;
-  font-family: 'stratumno2';
-  font-size: 13px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.buttonGroup {
+    display: flex;
+    color: $--color-white;
+    font-family: 'stratumno2';
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.toggleButton{
-
-}
-.toggleGroup{
-  padding-top: 3em;
-  display: flex;
-  color: $--color-white;
-  font-family: 'stratumno2';
-  font-size: 13px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.toggleButton {}
+.toggleGroup {
+    padding-top: 3em;
+    display: flex;
+    color: $--color-white;
+    font-family: 'stratumno2';
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 </style>

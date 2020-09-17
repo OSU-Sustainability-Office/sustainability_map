@@ -39,7 +39,7 @@ exports.get = async (event, context) => {
   const data = await DB.query("SELECT * FROM point")
 
   // Create an array of Point instances
-  const points = data.map( point => new Point(point.mapId, point.name, point.image, point.description, point.visible, point.type, point.tags) )
+  const points = data.map( point => new Point(point.mapId, point.name, point.image, point.description, point.visible, point.type, point.tags, point.layer_id) )
 
   // Return the array to the user
   response.body = JSON.stringify(points)
