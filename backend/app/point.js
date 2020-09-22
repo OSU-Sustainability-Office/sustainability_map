@@ -14,21 +14,21 @@ exports.get = async (event, context) => {
   let response = new Response(event)
   // Get 1 point if the user specifies an ID
   if (event.queryStringParameters && event.queryStringParameters.id) {
-      // if queryStringParameters exists and queryStringParameters.id exists (both are not null)
-      let point = new Point(event.queryStringParameters.id)
+    // if queryStringParameters exists and queryStringParameters.id exists (both are not null)
+    let point = new Point(event.queryStringParameters.id)
 
-      // download the point's data
-      try {
-        await point.download()
+    // download the point's data
+    try {
+      await point.download()
 
-        // Format the response
-        response.body = JSON.stringify([point])
-      } catch (e) {
-        // 404 if the point is not found
-        response.statusCode = 404
-        response.body = JSON.stringify(e)
-      }
-      return response
+      // Format the response
+      response.body = JSON.stringify([point])
+    } catch (e) {
+      // 404 if the point is not found
+      response.statusCode = 404
+      response.body = JSON.stringify(e)
+    }
+    return response
   }
 
   // Get all points if the user did not specify an ID
@@ -39,7 +39,15 @@ exports.get = async (event, context) => {
   const data = await DB.query("SELECT * FROM point")
 
   // Create an array of Point instances
-  const points = data.map( point => new Point(point.mapId, point.name, point.image, point.description, point.visible, point.type, point.tags, point.layer_id) )
+  const points = data.map(point => new Point(point.mapId,
+    point.name,
+    point.image,
+    point.description,
+    point.visible,
+    point.type,
+    point.tags,
+    point.layer_id,
+    point.osmType))
 
   // Return the array to the user
   response.body = JSON.stringify(points)

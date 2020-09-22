@@ -1,18 +1,150 @@
+
 {
-"type": "FeatureCollection",
-"name": "Transportation",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "Name": "Bike Fix-it Station", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2726741, 44.56362 ] } },
-{ "type": "Feature", "properties": { "Name": "Bike Fix-it Station", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2781887, 44.5632531 ] } },
-{ "type": "Feature", "properties": { "Name": "Bike Lockers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2783818, 44.5676406 ] } },
-{ "type": "Feature", "properties": { "Name": "Bike Lockers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2815254, 44.5585289 ] } },
-{ "type": "Feature", "properties": { "Name": "Electric Vehicle Chargers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2784784, 44.559989 ] } },
-{ "type": "Feature", "properties": { "Name": "Electric Vehicle Chargers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2806134, 44.5651029 ] } },
-{ "type": "Feature", "properties": { "Name": "Electric Vehicle Chargers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2835424, 44.5661501 ] } },
-{ "type": "Feature", "properties": { "Name": "Bike Fix-it Station", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2867289, 44.5667998 ] } },
-{ "type": "Feature", "properties": { "Name": "Electric Vehicle Chargers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2811284, 44.5575351 ] } },
-{ "type": "Feature", "properties": { "Name": "Bike Lockers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2759786, 44.5643462 ] } },
-{ "type": "Feature", "properties": { "Name": "Electric Vehicle Chargers", "description": null }, "geometry": { "type": "Point", "coordinates": [ -123.2716012, 44.5638952 ] } }
-]
+    "type": "FeatureCollection",
+    "generator": "JOSM",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Lockers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27597860000,
+                    44.56434620000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Lockers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27838180000,
+                    44.56764060000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Fix-it Station"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.28672890000,
+                    44.56679980000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Fix-it Station"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27267410000,
+                    44.56362000000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Fix-it Station"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27818870000,
+                    44.56325310000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Electric Vehicle Chargers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27847840000,
+                    44.55998900000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Bike Lockers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.28152540000,
+                    44.55852890000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Electric Vehicle Chargers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.28354240000,
+                    44.56615010000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Electric Vehicle Chargers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.28061340000,
+                    44.56510290000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Electric Vehicle Chargers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.27160120000,
+                    44.56389520000
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "Electric Vehicle Chargers"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.28112840000,
+                    44.55753510000
+                ]
+            }
+        }
+    ]
 }

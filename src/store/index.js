@@ -53,6 +53,8 @@ const mutations = {
     const index = state['Points'].map(point => point['mapId']).indexOf(point['mapId'])
     if (index === -1) {
       // Point does not exist in VueX yet
+      point.geoJSON.features = [point.geoJSON.features[0]]
+      // The first index of the features array is always the pollygon.
       state['Points'].push(point)
     } else {
       // Point is already in our VueX store
@@ -88,8 +90,9 @@ const actions = {
         // handle success
         response.data.forEach(point => {
           point.visible = point.visible.data[0] === 1
-          axios.get('https://api.openstreetmap.org/api/0.6/way/' + point['mapId'] + '/full')
+          axios.get('https://api.openstreetmap.org/api/0.6/' + point['osmType'] + '/' + point['mapId'] + (point['osmType'] == 'way' ? '/full' : ''))
           .then(response => {
+            console.log((point['osmType'] == 'way' ? '/full' : ''))
             // have access to both:
             // 1. "point" - defined by the database schema
             // 2. response.data - an object corresponding to the point's mapid

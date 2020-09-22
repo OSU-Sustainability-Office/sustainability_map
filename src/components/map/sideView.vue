@@ -10,14 +10,17 @@
 <el-row class='stage'>
   <el-row class='main'>
     <el-row class="title">
-      <div class="media" ref='media'></div>
-      <el-col :span='23'>{{ point.name }}</el-col>
+      <el-col :span='23'>Test Name</el-col>
+      <!-- <el-col :span='23'>{{ point.name }}</el-col> -->
+
       <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
     </el-row>
+    <!-- <div  class="media" ref='media'></div> -->
+    <el-image class="media" :src="image"> </el-image>
     <el-row>
-      <el-col :span='24' v-loading='point ? false : true'>
-        <div class="media" ref='media'></div>
-      </el-col>
+      <!-- <el-col :span='24' v-loading='point ? false : true'> -->
+        <el-col class="infoslide" :span='24'> Test Data</el-col>
+      <!-- </el-col> -->
     </el-row>
   </el-row>
 </el-row>
@@ -35,7 +38,8 @@ export default {
       title: '',
       unit: 'day',
       int: 1,
-      index: 0
+      index: 0,
+      image:"@/assets/valley-library-full.jpg"
     }
   },
   computed: {
@@ -104,9 +108,11 @@ export default {
     cursor: pointer;
 }
 .media {
-    height: 200px;
+    height: 150px;
+    width:450px;
     background-repeat: no-repeat;
     background-size: cover;
+    object-fit: cover;
     background-position: center;
     border-bottom: solid 1px #fff;
 }
@@ -117,14 +123,13 @@ export default {
     display: inline-block;
     flex-shrink: 0;
 }
-.graphslide {
-    position: absolute;
-    color: rgba($--color-white, 0.4);
+.infoslide {
+    background-color: $--color-white;
     bottom: 220px;
-    font-size: 3em;
+    font-size: 2em;
+    font-family: 'StratumNo2';
     width: 100%;
-    left: 0;
-    z-index: 4;
+    height: 300px;
 }
 
 .buttons > * {
