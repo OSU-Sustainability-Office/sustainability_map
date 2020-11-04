@@ -24,7 +24,11 @@
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)"></l-geo-json>
+      <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
+        <!-- <l-icon
+          icon-url="@/public/images/resturant_icon.png" >
+        </l-icon> -->
+      </l-geo-json>
       <!-- <l-polygon v-for="(point, index) in getPoints" :color="orange" :key="index" :lat-lngs="point.geoJSON.elements.map(coords => ([coords.lat, coords.lon])).filter(coords => coords[0] && coords[1])"></l-polygon> -->
     </l-map>
   </div>
@@ -71,23 +75,30 @@ export default {
       map: null,
       clusterController: null,
       queryString: /.*/,
-      jsonOptions: {
-        pointToLayer: (feature, latlng) => {
-          return L.circleMarker(latlng, {
-            color: feature.properties.color,
-            opacity: 0.75,
-            weight: 1,
-            fillColor: feature.properties.color,
-            fillOpacity: 0.45,
-            radius: 5
-          })
-        }
+      // jsonOptions: {
+      //   pointToLayer: (feature, latlng) => {
+      //     var icon = L.Icon({
+      //         options: {
+      //             iconSize: [27, 27],
+      //             iconAnchor: [13, 27],
+      //             popupAnchor:  [1, -24],
+      //             iconUrl: '@/public/images/resturant_icon.png'
+      //         }
+      //     });
+      //     return L.CircleMarker(latlng, {
+      //       color: feature.properties.color,
+      //       opacity: 0.75,
+      //       weight: 1,
+      //       icon: icon,
+      //       fillColor: feature.properties.color,
+      //       fillOpacity: 0.45,
+      //       radius: 5
+      //     })
+      //   }
+      // }
       }
-    }
-
   },
   mounted() {
-    console.log(process.env.VUE_APP_ROOT_API)
     this.$store.dispatch('downloadLayers')
     this.$store.dispatch('downloadPoints')
   },
@@ -131,6 +142,7 @@ export default {
         weight: 2,
         color: '#000',
         opacity: 1,
+        // iconurl: '@/public/images/resturant_icon.png',
         fillColor: '#000',
         fillOpacity: 0.7
       }
@@ -139,7 +151,7 @@ export default {
         style.fillColor = layers[0].color
         style.color = layers[0].color
       }
-      console.log(style)
+
       // Return a leaflet options object
       return {
         onEachFeature: (feature, layer) => {
@@ -165,7 +177,19 @@ export default {
             })
           })
         },
-        style
+        style,
+        // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
+        pointToLayer: function(geoJsonPoint, latlng) {
+          // By default, this returns:
+          return new L.Marker(latlng, {
+            icon: new L.Icon({
+              iconSize: [27, 27],
+              iconAnchor: [13, 27],
+              popupAnchor:  [1, -24],
+              iconUrl: 'images/resturant_icon.png'
+            })
+          })
+        }
       }
     },
     polyClick: function(id, feature) {
@@ -176,6 +200,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style >

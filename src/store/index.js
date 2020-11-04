@@ -30,12 +30,12 @@ const state = {
   'ModalName': ''
 }
 
+
 const getters = {
-  modalName: (state)=> 'ModalName',
+  modalName: (state) => 'ModalName',
   getLayers: (state) => state['Layers'],
   getPoints: (state) => state['Points'],
   getTags: (state) => state['Tags']
-
 }
 
 const mutations = {
