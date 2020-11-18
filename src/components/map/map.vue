@@ -1,9 +1,9 @@
 <!--
-@Author: Brogan Miner <Brogan>
+@Author: Adam Oberg <Adam>
 @Date:   2019-03-26T12:15:39-07:00
-@Email:  brogan.miner@oregonstate.edu
-@Last modified by:   Brogan
-@Last modified time: 2019-03-27T17:30:21-07:00
+@Email:  adam.oberg@oregonstate.edu
+@Last modified by:   Adam
+@Last modified time: 11/9/2020 12PM
 -->
 <template>
 <div style="height: 100vh; overflow: hidden;">
@@ -180,13 +180,25 @@ export default {
         style,
         // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
         pointToLayer: function(geoJsonPoint, latlng) {
+          if (point.layer_id > 0) {
+            // If a matching layer was found, overwrite the icon variables with this layer's icon
+            // By default, this returns:
+            return new L.Marker(latlng, {
+              icon: new L.Icon({
+                iconSize: [27, 27],
+                iconAnchor: [13, 27],
+                popupAnchor:  [1, -24],
+                iconUrl: layers[0].icon
+              })
+            })
+          }
           // By default, this returns:
           return new L.Marker(latlng, {
             icon: new L.Icon({
               iconSize: [27, 27],
               iconAnchor: [13, 27],
               popupAnchor:  [1, -24],
-              iconUrl: 'images/resturant_icon.png'
+              iconUrl: 'images/icon_icon.png'
             })
           })
         }
@@ -235,11 +247,13 @@ $sideMenu-width: 250px;
 }
 .sideMenu {
     display: flex;
+    justify-content: center; 
 }
 .el-button {
     font-family: 'stratumno2';
     margin: 5px;
     width: 15em;
+
 }
 .buttonGroup {
     display: flex;
