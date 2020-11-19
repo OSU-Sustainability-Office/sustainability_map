@@ -33,7 +33,7 @@
     </l-map>
   </div>
   <transition name='side'>
-    <!-- <sideView ref='sideview' v-if='showSide' @hide='showSide = false'></sideView> -->
+    <sideView ref='sideview' v-if='showSide' @hide='showSide = false'></sideView>
   </transition>
 </div>
 </template>
@@ -154,9 +154,9 @@ export default {
 
       // Return a leaflet options object
       return {
-        onEachFeature: (feature, layer) => {
+        onEachFeature: (point, layer) => {
           layer.on('click', e => {
-            this.polyClick(e.target.feature.properties.id, e.target.feature, layer.getBounds().getCenter())
+            this.polyClick(e.target.point.mapId)
           })
           layer.on('mouseover', function(e) {
             if (!e.target.setStyle) return
@@ -204,10 +204,10 @@ export default {
         }
       }
     },
-    polyClick: function(id, feature) {
+    polyClick: function (id) {
       window.vue.$store.dispatch('index', {
         name: 'Points',
-        id: mapId
+        id: id
       })
     }
   }
@@ -247,7 +247,7 @@ $sideMenu-width: 250px;
 }
 .sideMenu {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 .el-button {
     font-family: 'stratumno2';

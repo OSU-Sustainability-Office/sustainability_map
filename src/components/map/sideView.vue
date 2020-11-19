@@ -10,7 +10,7 @@
 <el-row class='stage'>
   <el-row class='main'>
     <el-row class="title">
-      <el-col :span='23'>Test Name</el-col>
+      <el-col :span='23'>{point.name}</el-col>
       <!-- <el-col :span='23'>{{ point.name }}</el-col> -->
 
       <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
@@ -19,7 +19,7 @@
     <el-image class="media" :src="image"> </el-image>
     <el-row>
       <!-- <el-col :span='24' v-loading='point ? false : true'> -->
-        <el-col class="infoslide" :span='24'> Test Data</el-col>
+        <el-col class="infoslide" :span='24'>{point.description}</el-col>
       <!-- </el-col> -->
     </el-row>
   </el-row>
@@ -48,7 +48,7 @@ export default {
         return this.point.img
       }
     },
-    building: {
+    point: {
       get() {
         return this.$store.getters['map/point'](this.$store.getters['getPoint'].id)
       }
@@ -57,19 +57,19 @@ export default {
   methods: {
     hide: function() {
       this.$emit('hide')
-    },
-    next: function() {
-      if (this.index + 1 >= this.buildingBlocks.length) {
-        return
-      }
-      this.index++
-    },
-    prev: function() {
-      if (this.index - 1 < 0) {
-        return
-      }
-      this.index--
     }
+    // next: function() {
+    //   if (this.index + 1 >= this.buildingBlocks.length) {
+    //     return
+    //   }
+    //   this.index++
+    // },
+    // prev: function() {
+    //   if (this.index - 1 < 0) {
+    //     return
+    //   }
+    //   this.index--
+    // }
   },
   watch: {
 
