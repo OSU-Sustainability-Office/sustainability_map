@@ -53,6 +53,7 @@ import {
 } from 'vue2-leaflet'
 import sideView from '@/components/map/sideView'
 
+
 // import Cluster from '../assets/clustering.js'
 
 export default {
@@ -66,6 +67,7 @@ export default {
   },
   data() {
     return {
+      // Map attributions start
       zoom: 15.5,
       center: L.latLng(44.565, -123.2785),
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
@@ -73,8 +75,10 @@ export default {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
+      // Map attributions end
       clusterController: null,
       queryString: /.*/,
+      // showSide: false //sideView
       // jsonOptions: {
       //   pointToLayer: (feature, latlng) => {
       //     var icon = L.Icon({
@@ -96,7 +100,15 @@ export default {
       //     })
       //   }
       // }
+      polyclick: function(e) {
+        this.showSide = true
+        console.log(this)
+        this.$store.dispatch('openModal', {
+          name: 'map_side_view',
+          id: id
+        })
       }
+    }
   },
   mounted() {
     this.$store.dispatch('downloadLayers')
@@ -109,8 +121,8 @@ export default {
       'getTags'
     ]),
     showSide: {
-      get() {
-        return (this.$store.getters['index'] === 'map_side_view')
+      get() { //If we would like to have sideview on the vuex store
+        return (this.getPoints === 'map_side_view')
       }
     }
   },
@@ -136,6 +148,7 @@ export default {
     },
     pointOptions(point) {
       // Get the layer corresponding to this point
+
       const layers = this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
       // If the layer is not found, use this default style
       let style = {
@@ -154,10 +167,8 @@ export default {
 
       // Return a leaflet options object
       return {
-        onEachFeature: (point, layer) => {
-          layer.on('click', e => {
-            this.polyClick(e.target.point.mapId)
-          })
+        onEachFeature: function(point, layer) {
+          layer.on('click', this.polyclick)
           layer.on('mouseover', function(e) {
             if (!e.target.setStyle) return
             e.target.oldStyle = {
@@ -187,7 +198,7 @@ export default {
               icon: new L.Icon({
                 iconSize: [27, 27],
                 iconAnchor: [13, 27],
-                popupAnchor:  [1, -24],
+                popupAnchor: [1, -24],
                 iconUrl: layers[0].icon
               })
             })
@@ -197,22 +208,15 @@ export default {
             icon: new L.Icon({
               iconSize: [27, 27],
               iconAnchor: [13, 27],
-              popupAnchor:  [1, -24],
+              popupAnchor: [1, -24],
               iconUrl: 'images/icon_icon.png'
             })
           })
         }
       }
-    },
-    polyClick: function (id) {
-      window.vue.$store.dispatch('index', {
-        name: 'Points',
-        id: id
-      })
     }
   }
 }
-
 </script>
 
 <style >

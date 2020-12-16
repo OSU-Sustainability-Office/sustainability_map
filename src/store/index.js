@@ -67,7 +67,7 @@ const mutations = {
 }
 const actions = {
   openModal (store, payload) {
-    store.commit('modalName', payload['name'])
+    store.commit('modalName', payload['name','id'])
   },
 
   closeModal (store) {
