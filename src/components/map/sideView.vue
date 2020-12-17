@@ -58,18 +58,6 @@ export default {
     hide: function() {
       this.$emit('hide')
     }
-    // next: function() {
-    //   if (this.index + 1 >= this.buildingBlocks.length) {
-    //     return
-    //   }
-    //   this.index++
-    // },
-    // prev: function() {
-    //   if (this.index - 1 < 0) {
-    //     return
-    //   }
-    //   this.index--
-    // }
   },
   watch: {
 

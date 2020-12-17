@@ -13,9 +13,11 @@ Globals:
     # enable CORS; to make more specific, change the origin wildcard
     # to a particular domain name, e.g. "'www.example.com'"
     Cors:
-      AllowMethods: "'GET,POST,OPTIONS'"
-      AllowCredentials: "'*'"
-      AllowOrigin: "'https://localhost:8080'"
+        AllowMethods: "'POST, GET'"
+        AllowHeaders: "'X-Forwarded-For'"
+        AllowOrigin: "'localhost'"
+        MaxAge: "'600'"
+        AllowCredentials: True
 
 Resources:
   Layer:

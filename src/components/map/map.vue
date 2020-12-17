@@ -25,13 +25,11 @@
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
       <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
-        <!-- <l-icon
-          icon-url="@/public/images/resturant_icon.png" >
-        </l-icon> -->
       </l-geo-json>
-      <!-- <l-polygon v-for="(point, index) in getPoints" :color="orange" :key="index" :lat-lngs="point.geoJSON.elements.map(coords => ([coords.lat, coords.lon])).filter(coords => coords[0] && coords[1])"></l-polygon> -->
     </l-map>
   </div>
+
+  <!-- Sidebar -->
   <transition name='side'>
     <sideView ref='sideview' v-if='showSide' @hide='showSide = false'></sideView>
   </transition>
@@ -43,14 +41,16 @@
 import L from 'leaflet'
 import 'leaflet-defaulticon-compatibility'
 import {
-  mapGetters
-} from 'vuex'
-import {
   LMap,
   LTileLayer,
   LGeoJson,
   LPolygon
 } from 'vue2-leaflet'
+
+import {
+  mapGetters
+} from 'vuex'
+
 import sideView from '@/components/map/sideView'
 
 
