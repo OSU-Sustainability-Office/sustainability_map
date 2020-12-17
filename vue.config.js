@@ -16,6 +16,9 @@ module.exports = {
       }
     }
   },
+  chainWebpack: config => {
+    config.module.rules.delete("svg");
+  },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
@@ -39,6 +42,12 @@ module.exports = {
             'cache-loader',
             'thread-loader',
             'babel-loader'
+          ]
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            'vue-svg-loader'
           ]
         }
       ]
