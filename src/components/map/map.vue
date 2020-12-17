@@ -115,15 +115,17 @@ export default {
     layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
   },
   methods: {
-    zoomUpdated(zoom) {
-      this.zoom = zoom
+    // Map updaters
+    boundsUpdated(bounds) {
+      this.bounds = bounds
     },
     centerUpdated(center) {
       this.center = center
     },
-    boundsUpdated(bounds) {
-      this.bounds = bounds
+    zoomUpdated(zoom) {
+      this.zoom = zoom
     },
+    
     // This sets up/configures the events for a single leaflet map feature.
     // It is designed to be passed as the "onEachFeature" parameter of the
     // pointOptions object
