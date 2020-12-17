@@ -77,7 +77,7 @@ export default {
       map: null,
       // Map attributions end
       clusterController: null,
-      queryString: /.*/,
+      queryString: /.*/
       // showSide: false //sideView
       // jsonOptions: {
       //   pointToLayer: (feature, latlng) => {
@@ -100,14 +100,6 @@ export default {
       //     })
       //   }
       // }
-      polyclick: function(e) {
-        this.showSide = true
-        console.log(this)
-        this.$store.dispatch('openModal', {
-          name: 'map_side_view',
-          id: id
-        })
-      }
     }
   },
   mounted() {
@@ -120,21 +112,12 @@ export default {
       'getPoints',
       'getTags'
     ]),
+    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id']),
     showSide: {
       get() { //If we would like to have sideview on the vuex store
         return (this.getPoints === 'map_side_view')
       }
     }
-  },
-  created() {
-    // this.clusterController = new Cluster()
-    // this.$nextTick(() => {
-    //   this.clusterController.addMap(this.$refs.map.mapObject)
-    // })
-    //
-    // this.$eventHub.$on('updateClusters', () => {
-    //   this.clusterController.updateClusterPoints()
-    // })
   },
   methods: {
     zoomUpdated(zoom) {
@@ -146,10 +129,17 @@ export default {
     boundsUpdated(bounds) {
       this.bounds = bounds
     },
+    polyclick(e) {
+      this.showSide = true
+      this.$store.dispatch('openModal', {
+        name: 'map_side_view',
+        id: id
+      })
+    },
     pointOptions(point) {
       // Get the layer corresponding to this point
-
       const layers = this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
+
       // If the layer is not found, use this default style
       let style = {
         weight: 2,
@@ -159,8 +149,9 @@ export default {
         fillColor: '#000',
         fillOpacity: 0.7
       }
+
+      // If a matching layer was found, overwrite the style variables with this layer's style
       if (layers.length > 0) {
-        // If a matching layer was found, overwrite the style variables with this layer's style
         style.fillColor = layers[0].color
         style.color = layers[0].color
       }
@@ -168,8 +159,11 @@ export default {
       // Return a leaflet options object
       return {
         onEachFeature: function(point, layer) {
+          // Add click event handler
           layer.on('click', this.polyclick)
-          layer.on('mouseover', function(e) {
+
+          // Add mouseover and mouseout event handlers
+          layer.on('mouseover', e => {
             if (!e.target.setStyle) return
             e.target.oldStyle = {
               fillColor: e.target.options.fillColor,

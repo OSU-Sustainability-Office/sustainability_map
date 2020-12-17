@@ -95,7 +95,6 @@ const actions = {
           point.visible = point.visible.data[0] === 1
           axios.get('https://api.openstreetmap.org/api/0.6/' + point['osmType'] + '/' + point['mapId'] + (point['osmType'] == 'way' ? '/full' : ''))
           .then(response => {
-            console.log((point['osmType'] == 'way' ? '/full' : ''))
             // have access to both:
             // 1. "point" - defined by the database schema
             // 2. response.data - an object corresponding to the point's mapid
