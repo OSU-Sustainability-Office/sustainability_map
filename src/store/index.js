@@ -43,6 +43,9 @@ const mutations = {
    state.modalName = name
  },
   addLayers: (state, layers) => {
+    state['Layers'] = [] // Clear any existing layers
+
+    // Add new layers
     state['Layers'] = state['Layers'].concat(layers)
     state['Layers'] = state['Layers'].map(layer => {
       layer.color = '#' + layer.color
