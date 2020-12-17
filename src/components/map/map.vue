@@ -77,8 +77,8 @@ export default {
       map: null,
       // Map attributions end
       clusterController: null,
-      queryString: /.*/
-      // showSide: false //sideView
+      queryString: /.*/,
+      showSide: false // Toggles the visibility of the sidebar
       // jsonOptions: {
       //   pointToLayer: (feature, latlng) => {
       //     var icon = L.Icon({
@@ -112,12 +112,7 @@ export default {
       'getPoints',
       'getTags'
     ]),
-    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id']),
-    showSide: {
-      get() { //If we would like to have sideview on the vuex store
-        return (this.getPoints === 'map_side_view')
-      }
-    }
+    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
   },
   methods: {
     zoomUpdated(zoom) {
@@ -129,7 +124,34 @@ export default {
     boundsUpdated(bounds) {
       this.bounds = bounds
     },
-    polyclick(e) {
+    // This sets up/configures the events for a single leaflet map feature.
+    // It is designed to be passed as the "onEachFeature" parameter of the
+    // pointOptions object
+    configureFeatureEvents(point, layer) {
+      // Add click event handler
+      layer.on('click', this.polygonClickHandler)
+
+      // Add mouseover and mouseout event handlers
+      layer.on('mouseover', e => {
+        if (!e.target.setStyle) return
+        e.target.oldStyle = {
+          fillColor: e.target.options.fillColor,
+          color: e.target.options.color
+        }
+        e.target.setStyle({
+          fillColor: '#000',
+          color: '#000'
+        })
+        // e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
+      })
+      layer.on('mouseout', e => {
+        if (!e.target.setStyle) return
+        e.target.setStyle({
+          ...e.target.oldStyle
+        })
+      })
+    },
+    polygonClickHandler(e) {
       this.showSide = true
       this.$store.dispatch('openModal', {
         name: 'map_side_view',
@@ -158,30 +180,7 @@ export default {
 
       // Return a leaflet options object
       return {
-        onEachFeature: function(point, layer) {
-          // Add click event handler
-          layer.on('click', this.polyclick)
-
-          // Add mouseover and mouseout event handlers
-          layer.on('mouseover', e => {
-            if (!e.target.setStyle) return
-            e.target.oldStyle = {
-              fillColor: e.target.options.fillColor,
-              color: e.target.options.color
-            }
-            e.target.setStyle({
-              fillColor: '#000',
-              color: '#000'
-            })
-            // e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
-          })
-          layer.on('mouseout', e => {
-            if (!e.target.setStyle) return
-            e.target.setStyle({
-              ...e.target.oldStyle
-            })
-          })
-        },
+        onEachFeature: this.configureFeatureEvents,
         style,
         // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
         pointToLayer: function(geoJsonPoint, latlng) {
