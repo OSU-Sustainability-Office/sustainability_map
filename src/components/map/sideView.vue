@@ -3,14 +3,14 @@
 @Date:   9/14/2020
 @Email:  adam.oberg@oregonstate.edu
 @Last modified by:   Adam
-@Last modified time: 9/14/2020 T 12:30 PM
+@Last modified time: 12/18/2020 T 12:30 PM
 -->
 
 <template>
 <el-row class='stage'>
   <el-row class='main'>
     <el-row class="title">
-      <el-col :span='23'>{point.name}</el-col>
+      <el-col :span='23'>{{point.name}}</el-col>
       <!-- <el-col :span='23'>{{ point.name }}</el-col> -->
 
       <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
@@ -19,7 +19,7 @@
     <el-image class="media" :src="image"> </el-image>
     <el-row>
       <!-- <el-col :span='24' v-loading='point ? false : true'> -->
-        <el-col class="infoslide" :span='24'>{point.description}</el-col>
+        <el-col class="infoslide" :span='24'>{{point.description}}</el-col>
       <!-- </el-col> -->
     </el-row>
   </el-row>
@@ -29,7 +29,9 @@
 <script>
 export default {
   name: 'sideView',
-  props: [],
+  props: {
+    point: Object
+  },
   components: {
   },
   data() {
@@ -39,18 +41,13 @@ export default {
       unit: 'day',
       int: 1,
       index: 0,
-      image:"@/assets/valley-library-full.jpg"
+      image:"@/assets/logo.png"
     }
   },
   computed: {
     media: {
       get() {
         return this.point.img
-      }
-    },
-    point: {
-      get() {
-        return this.$store.getters['map/point'](this.$store.getters['getPoint'].id)
       }
     }
   },
