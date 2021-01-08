@@ -31,7 +31,7 @@
 
   <!-- Sidebar -->
   <transition name='side'>
-    <sideView ref='sideview' v-if='showSide' @hide='showSide = false'></sideView>
+    <sideView ref='sideview' v-if='showSide' @hide='showSide = false' :point="currentPoint"></sideView>
   </transition>
 </div>
 </template>
@@ -78,6 +78,7 @@ export default {
       // Map attributions end
       clusterController: null,
       queryString: /.*/,
+      currentPointIndex: null,
       showSide: false // Toggles the visibility of the sidebar
       // jsonOptions: {
       //   pointToLayer: (feature, latlng) => {
@@ -112,27 +113,33 @@ export default {
       'getPoints',
       'getTags'
     ]),
-    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
+    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id']),
+    currentPoint: () => this.getPoints[this.currentPointIndex]
   },
   methods: {
-    zoomUpdated(zoom) {
-      this.zoom = zoom
+    // Map updaters
+    boundsUpdated(bounds) {
+      this.bounds = bounds
     },
     centerUpdated(center) {
       this.center = center
     },
-    boundsUpdated(bounds) {
-      this.bounds = bounds
+    zoomUpdated(zoom) {
+      this.zoom = zoom
     },
+
     // This sets up/configures the events for a single leaflet map feature.
     // It is designed to be passed as the "onEachFeature" parameter of the
     // pointOptions object
     configureFeatureEvents(point, layer) {
       // Add click event handler
       layer.on('click', this.polygonClickHandler)
-
       // Add mouseover and mouseout event handlers
       layer.on('mouseover', e => {
+        this.currentPointIndex = e.sourceTarget.options.susMapProperties.pointIndex
+        const pointData = this.getPoints[e.sourceTarget.options.susMapProperties.pointIndex]
+        e.target.bindTooltip(pointData.name).openTooltip()
+        // User for popup tooltip
         if (!e.target.setStyle) return
         e.target.oldStyle = {
           fillColor: e.target.options.fillColor,
@@ -142,7 +149,6 @@ export default {
           fillColor: '#000',
           color: '#000'
         })
-        // e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
       })
       layer.on('mouseout', e => {
         if (!e.target.setStyle) return
@@ -151,13 +157,7 @@ export default {
         })
       })
     },
-    polygonClickHandler(e) {
-      this.showSide = true
-      this.$store.dispatch('openModal', {
-        name: 'map_side_view',
-        id: id
-      })
-    },
+
     pointOptions(point) {
       // Get the layer corresponding to this point
       const layers = this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
@@ -177,9 +177,13 @@ export default {
         style.fillColor = layers[0].color
         style.color = layers[0].color
       }
+      const susMapProperties = {
+        pointIndex: point.index
+      }
 
       // Return a leaflet options object
       return {
+        susMapProperties,
         onEachFeature: this.configureFeatureEvents,
         style,
         // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
@@ -193,20 +197,30 @@ export default {
                 iconAnchor: [13, 27],
                 popupAnchor: [1, -24],
                 iconUrl: layers[0].icon
-              })
+              }),
+              susMapProperties,
             })
           }
-          // By default, this returns:
+          // otherwise, this returns:
           return new L.Marker(latlng, {
             icon: new L.Icon({
               iconSize: [27, 27],
               iconAnchor: [13, 27],
               popupAnchor: [1, -24],
               iconUrl: 'images/icon_icon.png'
-            })
+            }),
+            susMapProperties,
           })
         }
       }
+    },
+    polygonClickHandler(e) {
+      this.showSide = true
+      console.log(e)
+      this.$store.dispatch('openModal', {
+        name: 'map_side_view',
+        point: this.getPoints[e.sourceTarget.options.susMapProperties.pointIndex]
+      })
     }
   }
 }
@@ -271,5 +285,8 @@ $sideMenu-width: 250px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.tooltip{
+
 }
 </style>

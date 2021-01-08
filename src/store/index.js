@@ -56,12 +56,15 @@ const mutations = {
     const index = state['Points'].map(point => point['mapId']).indexOf(point['mapId'])
     if (index === -1) {
       // Point does not exist in VueX yet
-      point.geoJSON.features = [point.geoJSON.features[0]]
-      // The first index of the features array is always the pollygon.
+      point.geoJSON.features = [point.geoJSON.features[0]] // The first index of the features array is always the polygon.
+
       state['Points'].push(point)
+      const i = state['Points'].length - 1
+      state['Points'][i].index = i
     } else {
       // Point is already in our VueX store
       state['Points'][index] = point
+      state['Points'][index].index = index
     }
   },
   addTags: (state, tags) => {
@@ -70,7 +73,7 @@ const mutations = {
 }
 const actions = {
   openModal (store, payload) {
-    store.commit('modalName', payload['name','id'])
+    store.commit('modalName', payload['name','point'])
   },
 
   closeModal (store) {
