@@ -31,7 +31,7 @@
 
   <!-- Sidebar -->
   <transition name='side'>
-    <sideView ref='sideview' v-if='showSide' @hide='showSide = false' :point="currentPoint"></sideView>
+    <sideView ref='sideview' v-if='showSide' @hide='showSide = false' :point="getPoint(currentSideViewPointIndex)"></sideView>
   </transition>
 </div>
 </template>
@@ -78,7 +78,7 @@ export default {
       // Map attributions end
       clusterController: null,
       queryString: /.*/,
-      currentPointIndex: null,
+      currentSideViewPointIndex: null, // Type: Numeric index in points array
       showSide: false // Toggles the visibility of the sidebar
       // jsonOptions: {
       //   pointToLayer: (feature, latlng) => {
@@ -114,7 +114,6 @@ export default {
       'getTags'
     ]),
     layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id']),
-    currentPoint: () => this.getPoints[this.currentPointIndex]
   },
   methods: {
     // Map updaters
@@ -123,6 +122,9 @@ export default {
     },
     centerUpdated(center) {
       this.center = center
+    },
+    getPoint(index) {
+          return this.getPoints[index]
     },
     zoomUpdated(zoom) {
       this.zoom = zoom
@@ -136,8 +138,7 @@ export default {
       layer.on('click', this.polygonClickHandler)
       // Add mouseover and mouseout event handlers
       layer.on('mouseover', e => {
-        this.currentPointIndex = e.sourceTarget.options.susMapProperties.pointIndex
-        const pointData = this.getPoints[e.sourceTarget.options.susMapProperties.pointIndex]
+        const pointData = this.getPoint(e.sourceTarget.options.susMapProperties.pointIndex)
         e.target.bindTooltip(pointData.name).openTooltip()
         // User for popup tooltip
         if (!e.target.setStyle) return
@@ -215,12 +216,8 @@ export default {
       }
     },
     polygonClickHandler(e) {
+      this.currentSideViewPointIndex = e.sourceTarget.options.susMapProperties.pointIndex
       this.showSide = true
-      console.log(e)
-      this.$store.dispatch('openModal', {
-        name: 'map_side_view',
-        point: this.getPoints[e.sourceTarget.options.susMapProperties.pointIndex]
-      })
     }
   }
 }
