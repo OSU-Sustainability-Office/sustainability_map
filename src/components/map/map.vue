@@ -14,7 +14,7 @@
       <el-col class='buttonGroup'>
         <div class='colorByTitle'>Toggle Layers</div>
         <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
-        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
+        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-on:click="sideBarLayerToggleEvent" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
       </el-col>
     </el-menu-item-group>
   </el-menu>
@@ -128,6 +128,12 @@ export default {
     },
     zoomUpdated(zoom) {
       this.zoom = zoom
+    },
+    //This event toggles points on the map that do not share the same layer id
+    // as the selected layer.
+    sideBarLayerToggleEvent(e, layer) {
+      console.log(e)
+
     },
 
     // This sets up/configures the events for a single leaflet map feature.
