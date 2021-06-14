@@ -4,19 +4,15 @@
 -->
 
 <template>
-<el-row class='stage'>
-  <el-row class='main'>
-    <el-row class="title">
-      <el-col :span='23'>{{point.name}}</el-col>
-
-      <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
-    </el-row>
-    <el-image class="media" :src="image"> </el-image>
-    <el-row>
-        <el-col class="infoslide" :span='24'>{{point.description}}</el-col>
-    </el-row>
-  </el-row>
-</el-row>
+  <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
+    <el-menu-item-group>
+      <el-col class='buttonGroup'>
+        <div class='colorByTitle'>Toggle Layers</div>
+        <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
+        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-on:click="" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
+      </el-col>
+    </el-menu-item-group>
+  </el-menu>
 </template>
 
 <script>

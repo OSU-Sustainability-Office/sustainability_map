@@ -15,7 +15,6 @@ import {
 Vue.use(Vuex)
 Vue.use(Geoloc)
 
-
 const getters = {
   // TODO: add getters
 }
@@ -25,6 +24,10 @@ const mutations = {
 }
 const actions = {
   // TODO: add actions
+}
+
+const state = {
+  
 }
 
 const store = new Vuex.Store({
