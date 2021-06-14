@@ -1,10 +1,7 @@
 /**
- * @Author: Brogan Miner <Brogan>
- * @Date:   2018-12-20T10:38:57-08:00
- * @Email:  brogan.miner@oregonstate.edu
- * @Last modified by:   Brogan
- * @Last modified time: 2019-02-04T11:42:51-08:00
- */
+ * Filename: index.js
+ * Description: This file describes the routes used by the Vue client-side router.
+*/
 
 import Vue from 'vue'
 import Router from 'vue-router'

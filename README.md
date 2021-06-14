@@ -1,5 +1,7 @@
 # Sustainability Map
-This repo serves for an easy way to get started with a new project. If at any point there is confusion while using this, look at the Energy Dashboard repo for examples/guidance then update documentation/code in this repo to reflect those changes.
+An interactive infographic map showing the sustainability features on campus! 
+
+Note this uses Node version 14.
 
 ## Installation Steps
 - Fork this repo

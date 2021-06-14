@@ -1,10 +1,8 @@
 /*
- * @Author: you@you.you
- * @Date:   Wednesday April 29th 2020
- * @Last Modified By:  Brogan Miner
- * @Last Modified Time:  Wednesday April 29th 2020
- * @Copyright:  (c) Oregon State University 2020
- */
+  Filename: store_component_mapper.js
+  Description:
+    Reusable getters/mutations/actions for vuex store components.
+*/
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {

@@ -18,8 +18,6 @@
       </el-col>
     </el-menu-item-group>
   </el-menu>
-
-
   <!-- Map Code -->
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
@@ -52,8 +50,6 @@ import {
 } from 'vuex'
 
 import sideView from '@/components/map/sideView'
-
-
 // import Cluster from '../assets/clustering.js'
 
 export default {
@@ -65,7 +61,7 @@ export default {
     sideView,
     LPolygon
   },
-  data() {
+  data () {
     return {
       // Map attributions start
       zoom: 15.5,
@@ -103,7 +99,7 @@ export default {
       // }
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('downloadLayers')
     this.$store.dispatch('downloadPoints')
   },
@@ -112,34 +108,32 @@ export default {
       'getLayers',
       'getPoints',
       'getTags'
-    ]),
-    layers: () => this.getLayers.filter(layer => layer['layer_id'] === point['layer_id']),
+    ])
+    // layers: () => this.getLayers.filter(layer => layer.layer_id === point.layer_id),
   },
   methods: {
     // Map updaters
-    boundsUpdated(bounds) {
+    boundsUpdated (bounds) {
       this.bounds = bounds
     },
-    centerUpdated(center) {
+    centerUpdated (center) {
       this.center = center
     },
-    getPoint(index) {
-          return this.getPoints[index]
+    getPoint (index) {
+      return this.getPoints[index]
     },
-    zoomUpdated(zoom) {
+    zoomUpdated (zoom) {
       this.zoom = zoom
     },
-    //This event toggles points on the map that do not share the same layer id
+    // This event toggles points on the map that do not share the same layer id
     // as the selected layer.
-    sideBarLayerToggleEvent(e, layer) {
+    sideBarLayerToggleEvent (e, layer) {
       console.log(e)
-
     },
-
     // This sets up/configures the events for a single leaflet map feature.
     // It is designed to be passed as the "onEachFeature" parameter of the
     // pointOptions object
-    configureFeatureEvents(point, layer) {
+    configureFeatureEvents (point, layer) {
       // Add click event handler
       layer.on('click', this.polygonClickHandler)
       // Add mouseover and mouseout event handlers
@@ -165,12 +159,12 @@ export default {
       })
     },
 
-    pointOptions(point) {
+    pointOptions (point) {
       // Get the layer corresponding to this point
-      const layers = this.getLayers.filter(layer => layer['layer_id'] === point['layer_id'])
+      const layers = this.getLayers.filter(layer => layer.layer_id === point.layer_id)
 
       // If the layer is not found, use this default style
-      let style = {
+      const style = {
         weight: 2,
         color: '#000',
         opacity: 1,
@@ -194,7 +188,7 @@ export default {
         onEachFeature: this.configureFeatureEvents,
         style,
         // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
-        pointToLayer: function(geoJsonPoint, latlng) {
+        pointToLayer: function (geoJsonPoint, latlng) {
           if (point.layer_id > 0) {
             // If a matching layer was found, overwrite the icon variables with this layer's icon
             // By default, this returns:
@@ -205,7 +199,7 @@ export default {
                 popupAnchor: [1, -24],
                 iconUrl: layers[0].icon
               }),
-              susMapProperties,
+              susMapProperties
             })
           }
           // otherwise, this returns:
@@ -216,12 +210,12 @@ export default {
               popupAnchor: [1, -24],
               iconUrl: 'images/icon_icon.png'
             }),
-            susMapProperties,
+            susMapProperties
           })
         }
       }
     },
-    polygonClickHandler(e) {
+    polygonClickHandler (e) {
       this.currentSideViewPointIndex = e.sourceTarget.options.susMapProperties.pointIndex
       this.showSide = true
     }
@@ -278,7 +272,6 @@ $sideMenu-width: 250px;
     align-items: center;
     flex-direction: column;
 }
-.toggleButton {}
 .toggleGroup {
     padding-top: 3em;
     display: flex;
@@ -288,8 +281,5 @@ $sideMenu-width: 250px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-.tooltip{
-
 }
 </style>

@@ -1,9 +1,6 @@
 <!--
-@Author: Brogan Miner <Brogan>
-@Date:   2018-11-29T12:53:21-08:00
-@Email:  brogan.miner@oregonstate.edu
-@Last modified by:   Adam
-@Last modified time: 2020-08-12T11:06:31-08:00
+  Filename: navBar.vue
+  Description: Navigation bar component vue file.
 -->
 
 <template>
