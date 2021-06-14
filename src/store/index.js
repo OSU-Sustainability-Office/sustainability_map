@@ -12,29 +12,25 @@ import {
 // const axios = require('axios')
 // const osmtogeojson = require('osmtogeojson')
 
+import FeatureModule from './modules/feature.js'
+
 Vue.use(Vuex)
 Vue.use(Geoloc)
 
-const getters = {
-  // TODO: add getters
-}
-
-const mutations = {
-  // TODO: add mutations
-}
-const actions = {
-  // TODO: add actions
-}
-
-const state = {
-  
-}
+const getters = {}
+const mutations = {}
+const actions = {}
+const state = {}
 
 const store = new Vuex.Store({
   state,
   mutations,
   getters,
-  actions
+  actions,
+  modules: {
+    FeatureModule
+  }
 })
+
 
 export default store

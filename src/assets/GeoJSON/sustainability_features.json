@@ -1,0 +1,17 @@
+[
+    {
+        "type": "Feature",
+        "properties":{
+            "tags": [],
+            "name": "Bioswales",
+            "description": "Sustainability is neat"
+        },
+        "geometry":{
+            "type": "Polygon",
+            "coordinates": [[
+                [0, 0],
+                [1, 1]
+            ]]
+        }
+    }
+]
