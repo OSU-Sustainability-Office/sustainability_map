@@ -1,9 +1,6 @@
 <!--
-@Author: Brogan Miner <Brogan>
-@Date:   2019-01-04T10:08:23-08:00
-@Email:  brogan.miner@oregonstate.edu
-@Last modified by:   Brogan
-@Last modified time: 2019-02-11T20:41:56-08:00
+  Filename: App.vue
+  Description: The "main" vue app markup file.
 -->
 
 <template>
@@ -95,4 +92,5 @@ body {
   padding: 0;
   width: 100%;
 }
+
 </style>

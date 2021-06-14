@@ -1,9 +1,6 @@
 <!--
-@Author: Adam Oberg <Adam>
-@Date:   9/14/2020
-@Email:  adam.oberg@oregonstate.edu
-@Last modified by:   Adam
-@Last modified time: 12/18/2020 T 12:30 PM
+  Filename: sideView.vue
+  Description: The side-panel present on the map.
 -->
 
 <template>
@@ -11,16 +8,12 @@
   <el-row class='main'>
     <el-row class="title">
       <el-col :span='23'>{{point.name}}</el-col>
-      <!-- <el-col :span='23'>{{ point.name }}</el-col> -->
 
       <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
     </el-row>
-    <!-- <div  class="media" ref='media'></div> -->
     <el-image class="media" :src="image"> </el-image>
     <el-row>
-      <!-- <el-col :span='24' v-loading='point ? false : true'> -->
         <el-col class="infoslide" :span='24'>{{point.description}}</el-col>
-      <!-- </el-col> -->
     </el-row>
   </el-row>
 </el-row>
@@ -34,32 +27,32 @@ export default {
   },
   components: {
   },
-  data() {
+  data () {
     return {
       api: process.env.VUE_APP_ROOT_API,
       title: '',
       unit: 'day',
       int: 1,
       index: 0,
-      image:"@/assets/logo.png"
+      image: '@/assets/logo.png'
     }
   },
   computed: {
     media: {
-      get() {
+      get () {
         return this.point.img
       }
     }
   },
   methods: {
-    hide: function() {
+    hide: function () {
       this.$emit('hide')
     }
   },
   watch: {
 
   },
-  async mounted() {}
+  async mounted () {}
 }
 </script>
 <style scoped lang='scss'>
