@@ -7,16 +7,15 @@
 
   <!-- Side Menu or 'Key' -->
   <transition name='side'>
-    <SideView v-if="showSide" @hide='showSide = false'></SideView>
+    <sideView v-if="showSide" @hide='showSide = false'></sideView>
   </transition>
   <!-- The Map (⌐■_■) -->
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json :geojson="getFeatures">
+      <l-geo-json :geojson="getFeatures" :options="featureOptions">
       </l-geo-json>
       <!--
-      <l-geo-json v-for="feature of getFeatures" :geojson
       <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
       </l-geo-json>
       -->
@@ -33,15 +32,23 @@ import 'leaflet-defaulticon-compatibility'
 import {
   LMap,
   LTileLayer,
-  LGeoJson,
-  LPolygon
+  LGeoJson
 } from 'vue2-leaflet'
 
 import {
   mapGetters
 } from 'vuex'
 
-import SideView from '@/components/map/sideView'
+import sideView from '@/components/map/sideView'
+import popUp from '@/components/map/popup'
+
+import Vue from 'vue'
+import elm from 'element-ui'
+import Vuei18n from 'vue-i18n'
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.use(Vuei18n)
+Vue.use(elm, { locale: locale })
+Vue.config.lang = 'en'
 
 export default {
   name: 'mapComponent',
@@ -49,8 +56,7 @@ export default {
     LMap,
     LTileLayer,
     LGeoJson,
-    SideView,
-    LPolygon
+    sideView
   },
   data () {
     return {
@@ -76,8 +82,61 @@ export default {
   computed: {
     ...mapGetters({
       getFeatures: 'FeatureModule/getFeatures'
-    })
-    // layers: () => this.getLayers.filter(layer => layer.layer_id === point.layer_id),
+    }),
+    // returns appropriate leaflet geojson feature options.
+    // link below contains detailed info about each function
+    // https://leafletjs.com/reference-1.6.0.html#geojson-option
+    featureOptions: () => {
+      return {
+        // slight potential confusion: pointToLayer takes in a GeoJSON feature
+        // with the Leaflet class type "Point"--this is probably
+        // because GeoJSON feature support was added later on
+        // during Leaflet's development.
+        pointToLayer: (feature, latlng) => {
+          const { category, name, info } = feature.properties
+          return L.marker(latlng, {
+            icon: L.icon({
+              iconUrl: `images/categories/${category}.png`,
+              iconSize: [27, 27],
+              iconAncor: [13, 27],
+              popupAnchor: [-20, -20]
+            }),
+            keyboard: true,
+            title: name,
+            alt: info,
+            riseOnHover: true
+          })
+        },
+        onEachFeature: (feature, layer) => {
+          // Add the pop-up visual
+          layer.bindPopup(
+            (layer) => {
+              // Programmatically return popup component
+              const popupElement = new Vue({
+                ...popUp,
+                parent: this,
+                propsData: feature.properties
+              }).$mount()
+              return popupElement.$el
+            },
+            // pop-up options
+            {
+              maxWidth: 300,
+              minWidth: 50,
+              autoPan: true,
+              keepInView: true,
+              autoClose: true,
+              closeOnClick: true
+            }
+          )
+        },
+        // style: (feature) => {},
+        // Function which determines whether to include
+        filter: (feature) => {
+          return true
+        }
+      }
+    }
   },
   methods: {
     // Map updaters
@@ -103,6 +162,20 @@ export default {
 
 <style scoped lang='scss'>
 //Fixed --nav-hight by addding the import above and scoped lang='scss'
+
+/* Popup Styles */
+.popup-item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.popup-head{
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 0.5em;
+}
 
 .mapFrame {
     margin-top: $--nav-height;

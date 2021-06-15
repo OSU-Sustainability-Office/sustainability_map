@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'SideView',
+  name: 'sideView',
   props: {
     point: Object
   },

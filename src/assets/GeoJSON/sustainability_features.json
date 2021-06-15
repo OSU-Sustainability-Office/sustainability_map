@@ -10,8 +10,9 @@
             },
             "properties":{
                 "name": "Kearney Hall",
-                "description":"In 2008 Kearney Hall was remodeled to provide the Civil Engineering and Construction Engineering Management programs with state-of-the-art classrooms, offices, and a 120 seat auditorium. The project received a LEED Gold rating by the US Green Building Council.",
-                "tags":["building"]
+                "info":"In 2008 Kearney Hall was remodeled to provide the Civil Engineering and Construction Engineering Management programs with state-of-the-art classrooms, offices, and a 120 seat auditorium. The project received a LEED Gold rating by the US Green Building Council.",
+                "tags":["building"],
+                "category": "rain"
             }
         },
         {
@@ -22,8 +23,9 @@
             },
             "properties":{
                 "name": "Kelly Engineering",
-                "description":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
-                "tags":["building"]
+                "info":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
+                "tags":["building"],
+                "category":"dining"
             }
         }
     ]
