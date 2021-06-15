@@ -9,10 +9,9 @@ import {
   Geoloc
 } from 'vuelayers'
 
-// const axios = require('axios')
 // const osmtogeojson = require('osmtogeojson')
 
-import FeatureModule from './modules/feature.js'
+import FeatureModule from './modules/features.js'
 
 Vue.use(Vuex)
 Vue.use(Geoloc)
@@ -31,6 +30,5 @@ const store = new Vuex.Store({
     FeatureModule
   }
 })
-
 
 export default store

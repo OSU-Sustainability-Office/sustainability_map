@@ -12,7 +12,9 @@ const state = {
 }
 
 const getters = {
-  // todo: getters
+  getFeatures: (state, getters) => {
+    return state.features
+  }
 }
 
 const mutations = {

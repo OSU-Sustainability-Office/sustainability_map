@@ -8,8 +8,11 @@
     <el-menu-item-group>
       <el-col class='buttonGroup'>
         <div class='colorByTitle'>Toggle Layers</div>
-        <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
+        <br>
+        <el-button class="sortButton" icon="el-icon-star-off" size="small" :loading="true">Loading...</el-button>
+        <!--
         <el-button class="sortButton" icon="el-icon-star-on" size="small" v-on:click="" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
+        -->
       </el-col>
     </el-menu-item-group>
   </el-menu>
@@ -17,7 +20,7 @@
 
 <script>
 export default {
-  name: 'sideView',
+  name: 'SideView',
   props: {
     point: Object
   },
@@ -52,6 +55,25 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
+
+$sideMenu-width: 250px;
+.sideMenu {
+    background-color: $--color-black;
+    margin-top: $--nav-height;
+    height: calc(100vh - 80px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: $sideMenu-width;
+    padding-top: 1em;
+}
+.colorByTitle {
+    color: $--color-white;
+    font-size: 26px;
+    text-align: center;
+    font-family: 'stratumno2';
+}
 .stage {
     z-index: 401;
     display: block;

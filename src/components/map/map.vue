@@ -6,24 +6,23 @@
 <div style="height: 100vh; overflow: hidden;">
 
   <!-- Side Menu or 'Key' -->
-  <!--
-    Include component here later
-  -->
-  <!-- Map Code -->
+  <transition name='side'>
+    <SideView v-if="showSide" @hide='showSide = false'></SideView>
+  </transition>
+  <!-- The Map (⌐■_■) -->
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
+      <l-geo-json :geojson="getFeatures">
+      </l-geo-json>
       <!--
+      <l-geo-json v-for="feature of getFeatures" :geojson
       <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
       </l-geo-json>
       -->
     </l-map>
   </div>
 
-  <!-- Sidebar -->
-  <transition name='side'>
-    <sideView ref='sideview' v-if='showSide' @hide='showSide = false' :point="getPoint(currentSideViewPointIndex)"></sideView>
-  </transition>
 </div>
 </template>
 <script>
@@ -42,7 +41,7 @@ import {
   mapGetters
 } from 'vuex'
 
-import sideView from '@/components/map/sideView'
+import SideView from '@/components/map/sideView'
 
 export default {
   name: 'mapComponent',
@@ -50,7 +49,7 @@ export default {
     LMap,
     LTileLayer,
     LGeoJson,
-    sideView,
+    SideView,
     LPolygon
   },
   data () {
@@ -67,7 +66,7 @@ export default {
       clusterController: null,
       queryString: /.*/,
       currentSideViewPointIndex: null, // Type: Numeric index in points array
-      showSide: false // Toggles the visibility of the sidebar
+      showSide: true // Toggles the visibility of the sidebar
     }
   },
   mounted () {
@@ -75,11 +74,9 @@ export default {
     // this.$store.dispatch('downloadPoints')
   },
   computed: {
-    ...mapGetters([
-      'getLayers',
-      'getPoints',
-      'getTags'
-    ])
+    ...mapGetters({
+      getFeatures: 'FeatureModule/getFeatures'
+    })
     // layers: () => this.getLayers.filter(layer => layer.layer_id === point.layer_id),
   },
   methods: {
@@ -107,24 +104,6 @@ export default {
 <style scoped lang='scss'>
 //Fixed --nav-hight by addding the import above and scoped lang='scss'
 
-$sideMenu-width: 250px;
-.sideMenu {
-    background-color: $--color-black;
-    margin-top: $--nav-height;
-    height: calc(100vh - 80px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2000;
-    width: $sideMenu-width;
-    padding-top: 1em;
-}
-.colorByTitle {
-    color: $--color-white;
-    font-size: 26px;
-    text-align: center;
-    font-family: 'stratumno2';
-}
 .mapFrame {
     margin-top: $--nav-height;
     height: 100%;
