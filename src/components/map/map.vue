@@ -15,10 +15,6 @@
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
       <l-geo-json :geojson="getFeatures" :options="featureOptions">
       </l-geo-json>
-      <!--
-      <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
-      </l-geo-json>
-      -->
     </l-map>
   </div>
 
@@ -78,6 +74,8 @@ export default {
   mounted () {
     // this.$store.dispatch('downloadLayers')
     // this.$store.dispatch('downloadPoints')
+    // Load categories
+    // this.$store
   },
   computed: {
     ...mapGetters({
@@ -89,11 +87,12 @@ export default {
     featureOptions: () => {
       return {
         // slight potential confusion: pointToLayer takes in a GeoJSON feature
-        // with the Leaflet class type "Point"--this is probably
-        // because GeoJSON feature support was added later on
-        // during Leaflet's development.
+        // with the Leaflet class type "Point" but has all the same properties
+        // as a GeoJSON feature
         pointToLayer: (feature, latlng) => {
-          const { category, name, info } = feature.properties
+          let { category, name, info } = feature.properties
+          if (category === undefined) category = 'general'
+
           return L.marker(latlng, {
             icon: L.icon({
               iconUrl: `images/categories/${category}.png`,
@@ -124,7 +123,7 @@ export default {
               maxWidth: 300,
               minWidth: 50,
               autoPan: true,
-              keepInView: true,
+              keepInView: false,
               autoClose: true,
               closeOnClick: true
             }

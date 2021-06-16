@@ -7,22 +7,32 @@
   <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
     <el-menu-item-group>
       <el-col class='buttonGroup'>
-        <div class='colorByTitle'>Toggle Layers</div>
+        <div class='colorByTitle'>Toggle Features By Category</div>
         <br>
-        <el-button class="sortButton" icon="el-icon-star-off" size="small" :loading="true">Loading...</el-button>
-        <!--
-        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-on:click="" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
-        -->
+        <el-button class="sortButton" icon="el-icon-star-off" size="small" :loading="true" v-if="!tours.length">Loading...</el-button>
+        <el-col>
+          <el-row :span="12" type="flex" justify="center" v-for="(category, index) in categories" :key="index" >
+            <el-button v-if="visibleCategories.includes(category)" class="sortButton" icon="el-icon-star-on" size="small" @click="toggle(category)">
+              {{category}}
+            </el-button>
+            <el-button v-else class="sortButton" icon="el-icon-star-off" size="small" @click="toggle(category)">
+              {{category}}
+            </el-button>
+          </el-row>
+        </el-col>
       </el-col>
     </el-menu-item-group>
   </el-menu>
 </template>
 
 <script>
+
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'sideView',
   props: {
-    point: Object
+    options: Array
   },
   components: {
   },
@@ -41,12 +51,20 @@ export default {
       get () {
         return this.point.img
       }
-    }
+    },
+    ...mapGetters({
+      categories: 'FeatureModule/getCategories',
+      tours: 'FeatureModule/getTourNames',
+      visibleCategories: 'FeatureModule/getVisibleCategories'
+    })
   },
   methods: {
     hide: function () {
       this.$emit('hide')
-    }
+    },
+    ...mapMutations({
+      toggle: 'FeatureModule/toggleCategory'
+    })
   },
   watch: {
 
@@ -147,4 +165,12 @@ $sideMenu-width: 250px;
     color: $--color-white;
     border-color: $--color-white;
 }
+
+.sortButton {
+  margin: 0.25em;
+  padding: 1em;
+  min-width:15em;
+  text-align: left;
+}
+
 </style>

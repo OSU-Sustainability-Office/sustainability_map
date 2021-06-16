@@ -2,27 +2,68 @@
     Filename: features.js
     Description:
         This file statically loads the GeoJSON features shown
-        on the sustainability map
+        on the sustainability map organized as "tours."
 */
 
-import StaticFeatures from '@/assets/GeoJSON/sustainability_features.json'
+import FeaturesTour from '@/assets/GeoJSON/sustainability_features.json'
 
 const state = {
-  features: StaticFeatures
+  features: {
+    FeaturesTour
+  },
+  visibleCategories: {
+    bike: true,
+    general: true,
+    dining: true,
+    rain: true
+  }
 }
 
 const getters = {
+  getTourNames: (state, getters) => {
+    return Object.keys(state.features)
+  },
+
+  // returns all loaded features
   getFeatures: (state, getters) => {
-    return state.features
+    // concatenate all the tours
+    const displayedFeatures = getters.getTourNames.reduce((accum, tourName) => {
+      accum.features = accum.features.concat(state.features[tourName].features)
+      return accum
+    },
+    {
+      type: 'FeatureCollection',
+      name: 'Displayed Sustainability Features',
+      features: []
+    })
+
+    // only include visible features
+    displayedFeatures.features = displayedFeatures.features.filter(feature => state.visibleCategories[feature.properties.category])
+
+    return displayedFeatures
+  },
+
+  getTour: (state, getters) => (tourName) => {
+    return state.features[tourName]
+  },
+
+  getCategories: (state, getters) => {
+    return Object.keys(state.visibleCategories)
+  },
+
+  getVisibleCategories: (state, getters) => {
+    return getters.getCategories.filter(category => state.visibleCategories[category])
   }
 }
 
 const mutations = {
-  // todo: mutations
+  toggleCategory: (state, category) => {
+    state.visibleCategories[category] = !state.visibleCategories[category]
+  }
 }
 
 const actions = {
-  // todo: actions
+  // todo: add actions (if needed)
 }
 
 export default {
