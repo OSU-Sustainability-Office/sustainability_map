@@ -1,36 +1,23 @@
 <!--
-@Author: Adam Oberg <Adam>
-@Date:   2019-03-26T12:15:39-07:00
-@Email:  adam.oberg@oregonstate.edu
-@Last modified by:   Adam
-@Last modified time: 11/9/2020 12PM
+  Filename: map.vue
+  Description: The vue component showing the interactive map with the Sustainability Features.
 -->
 <template>
 <div style="height: 100vh; overflow: hidden;">
 
   <!-- Side Menu or 'Key' -->
-  <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
-    <el-menu-item-group>
-      <el-col class='buttonGroup'>
-        <div class='colorByTitle'>Toggle Layers</div>
-        <el-button class="sortButton" icon="el-icon-star-off" size="small" v-if="getLayers.length === 0" :loading="true">Loading...</el-button>
-        <el-button class="sortButton" icon="el-icon-star-on" size="small" v-on:click="sideBarLayerToggleEvent" v-for="(layer, index) in getLayers" :key="index">{{ layer.name }}</el-button>
-      </el-col>
-    </el-menu-item-group>
-  </el-menu>
-  <!-- Map Code -->
+  <transition name='side'>
+    <sideView v-if="showSide" @hide='showSide = false'></sideView>
+  </transition>
+  <!-- The Map (⌐■_■) -->
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json v-for="(point, index) in getPoints" :key="index" :geojson="point.geoJSON" :options="pointOptions(point)">
+      <l-geo-json :geojson="getFeatures" :options="featureOptions">
       </l-geo-json>
     </l-map>
   </div>
 
-  <!-- Sidebar -->
-  <transition name='side'>
-    <sideView ref='sideview' v-if='showSide' @hide='showSide = false' :point="getPoint(currentSideViewPointIndex)"></sideView>
-  </transition>
 </div>
 </template>
 <script>
@@ -41,8 +28,7 @@ import 'leaflet-defaulticon-compatibility'
 import {
   LMap,
   LTileLayer,
-  LGeoJson,
-  LPolygon
+  LGeoJson
 } from 'vue2-leaflet'
 
 import {
@@ -50,7 +36,15 @@ import {
 } from 'vuex'
 
 import sideView from '@/components/map/sideView'
-// import Cluster from '../assets/clustering.js'
+import popUp from '@/components/map/popup'
+
+import Vue from 'vue'
+import elm from 'element-ui'
+import Vuei18n from 'vue-i18n'
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.use(Vuei18n)
+Vue.use(elm, { locale: locale })
+Vue.config.lang = 'en'
 
 export default {
   name: 'mapComponent',
@@ -58,8 +52,7 @@ export default {
     LMap,
     LTileLayer,
     LGeoJson,
-    sideView,
-    LPolygon
+    sideView
   },
   data () {
     return {
@@ -75,41 +68,74 @@ export default {
       clusterController: null,
       queryString: /.*/,
       currentSideViewPointIndex: null, // Type: Numeric index in points array
-      showSide: false // Toggles the visibility of the sidebar
-      // jsonOptions: {
-      //   pointToLayer: (feature, latlng) => {
-      //     var icon = L.Icon({
-      //         options: {
-      //             iconSize: [27, 27],
-      //             iconAnchor: [13, 27],
-      //             popupAnchor:  [1, -24],
-      //             iconUrl: '@/public/images/resturant_icon.png'
-      //         }
-      //     });
-      //     return L.CircleMarker(latlng, {
-      //       color: feature.properties.color,
-      //       opacity: 0.75,
-      //       weight: 1,
-      //       icon: icon,
-      //       fillColor: feature.properties.color,
-      //       fillOpacity: 0.45,
-      //       radius: 5
-      //     })
-      //   }
-      // }
+      showSide: true // Toggles the visibility of the sidebar
     }
   },
   mounted () {
-    this.$store.dispatch('downloadLayers')
-    this.$store.dispatch('downloadPoints')
+    // this.$store.dispatch('downloadLayers')
+    // this.$store.dispatch('downloadPoints')
+    // Load categories
+    // this.$store
   },
   computed: {
-    ...mapGetters([
-      'getLayers',
-      'getPoints',
-      'getTags'
-    ])
-    // layers: () => this.getLayers.filter(layer => layer.layer_id === point.layer_id),
+    ...mapGetters({
+      getFeatures: 'FeatureModule/getFeatures'
+    }),
+    // returns appropriate leaflet geojson feature options.
+    // link below contains detailed info about each function
+    // https://leafletjs.com/reference-1.6.0.html#geojson-option
+    featureOptions: () => {
+      return {
+        // slight potential confusion: pointToLayer takes in a GeoJSON feature
+        // with the Leaflet class type "Point" but has all the same properties
+        // as a GeoJSON feature
+        pointToLayer: (feature, latlng) => {
+          let { category, name, info } = feature.properties
+          if (category === undefined) category = 'general'
+
+          return L.marker(latlng, {
+            icon: L.icon({
+              iconUrl: `images/categories/${category}.png`,
+              iconSize: [27, 27],
+              iconAncor: [13, 27],
+              popupAnchor: [-20, -20]
+            }),
+            keyboard: true,
+            title: name,
+            alt: info,
+            riseOnHover: true
+          })
+        },
+        onEachFeature: (feature, layer) => {
+          // Add the pop-up visual
+          layer.bindPopup(
+            (layer) => {
+              // Programmatically return popup component
+              const popupElement = new Vue({
+                ...popUp,
+                parent: this,
+                propsData: feature.properties
+              }).$mount()
+              return popupElement.$el
+            },
+            // pop-up options
+            {
+              maxWidth: 300,
+              minWidth: 50,
+              autoPan: true,
+              keepInView: false,
+              autoClose: true,
+              closeOnClick: true
+            }
+          )
+        },
+        // style: (feature) => {},
+        // Function which determines whether to include
+        filter: (feature) => {
+          return true
+        }
+      }
+    }
   },
   methods: {
     // Map updaters
@@ -124,100 +150,6 @@ export default {
     },
     zoomUpdated (zoom) {
       this.zoom = zoom
-    },
-    // This event toggles points on the map that do not share the same layer id
-    // as the selected layer.
-    sideBarLayerToggleEvent (e, layer) {
-      console.log(e)
-    },
-    // This sets up/configures the events for a single leaflet map feature.
-    // It is designed to be passed as the "onEachFeature" parameter of the
-    // pointOptions object
-    configureFeatureEvents (point, layer) {
-      // Add click event handler
-      layer.on('click', this.polygonClickHandler)
-      // Add mouseover and mouseout event handlers
-      layer.on('mouseover', e => {
-        const pointData = this.getPoint(e.sourceTarget.options.susMapProperties.pointIndex)
-        e.target.bindTooltip(pointData.name).openTooltip()
-        // User for popup tooltip
-        if (!e.target.setStyle) return
-        e.target.oldStyle = {
-          fillColor: e.target.options.fillColor,
-          color: e.target.options.color
-        }
-        e.target.setStyle({
-          fillColor: '#000',
-          color: '#000'
-        })
-      })
-      layer.on('mouseout', e => {
-        if (!e.target.setStyle) return
-        e.target.setStyle({
-          ...e.target.oldStyle
-        })
-      })
-    },
-
-    pointOptions (point) {
-      // Get the layer corresponding to this point
-      const layers = this.getLayers.filter(layer => layer.layer_id === point.layer_id)
-
-      // If the layer is not found, use this default style
-      const style = {
-        weight: 2,
-        color: '#000',
-        opacity: 1,
-        // iconurl: '@/public/images/resturant_icon.png',
-        fillColor: '#000',
-        fillOpacity: 0.7
-      }
-
-      // If a matching layer was found, overwrite the style variables with this layer's style
-      if (layers.length > 0) {
-        style.fillColor = layers[0].color
-        style.color = layers[0].color
-      }
-      const susMapProperties = {
-        pointIndex: point.index
-      }
-
-      // Return a leaflet options object
-      return {
-        susMapProperties,
-        onEachFeature: this.configureFeatureEvents,
-        style,
-        // filter: You can add a function here to filter whether or not this displays on the map. Refer to the documentation.
-        pointToLayer: function (geoJsonPoint, latlng) {
-          if (point.layer_id > 0) {
-            // If a matching layer was found, overwrite the icon variables with this layer's icon
-            // By default, this returns:
-            return new L.Marker(latlng, {
-              icon: new L.Icon({
-                iconSize: [27, 27],
-                iconAnchor: [13, 27],
-                popupAnchor: [1, -24],
-                iconUrl: layers[0].icon
-              }),
-              susMapProperties
-            })
-          }
-          // otherwise, this returns:
-          return new L.Marker(latlng, {
-            icon: new L.Icon({
-              iconSize: [27, 27],
-              iconAnchor: [13, 27],
-              popupAnchor: [1, -24],
-              iconUrl: 'images/icon_icon.png'
-            }),
-            susMapProperties
-          })
-        }
-      }
-    },
-    polygonClickHandler (e) {
-      this.currentSideViewPointIndex = e.sourceTarget.options.susMapProperties.pointIndex
-      this.showSide = true
     }
   }
 }
@@ -230,24 +162,20 @@ export default {
 <style scoped lang='scss'>
 //Fixed --nav-hight by addding the import above and scoped lang='scss'
 
-$sideMenu-width: 250px;
-.sideMenu {
-    background-color: $--color-black;
-    margin-top: $--nav-height;
-    height: calc(100vh - 80px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2000;
-    width: $sideMenu-width;
-    padding-top: 1em;
+/* Popup Styles */
+.popup-item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
-.colorByTitle {
-    color: $--color-white;
-    font-size: 26px;
-    text-align: center;
-    font-family: 'stratumno2';
+
+.popup-head{
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 0.5em;
 }
+
 .mapFrame {
     margin-top: $--nav-height;
     height: 100%;

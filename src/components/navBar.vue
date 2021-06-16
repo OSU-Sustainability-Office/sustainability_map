@@ -10,11 +10,13 @@
       </el-col>
       <el-col class="sus-title" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
       </el-col>
+      <!-- SEARCH BAR (Broken ATM--fix later)
       <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
         <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
           <i slot="suffix" class="el-input__icon el-icon-search"> </i>
         </el-input>
-    </el-col>
+      </el-col>
+      -->
     </el-row>
 </template>
 <script>
@@ -52,28 +54,15 @@ export default {
     this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {
-    '$route.path': function (path) {
-      this.activeIndex = path.split('/')[1]
-      const buttons = [this.$refs.mapItem, this.$refs.buildingItem, this.$refs.dashboardItem]
-      for (const item of buttons) {
-        if (!item) {
-          continue
-        }
-        if (this.activeIndex !== item.index) {
-          item.$el.classList.remove('is-active')
-        } else {
-          item.$el.classList.add('is-active')
-        }
-      }
-    }
+
   },
   methods: {
     logOut: function () {
       // this.$store.dispatch('logout')
     },
     handleSelect: function (select) {
-      this.$router.push({ path: '/' + select })
-      this.activeIndex = select
+      // this.$router.push({ path: '/' + select })
+      // this.activeIndex = select
     }
   }
 }

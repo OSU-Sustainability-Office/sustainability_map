@@ -1,10 +1,8 @@
 /**
- * @Author: Brogan Miner <Brogan>
- * @Date:   2019-03-26T10:38:48-07:00
- * @Email:  brogan.miner@oregonstate.edu
- * @Last modified by:   Brogan
- * @Last modified time: 2019-03-27T15:17:17-07:00
- */
+  Filename: api.js
+  Description:
+    File to access the lambda serverless API (eventually)
+*/
 
 import axios from 'axios'
 

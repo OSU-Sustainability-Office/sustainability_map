@@ -1,16 +1,11 @@
 /*
- * @Author: you@you.you
- * @Date:   Tuesday May 5th 2020
- * @Last Modified By:  Brogan Miner
- * @Last Modified Time:  Tuesday May 5th 2020
- * @Copyright:  (c) Oregon State University 2020
- */
+  Filename: map.module.js
+  Description:
+    This appears to be a file setup to define the interface used
+    to access the map features
+
+*/
 import API from './api.js'
-import Building from './building.module.js'
-import Path from './path.module.js'
-import Feature from './feature.module.js'
-import Geo from 'osmtogeojson'
-import L from 'leaflet'
 
 const state = () => {
   return {

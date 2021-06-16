@@ -1,68 +1,97 @@
 <!--
-@Author: Adam Oberg <Adam>
-@Date:   9/14/2020
-@Email:  adam.oberg@oregonstate.edu
-@Last modified by:   Adam
-@Last modified time: 12/18/2020 T 12:30 PM
+  Filename: sideView.vue
+  Description: The side-panel present on the map.
 -->
 
 <template>
-<el-row class='stage'>
-  <el-row class='main'>
-    <el-row class="title">
-      <el-col :span='23'>{{point.name}}</el-col>
-      <!-- <el-col :span='23'>{{ point.name }}</el-col> -->
-
-      <el-col :span='1' class='close-box'><i class="fas fa-times" @click="hide()"></i></el-col>
-    </el-row>
-    <!-- <div  class="media" ref='media'></div> -->
-    <el-image class="media" :src="image"> </el-image>
-    <el-row>
-      <!-- <el-col :span='24' v-loading='point ? false : true'> -->
-        <el-col class="infoslide" :span='24'>{{point.description}}</el-col>
-      <!-- </el-col> -->
-    </el-row>
-  </el-row>
-</el-row>
+  <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
+    <el-menu-item-group>
+      <el-col class='buttonGroup'>
+        <div class='colorByTitle'>Toggle Features By Category</div>
+        <br>
+        <el-button class="sortButton" icon="el-icon-star-off" size="small" :loading="true" v-if="!tours.length">Loading...</el-button>
+        <el-col>
+          <el-row :span="12" type="flex" justify="center" v-for="(category, index) in categories" :key="index" >
+            <el-button v-if="visibleCategories.includes(category)" class="sortButton" icon="el-icon-star-on" size="small" @click="toggle(category)">
+              {{category}}
+            </el-button>
+            <el-button v-else class="sortButton" icon="el-icon-star-off" size="small" @click="toggle(category)">
+              {{category}}
+            </el-button>
+          </el-row>
+        </el-col>
+      </el-col>
+    </el-menu-item-group>
+  </el-menu>
 </template>
 
 <script>
+
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'sideView',
   props: {
-    point: Object
+    options: Array
   },
   components: {
   },
-  data() {
+  data () {
     return {
       api: process.env.VUE_APP_ROOT_API,
       title: '',
       unit: 'day',
       int: 1,
       index: 0,
-      image:"@/assets/logo.png"
+      image: '@/assets/logo.png'
     }
   },
   computed: {
     media: {
-      get() {
+      get () {
         return this.point.img
       }
-    }
+    },
+    ...mapGetters({
+      categories: 'FeatureModule/getCategories',
+      tours: 'FeatureModule/getTourNames',
+      visibleCategories: 'FeatureModule/getVisibleCategories'
+    })
   },
   methods: {
-    hide: function() {
+    hide: function () {
       this.$emit('hide')
-    }
+    },
+    ...mapMutations({
+      toggle: 'FeatureModule/toggleCategory'
+    })
   },
   watch: {
 
   },
-  async mounted() {}
+  async mounted () {}
 }
 </script>
 <style scoped lang='scss'>
+
+$sideMenu-width: 250px;
+.sideMenu {
+    background-color: $--color-black;
+    margin-top: $--nav-height;
+    height: calc(100vh - 80px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: $sideMenu-width;
+    padding-top: 1em;
+}
+.colorByTitle {
+    color: $--color-white;
+    font-size: 26px;
+    text-align: center;
+    font-family: 'stratumno2';
+}
 .stage {
     z-index: 401;
     display: block;
@@ -136,4 +165,12 @@ export default {
     color: $--color-white;
     border-color: $--color-white;
 }
+
+.sortButton {
+  margin: 0.25em;
+  padding: 1em;
+  min-width:15em;
+  text-align: left;
+}
+
 </style>
