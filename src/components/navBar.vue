@@ -4,19 +4,26 @@
 -->
 
 <template>
-    <el-row class='sus-nav'>
+    <el-row class='sus-nav' type="flex">
       <el-col :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
         <svgLogo width=auto alt="" class='sus-nav-image' @click='$router.push({path: "/"})'/>
       </el-col>
       <el-col class="sus-title" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
+        <h1>Sustainability Map</h1>
       </el-col>
-      <!-- SEARCH BAR (Broken ATM--fix later)
+      <!--
+        Search functionality works via the following process:
+          1. search bar change hits computed property "activeFeatures"
+          2. activeFeatures returns GeoJSON features which match text in search query
+          3. when a returned GeoJSON feature gets clicked we call a method
+          4. the called method gets the referenced layer indexed by coordinates
+          5. the method then calls the "popupopen" function & maybe clears input
+      -->
       <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
         <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
           <i slot="suffix" class="el-input__icon el-icon-search"> </i>
         </el-input>
       </el-col>
-      -->
     </el-row>
 </template>
 <script>
@@ -35,13 +42,14 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters([
-    //   'user'
-    // ])
     onid: {
       get () {
         return this.$store.getters['user/onid']
       }
+    },
+    // Check which features get matched by input
+    activeFeatures () {
+      return this.$store['FeaturesModule/searchFeatures'](this.input)
     }
   },
   created () {
@@ -67,7 +75,18 @@ export default {
   }
 }
 </script>
+<style >
+@import "../../node_modules/leaflet/dist/leaflet.css";
+</style>
+
 <style scoped lang='scss'>
+
+h1 {
+  text-align: center;
+  color: $--color-white;
+  font-size: 26px;
+}
+
 .sus-nav {
   background-color: $--color-primary !important;
   border-bottom: solid 1px $--color-white;
@@ -78,7 +97,7 @@ export default {
   overflow: hidden;
 }
 .sus-nav-image {
-  padding-top: ($--nav-height - 50) / 2;
+  //padding-top: ($--nav-height - 50) / 2;
   padding-top: 1px;
   padding-bottom: 1px;
   height: $--nav-height - 2px;

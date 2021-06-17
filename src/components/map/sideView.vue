@@ -69,13 +69,6 @@ export default {
     })
   },
   methods: {
-    hide: () => {
-      console.log('hide called')
-      this.showSide = false
-    },
-    show: () => {
-      this.showSide = true
-    },
     ...mapMutations({
       toggle: 'FeatureModule/toggleCategory'
     })
@@ -86,6 +79,11 @@ export default {
   async mounted () {}
 }
 </script>
+
+<style >
+@import "../../../node_modules/leaflet/dist/leaflet.css";
+</style>
+
 <style scoped lang='scss'>
 
 $sideMenu-width: 18.2em; //250px;

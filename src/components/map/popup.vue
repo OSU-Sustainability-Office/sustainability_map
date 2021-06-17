@@ -8,7 +8,6 @@
       <el-image
         class="popup-image"
         :src="image"
-        :fit="fill"
         style="max-width:20em; max-height:20em;"
         alt="Outside the Kelly Engineering Center coming from Johnson Hall"
       ></el-image>

@@ -81,7 +81,8 @@ export default {
     // returns appropriate leaflet geojson feature options.
     // link below contains detailed info about each function
     // https://leafletjs.com/reference-1.6.0.html#geojson-option
-    featureOptions: () => {
+    featureOptions: function () {
+      // const vueRef = this
       return {
         // slight potential confusion: pointToLayer takes in a GeoJSON feature
         // with the Leaflet class type "Point" but has all the same properties
@@ -125,6 +126,9 @@ export default {
               closeOnClick: true
             }
           )
+
+          // Add layer to Vuex store (for searching)
+          this.$store.commit('LayerModule/addLayer', { layer, coordinates: feature.geometry.coordinates })
         },
         // style: (feature) => {},
         // Function which determines whether to include

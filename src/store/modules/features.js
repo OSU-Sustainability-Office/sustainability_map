@@ -53,6 +53,13 @@ const getters = {
 
   getVisibleCategories: (state, getters) => {
     return getters.getCategories.filter(category => state.visibleCategories[category])
+  },
+  // returns closure which will return features which contain text string
+  searchFeatures: (state, getters) => (query) => {
+    // the filter argument function just takes in a feature object which I'm destructuring
+    return getters.getFeatures.filter(({ properties: { info, name } }) => {
+      return (info.toLowerCase() + name.toLowerCase()).includes(query.toLowerCase())
+    })
   }
 }
 
