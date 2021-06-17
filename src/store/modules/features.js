@@ -26,7 +26,7 @@ const getters = {
 
   // returns all loaded features
   getFeatures: (state, getters) => {
-    // concatenate all the tours
+    // concatenate all the tours into a single GeoJSON Feature Collection
     const displayedFeatures = getters.getTourNames.reduce((accum, tourName) => {
       accum.features = accum.features.concat(state.features[tourName].features)
       return accum
@@ -37,7 +37,7 @@ const getters = {
       features: []
     })
 
-    // only include visible features
+    // remove GeoJSON features from non-visible categories
     displayedFeatures.features = displayedFeatures.features.filter(feature => state.visibleCategories[feature.properties.category])
 
     return displayedFeatures

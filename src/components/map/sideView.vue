@@ -4,7 +4,11 @@
 -->
 
 <template>
-  <el-menu class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
+  <transition name="side">
+  <el-menu v-if="showSide" class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
+    <el-row type="flex" justify="end">
+        <el-button class="sideButton" @click="showSide = false" icon="el-icon-s-fold"></el-button>
+    </el-row>
     <el-menu-item-group>
       <el-col class='buttonGroup'>
         <div class='colorByTitle'>Toggle Features By Category</div>
@@ -23,6 +27,14 @@
       </el-col>
     </el-menu-item-group>
   </el-menu>
+  <el-menu v-else class='sideMenu' mode='vertical'>
+    <el-menu-item-group>
+      <el-row type="flex" justify="end">
+        <el-button class="sideButton" icon="el-icon-s-unfold" @click="showSide = true"></el-button>
+      </el-row>
+    </el-menu-item-group>
+  </el-menu>
+  </transition>
 </template>
 
 <script>
@@ -43,7 +55,8 @@ export default {
       unit: 'day',
       int: 1,
       index: 0,
-      image: '@/assets/logo.png'
+      image: '@/assets/logo.png',
+      showSide: true // Toggles the visibility of the sidebar
     }
   },
   computed: {
@@ -59,8 +72,12 @@ export default {
     })
   },
   methods: {
-    hide: function () {
-      this.$emit('hide')
+    hide: () => {
+      console.log('hide called')
+      this.showSide = false
+    },
+    show: () => {
+      this.showSide = true
     },
     ...mapMutations({
       toggle: 'FeatureModule/toggleCategory'
@@ -171,6 +188,27 @@ $sideMenu-width: 250px;
   padding: 1em;
   min-width:15em;
   text-align: left;
+}
+
+/* <transition> component styling */
+.side-enter-active, .side-leave-active {
+  transition: all 0.5s;
+  transform: translate(-100%);
+}
+.side-enter-to {
+  transform: translate(0%);
+}
+
+.side-leave-to {
+  transform: translate(-100%);
+}
+
+.sideButton {
+  z-index: 2000;
+  width: 1em;
+  margin: 0em 1em 0.25em 1em;
+  display: flex;
+  justify-content: center;
 }
 
 </style>
