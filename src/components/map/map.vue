@@ -7,20 +7,11 @@
 
   <!-- Side Menu or 'Key' -->
   <sideView></sideView>
-  <!--
-  <transition name="side">
-    <el-button v-else class="showSideButton" icon="el-icon-s-unfold" @click="showSide = true"></el-button>
-  </transition>
-  -->
+
   <!-- The Map -->
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <!--
-      <l-control position="topleft" v-if="!showSide">
-        <el-button class="showSideButton" icon="el-icon-caret-bottom" @click="showSide = true"></el-button>
-      </l-control>
-      -->
       <l-geo-json :geojson="getFeatures" :options="featureOptions">
       </l-geo-json>
     </l-map>
@@ -35,8 +26,7 @@ import 'leaflet-defaulticon-compatibility'
 import {
   LMap,
   LTileLayer,
-  LGeoJson,
-  LControl
+  LGeoJson
 } from 'vue2-leaflet'
 
 import {
@@ -60,7 +50,6 @@ export default {
     LMap,
     LTileLayer,
     LGeoJson,
-    LControl,
     sideView
   },
   data () {

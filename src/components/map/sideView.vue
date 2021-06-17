@@ -4,11 +4,9 @@
 -->
 
 <template>
+  <span>
   <transition name="side">
   <el-menu v-if="showSide" class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
-    <el-row type="flex" justify="end">
-        <el-button class="sideButton" @click="showSide = false" icon="el-icon-s-fold"></el-button>
-    </el-row>
     <el-menu-item-group>
       <el-col class='buttonGroup'>
         <div class='colorByTitle'>Toggle Features By Category</div>
@@ -27,14 +25,13 @@
       </el-col>
     </el-menu-item-group>
   </el-menu>
-  <el-menu v-else class='sideMenu' mode='vertical'>
-    <el-menu-item-group>
-      <el-row type="flex" justify="end">
-        <el-button class="sideButton" icon="el-icon-s-unfold" @click="showSide = true"></el-button>
-      </el-row>
-    </el-menu-item-group>
-  </el-menu>
   </transition>
+  <el-button class="sideButton" @click="showSide = !showSide">
+    <i v-if="showSide" class="el-icon-s-fold"></i>
+    <i v-else class="el-icon-s-unfold"></i>
+  </el-button>
+  </span>
+
 </template>
 
 <script>
@@ -91,7 +88,7 @@ export default {
 </script>
 <style scoped lang='scss'>
 
-$sideMenu-width: 250px;
+$sideMenu-width: 18.2em; //250px;
 .sideMenu {
     background-color: $--color-black;
     margin-top: $--nav-height;
@@ -101,7 +98,7 @@ $sideMenu-width: 250px;
     left: 0;
     z-index: 2000;
     width: $sideMenu-width;
-    padding-top: 1em;
+    padding-top: 3em;
 }
 .colorByTitle {
     color: $--color-white;
@@ -209,6 +206,10 @@ $sideMenu-width: 250px;
   margin: 0em 1em 0.25em 1em;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 0.5em;
+  left: 11em;
+  margin-top:$--nav-height;
 }
 
 </style>

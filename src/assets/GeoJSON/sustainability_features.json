@@ -25,7 +25,8 @@
                 "name": "Kelly Engineering",
                 "info":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
                 "tags":["building"],
-                "category":"dining"
+                "category":"dining",
+                "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/4172-Campus-0195.jpg"
             }
         },
         {
