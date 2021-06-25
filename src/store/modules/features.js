@@ -24,23 +24,15 @@ const getters = {
     return Object.keys(state.features)
   },
 
-  // returns all loaded features
+  // returns all loaded features as an array of geatures
   getFeatures: (state, getters) => {
-    // concatenate all the tours into a single GeoJSON Feature Collection
     const displayedFeatures = getters.getTourNames.reduce((accum, tourName) => {
-      accum.features = accum.features.concat(state.features[tourName].features)
+      accum = accum.concat(state.features[tourName].features)
       return accum
-    },
-    {
-      type: 'FeatureCollection',
-      name: 'Displayed Sustainability Features',
-      features: []
-    })
+    }, [])
 
     // remove GeoJSON features from non-visible categories
-    displayedFeatures.features = displayedFeatures.features.filter(feature => state.visibleCategories[feature.properties.category])
-
-    return displayedFeatures
+    return displayedFeatures.filter(feature => state.visibleCategories[feature.properties.category])
   },
 
   getTour: (state, getters) => (tourName) => {

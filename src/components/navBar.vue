@@ -20,14 +20,42 @@
           5. the method then calls the "popupopen" function & maybe clears input
       -->
       <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
-        <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
-          <i slot="suffix" class="el-input__icon el-icon-search"> </i>
-        </el-input>
+        <!--
+          TODO:
+            > Fix Drop Down Item Styling
+            > Add event listener to open pop-up
+        -->
+        <el-dropdown size="large" placement="bottom-start">
+          <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
+            <i slot="suffix" class="el-input__icon el-icon-search"> </i>
+          </el-input>
+
+          <el-dropdown-menu slot="dropdown" v-if="activeFeatures.length === 0">
+           <el-dropdown-item>No features found.</el-dropdown-item>
+          </el-dropdown-menu>
+
+          <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
+            <el-dropdown-item v-for="({properties: {name, info, category}}, index) in activeFeatures" :key="index">
+              <el-container class="result">
+               <el-header>
+                 <el-avatar></el-avatar> <strong>{{name}}: </strong>
+               </el-header>
+               <el-main>
+                {{info}}
+               </el-main>
+              </el-container>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+
+        </el-dropdown>
       </el-col>
     </el-row>
 </template>
 <script>
 import svgLogo from '../../public/images/logo.svg'
+import {
+  mapGetters
+} from 'vuex'
 
 export default {
   name: 'navigbar',
@@ -49,8 +77,11 @@ export default {
     },
     // Check which features get matched by input
     activeFeatures () {
-      return this.$store['FeaturesModule/searchFeatures'](this.input)
-    }
+      return (this.searchFeatures)(this.input)
+    },
+    ...mapGetters({
+      searchFeatures: 'FeatureModule/searchFeatures'
+    })
   },
   created () {
     // this.$store.dispatch('user/user').then( user => {
@@ -80,6 +111,22 @@ export default {
 </style>
 
 <style scoped lang='scss'>
+
+/* Adds scroll bar to drop-down menu */
+.scroll-bar {
+  max-height: 50vh;
+  overflow-y: scroll;
+  scrollbar-color: $--color-primary $--color-white;
+  scrollbar-width: thin;
+}
+
+.result {
+  font-size: 12px;
+  max-width: 50vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 h1 {
   text-align: center;
