@@ -35,12 +35,16 @@
           </el-dropdown-menu>
 
           <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
-            <el-dropdown-item v-for="({properties: {name, info, category}}, index) in activeFeatures" :key="index">
-              <el-container class="result">
+            <el-dropdown-item v-for="({properties: {name, info, category}, geometry: {coordinates}}, index) in activeFeatures" :key="index" @click.native="handleSelect(coordinates)">
+              <el-container class="result-container">
                <el-header>
-                 <el-avatar></el-avatar> <strong>{{name}}: </strong>
+                 <div class="result-image">
+                   <el-avatar class="result-image" size="small" fit="scale-down" :src="'images/categories/' + category + '.png'">
+                   </el-avatar>
+                 </div>
+                 <strong>{{name}}: </strong>
                </el-header>
-               <el-main>
+               <el-main class="result">
                 {{info}}
                </el-main>
               </el-container>
@@ -80,7 +84,8 @@ export default {
       return (this.searchFeatures)(this.input)
     },
     ...mapGetters({
-      searchFeatures: 'FeatureModule/searchFeatures'
+      searchFeatures: 'FeatureModule/searchFeatures',
+      getLayer: 'LayerModule/getLayerByCoordinates'
     })
   },
   created () {
@@ -99,9 +104,14 @@ export default {
     logOut: function () {
       // this.$store.dispatch('logout')
     },
-    handleSelect: function (select) {
+    // returns function which calls pop-up method
+    handleSelect: function (coordinates) {
       // this.$router.push({ path: '/' + select })
       // this.activeIndex = select
+      this.getLayer(coordinates).openPopup()
+    },
+    what: function () {
+      console.log('yoooo')
     }
   }
 }
@@ -120,12 +130,21 @@ export default {
   scrollbar-width: thin;
 }
 
+.result-container {
+  width: 20vw;
+  font-size: 14px;
+}
+.result-image {
+  margin-top: 0.25em;
+  margin-right: 0.5em;
+  padding-bottom: 0em;
+}
+
 .result {
   font-size: 12px;
-  max-width: 50vw;
-  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 h1 {

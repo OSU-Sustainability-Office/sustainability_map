@@ -82,7 +82,6 @@ export default {
     // link below contains detailed info about each function
     // https://leafletjs.com/reference-1.6.0.html#geojson-option
     featureOptions: function () {
-      // const vueRef = this
       return {
         // slight potential confusion: pointToLayer takes in a GeoJSON feature
         // with the Leaflet class type "Point" but has all the same properties
