@@ -3,20 +3,19 @@
   Description: The vue component showing the interactive map with the Sustainability Features.
 -->
 <template>
-<div style="height: 100vh; overflow: hidden;">
+<el-container class="mapContainer">
 
   <!-- Side Menu or 'Key' -->
-  <sideView></sideView>
-
+    <sideView></sideView>
   <!-- The Map -->
-  <div class="mapFrame">
+  <el-main class="mapDisplay">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
       <l-geo-json :geojson="getFeatures" :options="featureOptions">
       </l-geo-json>
     </l-map>
-  </div>
-</div>
+  </el-main>
+</el-container>
 </template>
 <script>
 // The order in which we load these leaflet files matters
@@ -176,10 +175,15 @@ export default {
   padding: 0.5em;
 }
 
-.mapFrame {
-    margin-top: $--nav-height;
-    height: 100%;
-    width: 100%;
+.mapContainer {
+  height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.mapDisplay, .side-view {
+  padding: 0;
+  margin: 0;
 }
 
 .el-button {
