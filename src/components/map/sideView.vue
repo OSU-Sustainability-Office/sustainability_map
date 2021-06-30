@@ -4,6 +4,7 @@
 -->
 
 <template>
+<!--
   <span>
   <transition name="side">
   <el-menu v-if="showSide" class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
@@ -30,6 +31,10 @@
     <i v-if="showSide" class="el-icon-s-fold"></i>
     <i v-else class="el-icon-s-unfold"></i>
   </el-button>
+  </span>
+-->
+  <span>
+    placeholder
   </span>
 
 </template>
@@ -89,11 +94,8 @@ export default {
 $sideMenu-width: 18.2em; //250px;
 .sideMenu {
     background-color: $--color-black;
-    margin-top: $--nav-height;
-    height: calc(100vh - 80px);
-    position: absolute;
-    top: 0;
-    left: 0;
+    height: 100%;
+    display: fixed;
     z-index: 2000;
     width: $sideMenu-width;
     padding-top: 3em;

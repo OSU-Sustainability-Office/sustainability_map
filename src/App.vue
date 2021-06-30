@@ -4,11 +4,11 @@
 -->
 
 <template>
-  <el-container id="app" class="app">
-    <el-header class='header'>
+  <el-container>
+    <el-header>
       <navigbar />
     </el-header>
-    <el-main class='main' ref='main'>
+    <el-main>
         <router-view />
     </el-main>
   </el-container>
@@ -65,32 +65,26 @@ body {
 <style scoped lang='scss'>
 @import '@/assets/style-variables.scss';
 
-.app {
+* {
   padding: 0;
   margin: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100%;
   width: 100%;
-  min-height: 100%;
 }
-.header {
-  margin: 0;
-  padding: 0;
-  height: $--nav-height;
+
+.el-container {
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100%;
 }
-.main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-height: calc(100% - #{$--nav-height});
+.el-header {
   margin: 0;
   padding: 0;
-  width: 100%;
+  height: $--nav-size;
+}
+.el-main {
+  margin: 0;
+  padding: 0;
+  height: $--map-size;
 }
 
 </style>
