@@ -5,8 +5,17 @@
 <template>
 <el-container class="mapContainer">
 
-  <!-- Side Menu or 'Key' -->
-    <sideView></sideView>
+  <!-- Side Button -->
+  <el-button class="sideButton" @click="showSide = !showSide">
+    <i v-if="showSide" class="el-icon-s-fold"></i>
+    <i v-else class="el-icon-s-unfold"></i>
+  </el-button>
+
+  <transition name="side">
+    <!-- Side Menu or 'Key' -->
+    <sideView :showSide=showSide></sideView>
+  </transition>
+
   <!-- The Map -->
   <el-main class="mapDisplay">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
@@ -197,6 +206,29 @@ export default {
 <style scoped lang='scss'>
 //Fixed --nav-hight by addding the import above and scoped lang='scss'
 
+.el-button.sideButton {
+  z-index: 2000;
+  width: 10px;
+  margin: 0.7em 1em 0.25em 1em;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 2em;
+}
+
+/* <transition> component styling */
+.side-enter-active, .side-leave-active {
+  transition: all 0.5s;
+  transform: translate(-100%);
+}
+.side-enter-to {
+  transform: translate(0%);
+}
+
+.side-leave-to {
+  transform: translate(-100%);
+}
+
 /* Popup Styles */
 .popup-item {
   display: flex;
@@ -220,6 +252,7 @@ export default {
 .mapDisplay, .side-view {
   padding: 0;
   margin: 0;
+  height: inherit;
 }
 
 .el-button {

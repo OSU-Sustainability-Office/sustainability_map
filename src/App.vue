@@ -65,13 +65,6 @@ body {
 <style scoped lang='scss'>
 @import '@/assets/style-variables.scss';
 
-* {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .el-container {
   width: 100%;
   height: 100%;
@@ -84,7 +77,7 @@ body {
 .el-main {
   margin: 0;
   padding: 0;
-  height: $--map-size;
+  height: 100%;
 }
 
 </style>
