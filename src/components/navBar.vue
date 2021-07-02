@@ -152,6 +152,9 @@ h1 {
   background-color: $--color-primary !important;
   /*border-bottom: solid 1px $--color-white;*/
   display: flex;
+  margin: inherit;
+  width: 100%;
+  height: 100%;
   padding-left: 2em;
   padding-right: 2em;
   overflow: hidden;
