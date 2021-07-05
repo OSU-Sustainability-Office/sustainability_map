@@ -12,8 +12,8 @@
   <div class="mapFrame">
     <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json :geojson="getFeatures" :options="featureOptions">
-      </l-geo-json>
+      <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
+      <l-geo-json :geojson="getBuildings"></l-geo-json>
     </l-map>
   </div>
 </div>
@@ -76,7 +76,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getFeatures: 'FeatureModule/getFeatures'
+      getFeatures: 'FeatureModule/getFeatures',
+      getBuildings: 'DecorativeFeatureModule/getBuildings'
     }),
     // returns appropriate leaflet geojson feature options.
     // link below contains detailed info about each function

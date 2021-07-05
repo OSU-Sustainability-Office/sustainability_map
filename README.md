@@ -3,8 +3,16 @@ An interactive infographic map showing the sustainability features on campus!
 
 Note this uses Node version 14.
 
-## Important References for development
+## Notes about the build process:
 
+The source code (under `src`) gets automatically bundled by vue-cli (which uses webpack) into compact static assets under `public`, additional static assets dependent on outside sources (e.g. OSU building geometry from Open Street Maps) get created before the vue-cli webpack build via scripts under the `util` directory.  
+
+but additionally static assets are built using scripts under `util`.
+
+## Important References for development
+ - [Overpass Turbo](https://overpass-turbo.eu/#)
+ - [Overpass API](https://dev.overpass-api.de/overpass-doc/en/)
+ - [GeoJSON specification](https://datatracker.ietf.org/doc/html/rfc7946)
  - [Leaflet GeoJSON Features](https://leafletjs.com/examples/geojson/)
  - [Leaflet Quickstart Guide](https://leafletjs.com/examples/quick-start/)
  - [Official Leaflet Docs](https://leafletjs.com/reference-1.6.0.html)

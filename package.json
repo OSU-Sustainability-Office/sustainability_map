@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "prebuild": "node util/*.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -33,7 +34,8 @@
     "vue-svg-loader": "^0.16.0",
     "vue2-leaflet": "^2.5.2",
     "vuelayers": "^0.11.27",
-    "vuex": "^3.2.0"
+    "vuex": "^3.2.0",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
