@@ -12,6 +12,7 @@ import 'element-ui/lib/theme-chalk/reset.css'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css' // Re-uses images from ~leaflet package
 import '@/assets/style-variables.scss'
+import '@/assets/leaflet-global-override.scss'
 
 Vue.use(Vuei18n)
 Vue.use(elm, { locale: locale })

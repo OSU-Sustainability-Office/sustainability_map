@@ -11,7 +11,8 @@ import {
 
 // const osmtogeojson = require('osmtogeojson')
 
-import FeatureModule from './modules/features.js'
+import DecorativeFeatureModule from './modules/decorative_features.js'
+import FeatureModule from './modules/informative_features.js'
 import LayerModule from './modules/layers.js'
 
 Vue.use(Vuex)
@@ -29,7 +30,8 @@ const store = new Vuex.Store({
   actions,
   modules: {
     FeatureModule,
-    LayerModule
+    LayerModule,
+    DecorativeFeatureModule
   }
 })
 

@@ -1,0 +1,17 @@
+/*
+  Global style over-rides for leaflet classes.
+
+  Certain default styling by leaflet must be done globally since the
+  scoped css won't get detected when applied to the injected leaflet
+  objects / components.
+*/
+
+.leaflet-tooltip {
+  position: absolute;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+

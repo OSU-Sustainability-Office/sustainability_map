@@ -3,13 +3,15 @@
     Description:
         This file statically loads the GeoJSON features shown
         on the sustainability map organized as "tours."
+
+        These features contain important information.
 */
 
-import FeaturesTour from '@/assets/GeoJSON/sustainability_features.json'
+import SustainabilityFeatures from '@/assets/GeoJSON/sustainability_features.json'
 
 const state = {
-  features: {
-    FeaturesTour
+  sustainabilityFeatures: {
+    SustainabilityFeatures
   },
   visibleCategories: {
     bike: true,
@@ -20,14 +22,15 @@ const state = {
 }
 
 const getters = {
+
   getTourNames: (state, getters) => {
-    return Object.keys(state.features)
+    return Object.keys(state.sustainabilityFeatures)
   },
 
-  // returns all loaded features as an array of geatures
+  // returns all loaded features as an array of features
   getFeatures: (state, getters) => {
     const displayedFeatures = getters.getTourNames.reduce((accum, tourName) => {
-      accum = accum.concat(state.features[tourName].features)
+      accum = accum.concat(state.sustainabilityFeatures[tourName].features)
       return accum
     }, [])
 
@@ -36,7 +39,7 @@ const getters = {
   },
 
   getTour: (state, getters) => (tourName) => {
-    return state.features[tourName]
+    return state.sustainabilityFeatures[tourName]
   },
 
   getCategories: (state, getters) => {

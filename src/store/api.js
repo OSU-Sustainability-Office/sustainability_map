@@ -1,7 +1,7 @@
 /**
   Filename: api.js
   Description:
-    File to access the lambda serverless API (eventually)
+    Make requests to public APIs for data.
 */
 
 import axios from 'axios'
@@ -11,10 +11,15 @@ function callAPI (route, data = null, method = 'get') {
 }
 
 export default {
+/*
   layers: async () => {
     return (await callAPI('layers'))
   },
   points: async () => {
     return (await callAPI('points')).data.data
+  },
+*/
+  buildingGeoJSON: async () => {
+    return null
   }
 }

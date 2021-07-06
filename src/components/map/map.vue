@@ -10,10 +10,10 @@
 
   <!-- The Map -->
   <div class="mapFrame">
-    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
+    <l-map :style="mapStyle" :zoom="zoom" :maxBounds="maxBounds" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json :geojson="getFeatures" :options="featureOptions">
-      </l-geo-json>
+      <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
+      <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
     </l-map>
   </div>
 </div>
@@ -30,7 +30,8 @@ import {
 } from 'vue2-leaflet'
 
 import {
-  mapGetters
+  mapGetters,
+  mapMutations
 } from 'vuex'
 
 import sideView from '@/components/map/sideView'
@@ -62,10 +63,34 @@ export default {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
+      maxBounds: {
+        _southWest: { lat: 44.55268045202174, lng: -483.3121776580811 },
+        _northEast: { lat: 44.56980369477875, lng: -483.24866294860846 }
+      },
       // Map attributions end
       clusterController: null,
       queryString: /.*/,
-      currentSideViewPointIndex: null // Type: Numeric index in points array
+      currentSideViewPointIndex: null, // Type: Numeric index in points array
+      buildingOptions: {
+        // Adds tool-tips
+        // !! NOTE: the tool tip styling override must be global so it's in in style-variables.scss
+        onEachFeature: ({ properties: { tags: { name } } }, layer) => {
+          layer.bindTooltip(name, {
+            permanent: true,
+            direction: 'center'
+          })
+          layer.openTooltip()
+          // add tooltip layer to store for easy toggling
+          this.$store.commit('LayerModule/addTooltip', layer)
+        },
+        style: {
+          stroke: true,
+          color: '#1A1A1A',
+          fill: true,
+          fillColor: '#D73F09',
+          fillOpacity: 0.2
+        }
+      }
     }
   },
   mounted () {
@@ -76,7 +101,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getFeatures: 'FeatureModule/getFeatures'
+      getFeatures: 'FeatureModule/getFeatures',
+      getBuildings: 'DecorativeFeatureModule/getBuildings'
     }),
     // returns appropriate leaflet geojson feature options.
     // link below contains detailed info about each function
@@ -150,7 +176,17 @@ export default {
     },
     zoomUpdated (zoom) {
       this.zoom = zoom
-    }
+      // toggle tool tips
+      if (this.zoom > 16) {
+        this.showTooltips()
+      } else {
+        this.hideTooltips()
+      }
+    },
+    ...mapMutations({
+      showTooltips: 'LayerModule/showTooltips',
+      hideTooltips: 'LayerModule/hideTooltips'
+    })
   }
 }
 </script>
