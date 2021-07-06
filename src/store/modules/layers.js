@@ -13,7 +13,8 @@
 */
 
 const state = {
-  layers: {}
+  layers: {},
+  tooltips: []
 }
 
 const getters = {
@@ -25,6 +26,15 @@ const getters = {
 const mutations = {
   addLayer: (state, { layer, coordinates }) => {
     state.layers[coordinates] = layer
+  },
+  addTooltip: (state, tooltipLayer) => {
+    state.tooltips.push(tooltipLayer)
+  },
+  showTooltips: (state, _payload) => {
+    state.tooltips.map(tooltip => tooltip.openTooltip())
+  },
+  hideTooltips: (state, _payload) => {
+    state.tooltips.map(tooltip => tooltip.closeTooltip())
   }
 }
 
