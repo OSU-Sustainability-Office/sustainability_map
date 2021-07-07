@@ -72,7 +72,10 @@ body {
 .el-header {
   margin: 0;
   padding: 0;
-  height: $--nav-size;
+  /* We need the !important flag to override the prop el-header takes in for height as size
+     This is sort of a limitation with using Elements-UI and scss variables.
+  */
+  height: $--nav-size !important;
 }
 .el-main {
   margin: 0;
