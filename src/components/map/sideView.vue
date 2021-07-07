@@ -4,7 +4,6 @@
 -->
 
 <template>
-  <span>
   <transition name="side">
   <el-menu v-if="showSide" class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
     <el-menu-item-group>
@@ -26,12 +25,6 @@
     </el-menu-item-group>
   </el-menu>
   </transition>
-  <el-button class="sideButton" @click="showSide = !showSide">
-    <i v-if="showSide" class="el-icon-s-fold"></i>
-    <i v-else class="el-icon-s-unfold"></i>
-  </el-button>
-  </span>
-
 </template>
 
 <script>
@@ -41,7 +34,8 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'sideView',
   props: {
-    options: Array
+    options: Array,
+    showSide: Boolean
   },
   components: {
   },
@@ -52,8 +46,7 @@ export default {
       unit: 'day',
       int: 1,
       index: 0,
-      image: '@/assets/logo.png',
-      showSide: true // Toggles the visibility of the sidebar
+      image: '@/assets/logo.png'
     }
   },
   computed: {
@@ -89,12 +82,6 @@ export default {
 $sideMenu-width: 18.2em; //250px;
 .sideMenu {
     background-color: $--color-black;
-    margin-top: $--nav-height;
-    height: calc(100vh - 80px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2000;
     width: $sideMenu-width;
     padding-top: 3em;
 }
@@ -104,23 +91,7 @@ $sideMenu-width: 18.2em; //250px;
     text-align: center;
     font-family: 'stratumno2';
 }
-.stage {
-    z-index: 401;
-    display: block;
-    position: absolute;
-    left: 100%;
-    top: 15%;
-    width: 450px !important;
-    margin-left: -470px;
-    height: 85% !important;
-}
-.main {
-    padding: 0;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: rgb(26,26,26);
-    box-shadow: -1px 1px 6px rgba(0,0,0,0.6);
-}
+
 .title {
     padding: 0.3em 0.8em;
     font-size: 32px;
@@ -133,49 +104,9 @@ $sideMenu-width: 18.2em; //250px;
 .close-box {
     cursor: pointer;
 }
-.media {
-    height: 150px;
-    width:450px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    background-position: center;
-    border-bottom: solid 1px #fff;
-}
-
-.inline {
-    margin-right: 20px;
-    transition: transform 1s;
-    display: inline-block;
-    flex-shrink: 0;
-}
-.infoslide {
-    background-color: $--color-white;
-    bottom: 220px;
-    font-size: 2em;
-    font-family: 'StratumNo2';
-    width: 100%;
-    height: 300px;
-}
 
 .buttons > * {
     text-align: center;
-}
-.bigButton {
-    background-color: $--color-black;
-    color: darken($--color-white, 30%);
-    border-color: darken($--color-white, 30%);
-    width: 98%;
-}
-.bigButton:hover {
-    background-color: #000;
-    color: $--color-white;
-    border-color: $--color-white;
-}
-.bigButton:active {
-    background-color: $--color-black;
-    color: $--color-white;
-    border-color: $--color-white;
 }
 
 .sortButton {
@@ -204,10 +135,8 @@ $sideMenu-width: 18.2em; //250px;
   margin: 0em 1em 0.25em 1em;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 0.5em;
-  left: 11em;
-  margin-top:$--nav-height;
+  position: relative;
+  left: 0.5em;
 }
 
 </style>

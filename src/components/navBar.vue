@@ -5,10 +5,11 @@
 
 <template>
     <el-row class='sus-nav' type="flex">
-      <el-col :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
-        <svgLogo width=auto alt="" class='sus-nav-image' @click='$router.push({path: "/"})'/>
+      <!--:span="8"-->
+      <el-col class="sus-nav-item" :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
+        <svgLogo class="sus-nav-image" width=auto alt="" @click='$router.push({path: "/"})'/>
       </el-col>
-      <el-col class="sus-title" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
+      <el-col class="sus-title sus-nav-item" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
         <h1>Sustainability Map</h1>
       </el-col>
       <!--
@@ -19,12 +20,7 @@
           4. the called method gets the referenced layer indexed by coordinates
           5. the method then calls the "popupopen" function & maybe clears input
       -->
-      <el-col class='sus-nav-search' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
-        <!--
-          TODO:
-            > Fix Drop Down Item Styling
-            > Add event listener to open pop-up
-        -->
+      <el-col class='sus-nav-search sus-nav-item' :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
         <el-dropdown size="large" placement="bottom-start">
           <el-input size='medium' class='sus-nav-search-input' placeholder="Search..." v-model="input">
             <i slot="suffix" class="el-input__icon el-icon-search"> </i>
@@ -130,6 +126,7 @@ export default {
   scrollbar-width: thin;
 }
 
+/* Search bar results in drop-down */
 .result-container {
   width: 20vw;
   font-size: 14px;
@@ -139,7 +136,6 @@ export default {
   margin-right: 0.5em;
   padding-bottom: 0em;
 }
-
 .result {
   font-size: 12px;
   white-space: nowrap;
@@ -155,24 +151,24 @@ h1 {
 
 .sus-nav {
   background-color: $--color-primary !important;
-  border-bottom: solid 1px $--color-white;
-  height: $--nav-height !important;
-  z-index: 2000;
+  /*border-bottom: solid 1px $--color-white;*/
+  display: flex;
+  margin: inherit;
+  width: 100%;
+  height: 100%;
   padding-left: 2em;
   padding-right: 2em;
   overflow: hidden;
 }
+
 .sus-nav-image {
-  //padding-top: ($--nav-height - 50) / 2;
+  height: 100%;
+  justify-self: center;
+  cursor: pointer;
   padding-top: 1px;
   padding-bottom: 1px;
-  height: $--nav-height - 2px;
-  cursor: pointer;
 }
-.sus-nav-menu {
-  height: $--nav-height !important;
-  border: none !important;
-}
+
 .sus-nav-menu > * {
   padding-top: 5px;
   height: $--nav-height - 2px !important;
@@ -210,16 +206,34 @@ h1 {
   font-size: 1.1em;
   text-overflow: ellipsis;
 }
+
 .sus-nav-sign:hover {
   color: #000000 !important;
   text-decoration: none;
 }
-.sus-title{
+.sus-title {
   font-size: $--font-size-large;
   font-family: StratumNo2;
   color: $--color-black;
   padding-top: 1.1em;
 }
+
+/*
+@media (max-width: 630px) {
+  .sus-title h1 {
+    font-size: 20px;
+  }
+  .sus-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
+  .sus-nav-item {
+    justify-content: center;
+  }
+}
+*/
 .sus-nav-search{
   padding-top: 1em;
   width: 15em;

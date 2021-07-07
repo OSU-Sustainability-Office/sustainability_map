@@ -4,11 +4,11 @@
 -->
 
 <template>
-  <el-container id="app" class="app">
-    <el-header class='header'>
+  <el-container>
+    <el-header>
       <navigbar />
     </el-header>
-    <el-main class='main' ref='main'>
+    <el-main>
         <router-view />
     </el-main>
   </el-container>
@@ -65,32 +65,22 @@ body {
 <style scoped lang='scss'>
 @import '@/assets/style-variables.scss';
 
-.app {
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+.el-container {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
-.header {
+.el-header {
   margin: 0;
   padding: 0;
-  height: $--nav-height;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* We need the !important flag to override the prop el-header takes in for height as size
+     This is sort of a limitation with using Elements-UI and scss variables.
+  */
+  height: $--nav-size !important;
 }
-.main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-height: calc(100% - #{$--nav-height});
+.el-main {
   margin: 0;
   padding: 0;
-  width: 100%;
+  height: 100%;
 }
 
 </style>
