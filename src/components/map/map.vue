@@ -79,7 +79,6 @@ export default {
       clusterController: null,
       queryString: /.*/,
       currentSideViewPointIndex: null, // Type: Numeric index in points array
-<<<<<<< HEAD
       buildingOptions: {
         // Adds tool-tips
         // !! NOTE: the tool tip styling override must be global so it's in in style-variables.scss
@@ -99,10 +98,8 @@ export default {
           fillColor: '#D73F09',
           fillOpacity: 0.2
         }
-      }
-=======
+      },
       showSide: true
->>>>>>> 8c8cef416d716696e8255f5bfff5e09f7f8ab54b
     }
   },
   mounted () {
