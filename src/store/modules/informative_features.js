@@ -9,11 +9,15 @@
 
 import SustainabilityFeatures from '@/assets/GeoJSON/sustainability_features.json'
 import GreenBuildings from '@/assets/GeoJSON/green_buildings.json'
+import RainwaterFeatures from '@/assets/GeoJSON/rainwater_features.json'
+import TransportationFeatures from '@/assets/GeoJSON/transportation_features.json'
 
 const state = {
   sustainabilityFeatures: {
     SustainabilityFeatures,
-    GreenBuildings
+    TransportationFeatures,
+    GreenBuildings,
+    RainwaterFeatures
   },
   visibleCategories: {
     bike: true,

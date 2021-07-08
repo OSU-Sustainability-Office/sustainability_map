@@ -1,0 +1,99 @@
+{
+  "type":"FeatureCollection",
+  "name": "OSU Rainwater Features",
+  "features":[
+    {
+      "type":"Feature",
+      "geometry":{
+          "type":"MultiPoint",
+          "coordinates": [
+              [-123.2819331, 44.5622823],
+              [-123.2758605, 44.5608681],
+              [-123.2755816, 44.5605394],
+              [-123.2807207, 44.5671209],
+              [-123.2831562, 44.5590717],
+              [-123.2814288, 44.5617778],
+              [-123.285023, 44.5614185],
+              [-123.2870293, 44.5639487],
+              [-123.2901943, 44.5669145],
+              [-123.2920396, 44.5666164],
+              [-123.2850337, 44.5602566],
+              [-123.2750022, 44.5617243]
+          ]
+      },
+      "properties":{
+          "name": "Bioswale",
+          "info": "Bioswales are features designed to slow the flow of water, decreasing the magnitude of surge events caused by the lack of permeable surfaces, allowing sediments to drop out, heavy metals to bind to soil particles, and water to cool.",
+          "tags": ["recycling"],
+          "category":"rain",
+          "url": "https://blogs.oregonstate.edu/ecologue/2016/11/29/digging-into-bioswales/"
+      }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"MultiPoint",
+        "coordinates": [
+            [-123.2780707, 44.5669374],
+            [-123.2801092, 44.566861],
+            [-123.2734895, 44.5669451],
+            [-123.2745731, 44.5603942],
+            [-123.2764184, 44.560463],
+            [-123.2882631, 44.5595533]
+        ]
+    },
+    "properties":{
+        "name": "Rain Garden",
+        "info":  "Rain gardens are vegetated depressions that catch rain runoff from impervious areas such as roofs, driveways, walkways, parking lots, and even some compacted lawn areas. They are designed to absorb stormwater rather than filter it of its pollutants.",
+        "tags": [],
+        "category":"rain",
+        "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"Point",
+        "coordinates": [-123.2812572, 44.5606923]
+    },
+    "properties":{
+        "name": "Sewer Access Structure",
+        "info":  "Rainwater collection is the storage of rain in large tanks that can belocatedindoorsoroutdoors.Rainwatercanbecollectedfromroofsandredirected to these tanks for later use as irrigation, toilet flushing, orothernon-potableuses.",
+        "tags": [],
+        "category":"rain",
+        "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"Point",
+        "coordinates": [-123.2883704, 44.5593851]
+    },
+    "properties":{
+        "name": "Green Roof",
+        "info":  "A green roof, or “vegetative roof”, is a rooftop of a building that is covered with planted vegetation laying over a waterproofing system.Green roofs absorb rainwater, provide insulation, create habitat for wildlife,and decrease urban air temperatures.",
+        "tags": [],
+        "category":"rain",
+        "url": "https://horticulture.oregonstate.edu/oak-creek-center-urban-horticulture"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"MultiPoint",
+        "coordinates": [
+            [-123.2887244, 44.5642086],
+            [-123.2745731, 44.5610898],
+            [-123.2788646, 44.5668381]
+        ]
+    },
+    "properties":{
+        "name": "Rain Collection",
+        "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
+        "tags": [],
+        "category":"rain"
+    }
+  }
+  ]
+}

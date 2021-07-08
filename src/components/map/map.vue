@@ -11,10 +11,10 @@
     <i v-else class="el-icon-s-unfold"></i>
   </el-button>
 
-  <transition name="side">
+  <!--<transition name="side">-->
     <!-- Side Menu or 'Key' -->
     <sideView :showSide=showSide></sideView>
-  </transition>
+  <!--</transition>-->
 
   <!-- The Map -->
   <el-main class="mapDisplay">
