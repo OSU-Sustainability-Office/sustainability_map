@@ -9,6 +9,7 @@
 const path = require('path')
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/sustainability_map/' : '/',
   css: {
     loaderOptions: {
       sass: {

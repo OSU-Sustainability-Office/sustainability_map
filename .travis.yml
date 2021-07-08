@@ -3,6 +3,7 @@ node_js:
   - "14"
 os: linux
 cache:
+  npm
   directories:n
   - "$HOME/.local"
   - ".cache-loader"
