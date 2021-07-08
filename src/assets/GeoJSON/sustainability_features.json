@@ -3,33 +3,6 @@
     "name": "OSU Sustainability Features Tour",
     "features":[
         {
-            "type": "Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates": [-123.2731998, 44.5670597]
-            },
-            "properties":{
-                "name": "Kearney Hall",
-                "info":"In 2008 Kearney Hall was remodeled to provide the Civil Engineering and Construction Engineering Management programs with state-of-the-art classrooms, offices, and a 120 seat auditorium. The project received a LEED Gold rating by the US Green Building Council.",
-                "tags":["building"],
-                "category": "rain"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry": {
-                "type":"Point",
-                "coordinates": [-123.278575, 44.567146]
-            },
-            "properties":{
-                "name": "Kelly Engineering",
-                "info":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
-                "tags":["building"],
-                "category":"dining",
-                "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/4172-Campus-0195.jpg"
-            }
-        },
-        {
             "type":"Feature",
             "geometry":{
                 "type":"Point",
@@ -63,7 +36,8 @@
             },
             "properties":{
                 "name": "OSUused Store",
-                "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm."
+                "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
+                "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/"
             }
         },
         {
@@ -96,7 +70,8 @@
             },
             "properties":{
                 "name":"35th Street Solar Array",
-                "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land."
+                "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land.",
+                "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3"
             }
         },
         {
@@ -121,161 +96,6 @@
             "properties":{
                 "name": "Campus Recycling",
                 "info":  "Campus Recycling is responsible for managing a comprehensive waste management system that focuses on reducing, reusing and recycling with disposal as a last resort.",
-                "tags": [],
-                "category":"general"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.2819331, 44.5622823],
-                    [-123.2758605, 44.5608681],
-                    [-123.2755816, 44.5605394],
-                    [-123.2807207, 44.5671209],
-                    [-123.2831562, 44.5590717],
-                    [-123.2814288, 44.5617778],
-                    [-123.285023, 44.5614185],
-                    [-123.2870293, 44.5639487],
-                    [-123.2901943, 44.5669145],
-                    [-123.2920396, 44.5666164],
-                    [-123.2850337, 44.5602566],
-                    [-123.2750022, 44.5617243]
-                ]
-            },
-            "properties":{
-                "name": "Bioswale",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": ["recycling"],
-                "category":"rain"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates": [-123.2812572, 44.5606923]
-            },
-            "properties":{
-                "name": "Sewer Access Structure",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"general"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.2780707, 44.5669374],
-                    [-123.2801092, 44.566861],
-                    [-123.2734895, 44.5669451],
-                    [-123.2745731, 44.5603942],
-                    [-123.2764184, 44.560463],
-                    [-123.2882631, 44.5595533]
-                ]
-            },
-            "properties":{
-                "name": "Rain Garden",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"rain"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates": [-123.2883704, 44.5593851]
-            },
-            "properties":{
-                "name": "Green Roof",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"general"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.2887244, 44.5642086],
-                    [-123.2745731, 44.5610898],
-                    [-123.2788646, 44.5668381]
-                ]
-            },
-            "properties":{
-                "name": "Rain Collection",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"general"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.27597860000, 44.56434620000],
-                    [-123.27838180000, 44.56764060000],
-                    [-123.28152540000, 44.55852890000]
-                ]
-            },
-            "properties":{
-                "name": "Bike Lockers",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": ["bike"],
-                "category":"bike"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.28672890000, 44.56679980000],
-                    [-123.27267410000, 44.56362000000],
-                    [-123.27818870000, 44.56325310000]
-                ]
-            },
-            "properties":{
-                "name": "Bike Fix-it Station",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"bike"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"MultiPoint",
-                "coordinates": [
-                    [-123.27847840000, 44.55998900000],
-                    [-123.28354240000, 44.56615010000],
-                    [-123.28061340000, 44.56510290000],
-                    [-123.27160120000, 44.56389520000],
-                    [-123.28112840000, 44.55753510000]
-                ]
-            },
-            "properties":{
-                "name": "Electric Vehicle Chargers",
-                "info":  "TODO: ADD DESCRIPTION",
-                "tags": [],
-                "category":"general"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
-                "coordinates": [null, null]
-            },
-            "properties":{
-                "name": "name here",
-                "info":  "insert info here",
                 "tags": [],
                 "category":"general"
             }

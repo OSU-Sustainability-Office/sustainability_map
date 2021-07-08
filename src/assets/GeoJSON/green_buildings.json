@@ -1,0 +1,93 @@
+{
+  "type":"FeatureCollection",
+  "name": "OSU Green Buildings",
+  "features":[
+    {
+        "type": "Feature",
+        "geometry":{
+            "type":"Point",
+            "coordinates": [-123.2731998, 44.5670597]
+        },
+        "properties":{
+            "name": "Kearney Hall",
+            "info":"In 2008 Kearney Hall was remodeled to provide the Civil Engineering and Construction Engineering Management programs with state-of-the-art classrooms, offices, and a 120 seat auditorium. The project received a LEED Gold rating by the US Green Building Council.",
+            "tags":["building", "LEED Gold"],
+            "category": "building",
+            "LEED": "Gold",
+            "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
+        }
+    },
+    {
+      "type":"Feature",
+      "geometry": {
+          "type":"Point",
+          "coordinates": [-123.278575, 44.567146]
+      },
+      "properties":{
+          "name": "Kelly Engineering",
+          "info":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
+          "tags":["building"],
+          "category":"building",
+          "LEED":"Gold",
+          "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/4172-Campus-0195.jpg",
+          "tour": "https://tour.metareal.com/apps/player?asset=13261cff-fb8e-4b05-a055-fbac82d08dc8",
+          "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/sustainability/docs/kelleygreenfeat.pdf"
+      }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.28149, 44.55956]
+    },
+    "properties":{
+      "name": "Reser Stadium",
+      "info": " The $80 million Reser Stadium renovation, prior to the 2005 season, added and expanded a new east side section. This project, while not LEED certified, took sustainability into consideration in many respects.",
+      "category": "building",
+      "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/sustainability/docs/resersheet.pdf"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":{
+      "type":"Point",
+      "coordinates": [-123.28565, 44.56066]
+    },
+    "properties":{
+      "name": "Magruder Hall",
+      "info": "Built in 1979, Magruder Hall has undergone multiple renovations, most recently in 2008 with the addition of the Large Animal Hospital adding over 25,000 square feet of space.",
+      "category": "building",
+      "LEED": "Silver",
+      "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/sustainability/docs/magruderlargeanimal_audit.pdf"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":{
+      "type": "Point",
+      "coordinates": [-123.28925, 44.56409]
+    },
+    "properties":{
+      "name":"OSU Energy Center",
+      "info": "OSU's 1920s era heat plant provided steam to most campus buildings until 2009 when the new OSU Energy Center went online, producing steam and electricity to efficiently heat and power OSU's main campus.",
+      "category":"building",
+      "LEED": "Platinum",
+      "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.27536, 44.56359]
+    },
+    "properties":{
+      "name": "McAlexander Field House",
+      "info": "Renovated back in 2009, the McAlexander Field House was the first project by the DAS (Department of Administration Services) to use the 2009 LEED guidelines.",
+      "category":"building",
+      "LEED": "Gold",
+      "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
+    }
+  }
+  ]
+}

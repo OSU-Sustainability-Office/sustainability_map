@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <transition name="side">
+  <!--transition name="side">-->
   <el-menu v-if="showSide" class='sideMenu' mode='vertical' backgroundColor='#1A1A1A'>
     <el-menu-item-group>
       <el-col class='buttonGroup'>
@@ -14,17 +14,17 @@
         <el-col>
           <el-row :span="12" type="flex" justify="center" v-for="(category, index) in categories" :key="index" >
             <el-button v-if="visibleCategories.includes(category)" class="sortButton" icon="el-icon-star-on" size="small" @click="toggle(category)">
-              {{category}}
+              {{category_dictionary[category]}}
             </el-button>
             <el-button v-else class="sortButton" icon="el-icon-star-off" size="small" @click="toggle(category)">
-              {{category}}
+              {{category_dictionary[category]}}
             </el-button>
           </el-row>
         </el-col>
       </el-col>
     </el-menu-item-group>
   </el-menu>
-  </transition>
+  <!--</transition>-->
 </template>
 
 <script>
@@ -46,7 +46,15 @@ export default {
       unit: 'day',
       int: 1,
       index: 0,
-      image: '@/assets/logo.png'
+      image: '@/assets/logo.png',
+      category_dictionary: {
+        rain: 'Rainwater',
+        bike: 'Transportation',
+        building: 'Building',
+        dining: 'Food',
+        general: 'General',
+        water: 'Water'
+      }
     }
   },
   computed: {

@@ -18,6 +18,9 @@
     <el-row>
       {{info}}
     </el-row>
+    <el-row v-if="tour">
+      <a :href="tour" target="_blank">Virtual Tour</a>
+    </el-row>
   </div>
 </template>
 
@@ -28,7 +31,8 @@ export default {
     'name',
     'info',
     'tags',
-    'image'
+    'image',
+    'tour'
   ]
 }
 </script>
