@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "prebuild": "node util/*.js",
     "build": "vue-cli-service build",
+    "build-stage": "node --max_old_space_size=4096 node_modules/.bin/vue-cli-service build --mode staging",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
