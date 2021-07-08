@@ -8,15 +8,18 @@
 */
 
 import SustainabilityFeatures from '@/assets/GeoJSON/sustainability_features.json'
+import GreenBuildings from '@/assets/GeoJSON/green_buildings.json'
 
 const state = {
   sustainabilityFeatures: {
-    SustainabilityFeatures
+    SustainabilityFeatures,
+    GreenBuildings
   },
   visibleCategories: {
     bike: true,
     general: true,
     dining: true,
+    building: true,
     rain: true
   }
 }

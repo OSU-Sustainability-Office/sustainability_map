@@ -87,7 +87,9 @@ export default {
             permanent: true,
             direction: 'center'
           })
-          layer.openTooltip()
+
+          layer.closeTooltip()
+
           // add tooltip layer to store for easy toggling
           this.$store.commit('LayerModule/addTooltip', layer)
         },
@@ -186,7 +188,7 @@ export default {
     zoomUpdated (zoom) {
       this.zoom = zoom
       // toggle tool tips
-      if (this.zoom > 16) {
+      if (this.zoom > 17) {
         this.showTooltips()
       } else {
         this.hideTooltips()
