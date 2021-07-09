@@ -1,5 +1,5 @@
 # Sustainability Map [![Build Status](https://api.travis-ci.com/OSU-Sustainability-Office/sustainability_map.svg?branch=master&status=unknown)](https://api.travis-ci.com/OSU-Sustainability-Office/sustainability_map)
-An interactive infographic map showing the sustainability features on campus! 
+An interactive map showing the sustainability features available at Oregon State University's Corvallis campus! 
 
 
 ## Installation Steps

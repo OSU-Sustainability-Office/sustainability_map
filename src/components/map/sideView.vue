@@ -51,7 +51,7 @@ export default {
         rain: 'Rainwater',
         bike: 'Transportation',
         building: 'Building',
-        dining: 'Food',
+        dining: 'Dining',
         general: 'General',
         water: 'Water'
       }

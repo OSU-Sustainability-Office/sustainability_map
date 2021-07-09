@@ -18,8 +18,16 @@
     <el-row>
       {{info}}
     </el-row>
-    <el-row v-if="tour">
-      <a :href="tour" target="_blank">Virtual Tour</a>
+    <el-row class='links-header' v-if="tour || url">
+      <h3>Additional links</h3>
+    </el-row>
+    <el-row type="flex" class="links">
+      <el-col v-if="tour">
+        <h4><a :href="tour" target="_blank">Virtual Tour</a></h4>
+      </el-col>
+      <el-col v-if="url">
+        <h4><a :href="url" target="_blank">Read More</a></h4>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -32,7 +40,8 @@ export default {
     'info',
     'tags',
     'image',
-    'tour'
+    'tour',
+    'url'
   ]
 }
 </script>
@@ -47,6 +56,21 @@ export default {
   border-width: 0.18em;
   border-style: solid;
   border-color:$--color-primary;
+}
+
+$--text-padding: 6px;
+
+.links {
+ text-align: left;
+ padding-right: $--text-padding;
+ margin-top: 2px;
+ font-size: 13px;
+ font-weight: 500;
+ text-decoration: underline;
+}
+
+.links-header {
+  margin-top: 5px;
 }
 
 h2 {

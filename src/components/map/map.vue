@@ -18,7 +18,7 @@
 
   <!-- The Map -->
   <el-main class="mapDisplay">
-    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
+    <l-map :minZoom="minZoom" :max-bounds="maxBounds" :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
       <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
       <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
@@ -65,16 +65,17 @@ export default {
     return {
       // Map attributions start
       zoom: 15.5,
+      minZoom: 14,
       center: L.latLng(44.565, -123.2785),
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
       bounds: null,
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
-      maxBounds: {
-        _southWest: { lat: 44.55268045202174, lng: -483.3121776580811 },
-        _northEast: { lat: 44.56980369477875, lng: -483.24866294860846 }
-      },
+      maxBounds: L.latLngBounds([
+        [44.5738, -123.2663],
+        [44.5534, -123.3037]
+      ]),
       // Map attributions end
       clusterController: null,
       queryString: /.*/,
@@ -88,14 +89,14 @@ export default {
             direction: 'center'
           })
 
-          layer.closeTooltip()
-
           // add tooltip layer to store for easy toggling
           this.$store.commit('LayerModule/addTooltip', layer)
         },
         style: {
           stroke: true,
           color: '#1A1A1A',
+          opacity: 1.0,
+          weight: 1,
           fill: true,
           fillColor: '#D73F09',
           fillOpacity: 0.2
@@ -105,10 +106,10 @@ export default {
     }
   },
   mounted () {
-    // this.$store.dispatch('downloadLayers')
-    // this.$store.dispatch('downloadPoints')
-    // Load categories
-    // this.$store
+    // this prevents the tooltips from being visible at initial page load
+    this.$nextTick(function () {
+      this.hideTooltips()
+    })
   },
   computed: {
     ...mapGetters({
@@ -154,12 +155,15 @@ export default {
             },
             // pop-up options
             {
-              maxWidth: 300,
-              minWidth: 50,
+              maxWidth: 420,
+              minWidth: 100,
               autoPan: true,
+              autoPanPaddingTopLeft: 0,
+              autoPanPaddingBottomRight: 0,
               keepInView: false,
               autoClose: true,
-              closeOnClick: true
+              closeOnClick: true,
+              offset: L.point(20, 12)
             }
           )
 
@@ -188,7 +192,7 @@ export default {
     zoomUpdated (zoom) {
       this.zoom = zoom
       // toggle tool tips
-      if (this.zoom > 17) {
+      if (this.zoom > 16.5) {
         this.showTooltips()
       } else {
         this.hideTooltips()
