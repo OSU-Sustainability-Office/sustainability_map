@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "prebuild": "node util/*.js",
+    "prebuild": "node util/build/*.js",
     "build": "vue-cli-service build",
     "build-stage": "node --max_old_space_size=4096 node_modules/.bin/vue-cli-service build --mode staging",
     "lint": "vue-cli-service lint"
@@ -21,6 +21,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-strict-vue": "^1.0.0",
+    "hjson": "^3.2.2",
     "leaflet": "^1.6.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "node-sass": "^4.14.1",

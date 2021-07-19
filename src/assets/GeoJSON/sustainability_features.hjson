@@ -1,3 +1,8 @@
+/*
+    Filename: sustainability_features.hjson
+    Description: Contains misc. sus. features that don't easily fall into
+                 other category files.
+*/
 {
     "type":"FeatureCollection",
     "name": "OSU Sustainability Features Tour",
@@ -19,25 +24,13 @@
             "type":"Feature",
             "geometry":{
                 "type":"Point",
-                "coordinates":[-123.2734036, 44.564071]
-            },
-            "properties":{
-                "name": "Food Forest",
-                "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
-                "tags":["food"],
-                "category":"dining"
-            }
-        },
-        {
-            "type":"Feature",
-            "geometry":{
-                "type":"Point",
                 "coordinates":[-123.2725883, 44.5613574]
             },
             "properties":{
                 "name": "OSUused Store",
                 "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
-                "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/"
+                "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
+                "category":"general"
             }
         },
         {
@@ -48,7 +41,8 @@
             },
             "properties": {
                 "name": "International Living and Learning Center",
-                "info": "The ILLC is the equivalent of LEED Gold rated and is the home of many innovative and sustainable features, as well as housing for international students."
+                "info": "The ILLC is the equivalent of LEED Gold rated and is the home of many innovative and sustainable features, as well as housing for international students.",
+                "category":"general"
             }
         },
         {
@@ -59,7 +53,8 @@
             },
             "properties":{
                 "name":"Oak Creek Center for Urban Horticulture",
-                "info":"The site, located along Oak Creek, is tucked into a corner of campus once used to teach beekeeping."
+                "info":"The site, located along Oak Creek, is tucked into a corner of campus once used to teach beekeeping.",
+                "category":"general"
             }
         },
         {
@@ -71,7 +66,8 @@
             "properties":{
                 "name":"35th Street Solar Array",
                 "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land.",
-                "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3"
+                "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3",
+                "category":"general"
             }
         },
         {

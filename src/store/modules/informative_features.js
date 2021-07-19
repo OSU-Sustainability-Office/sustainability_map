@@ -7,17 +7,19 @@
         These features contain important information.
 */
 
-import SustainabilityFeatures from '@/assets/GeoJSON/sustainability_features.json'
-import GreenBuildings from '@/assets/GeoJSON/green_buildings.json'
-import RainwaterFeatures from '@/assets/GeoJSON/rainwater_features.json'
-import TransportationFeatures from '@/assets/GeoJSON/transportation_features.json'
+import SustainabilityFeatures from '@/assets/GeoJSON/sustainability_features.hjson'
+import GreenBuildings from '@/assets/GeoJSON/green_buildings.hjson'
+import RainwaterFeatures from '@/assets/GeoJSON/rainwater_features.hjson'
+import TransportationFeatures from '@/assets/GeoJSON/transportation_features.hjson'
+import DiningFeatures from '@/assets/GeoJSON/dining_features.hjson'
 
 const state = {
   sustainabilityFeatures: {
     SustainabilityFeatures,
     TransportationFeatures,
     GreenBuildings,
-    RainwaterFeatures
+    RainwaterFeatures,
+    DiningFeatures
   },
   visibleCategories: {
     bike: true,

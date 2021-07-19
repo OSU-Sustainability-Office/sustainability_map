@@ -73,8 +73,8 @@ export default {
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
       maxBounds: L.latLngBounds([
-        [44.5738, -123.2663],
-        [44.5534, -123.3037]
+        [44.5476, -123.3128],
+        [44.5711, -123.2533]
       ]),
       // Map attributions end
       clusterController: null,
