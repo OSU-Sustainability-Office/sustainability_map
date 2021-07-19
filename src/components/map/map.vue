@@ -4,17 +4,14 @@
 -->
 <template>
 <el-container class="mapContainer">
-
   <!-- Side Button -->
   <el-button class="sideButton" @click="showSide = !showSide">
     <i v-if="showSide" class="el-icon-s-fold"></i>
     <i v-else class="el-icon-s-unfold"></i>
   </el-button>
 
-  <!--<transition name="side">-->
-    <!-- Side Menu or 'Key' -->
-    <sideView :showSide=showSide></sideView>
-  <!--</transition>-->
+  <!-- Side Menu or 'Key' -->
+  <sideView :showSide=showSide></sideView>
 
   <!-- The Map -->
   <el-main class="mapDisplay">
@@ -211,7 +208,6 @@ export default {
 </style>
 
 <style scoped lang='scss'>
-//Fixed --nav-hight by addding the import above and scoped lang='scss'
 
 .el-button.sideButton {
   z-index: 2000;
@@ -286,6 +282,13 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+/* Mobile Friendly Styling Adjustments */
+@media only screen and (max-width: $--mobile-width) {
+  .el-container.mapContainer {
+    flex-direction: column;
+  }
 }
 
 </style>

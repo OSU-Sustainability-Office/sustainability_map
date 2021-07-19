@@ -218,22 +218,6 @@ h1 {
   padding-top: 1.1em;
 }
 
-/*
-@media (max-width: 630px) {
-  .sus-title h1 {
-    font-size: 20px;
-  }
-  .sus-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 0;
-  }
-  .sus-nav-item {
-    justify-content: center;
-  }
-}
-*/
 .sus-nav-search{
   padding-top: 1em;
   width: 15em;
@@ -242,4 +226,10 @@ h1 {
 .el-input__icon:hover{
   cursor: pointer;
 }
+
+/* Mobile Friendly Styling Adjustments */
+@media only screen and (max-width: $--mobile-width) {
+
+}
+
 </style>

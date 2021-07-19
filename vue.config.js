@@ -6,7 +6,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: '',
+  publicPath: process.env.NODE_ENV === 'production' ? '' : '/',
   css: {
     loaderOptions: {
       sass: {
@@ -33,6 +33,7 @@ module.exports = {
     },
     module: {
       rules: [
+        // JS loading
         {
           test: /\.js$/,
           include: path.resolve(__dirname, 'src'),
@@ -42,12 +43,14 @@ module.exports = {
             'babel-loader'
           ]
         },
+        // SVG Loading
         {
           test: /\.svg$/,
           use: [
             'vue-svg-loader'
           ]
         },
+        // HJson Loader
         {
           test: /\.hjson$/,
           use: [

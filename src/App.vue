@@ -46,10 +46,10 @@ export default {
 @font-face {
     font-family: 'StratumNo2';
     /* !!NOTE: CHANGE THE PREFIX WHEN DEPLOYING ON DOMAIN NAME*/
-    src: url('/sustainability_map/fonts/StratumNo2-Bold.woff2') format('woff2'),
-        url('/sustainability_map/fonts/StratumNo2-Bold.woff') format('woff'),
-        url('/sustainability_map/fonts/StratumNo2-Bold.ttf') format('truetype'),
-        url('/sustainability_map/fonts/StratumNo2-Bold.svg#StratumNo2-Bold') format('svg');
+    src: url('/fonts/StratumNo2-Bold.woff2') format('woff2'),
+        url('/fonts/StratumNo2-Bold.woff') format('woff'),
+        url('/fonts/StratumNo2-Bold.ttf') format('truetype'),
+        url('/fonts/StratumNo2-Bold.svg#StratumNo2-Bold') format('svg');
     font-weight: bold;
     font-style: normal;
 }
