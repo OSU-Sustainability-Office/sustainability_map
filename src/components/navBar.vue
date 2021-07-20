@@ -229,6 +229,38 @@ h1 {
 
 /* Mobile Friendly Styling Adjustments */
 @media only screen and (max-width: $--mobile-width) {
+  .el-row.sus-nav {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .el-col.sus-nav-item {
+    display: flex;
+  }
+
+  .sus-nav-image {
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    align-self: center;
+  }
+  .sus-title {
+    h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+    }
+  }
+  .sus-nav-search {
+    font-size: 10px;
+  }
+
+  .el-col.sus-nav-item{
+    align-self: center;
+    padding: 0;
+    margin: 0;
+  }
 
 }
 
