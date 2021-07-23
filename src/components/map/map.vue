@@ -4,17 +4,14 @@
 -->
 <template>
 <el-container class="mapContainer">
-
   <!-- Side Button -->
   <el-button class="sideButton" @click="showSide = !showSide">
     <i v-if="showSide" class="el-icon-s-fold"></i>
     <i v-else class="el-icon-s-unfold"></i>
   </el-button>
 
-  <!--<transition name="side">-->
-    <!-- Side Menu or 'Key' -->
-    <sideView :showSide=showSide></sideView>
-  <!--</transition>-->
+  <!-- Side Menu or 'Key' -->
+  <sideView :showSide=showSide></sideView>
 
   <!-- The Map -->
   <el-main class="mapDisplay">
@@ -73,8 +70,8 @@ export default {
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
       maxBounds: L.latLngBounds([
-        [44.5738, -123.2663],
-        [44.5534, -123.3037]
+        [44.5476, -123.3128],
+        [44.5711, -123.2533]
       ]),
       // Map attributions end
       clusterController: null,
@@ -211,7 +208,6 @@ export default {
 </style>
 
 <style scoped lang='scss'>
-//Fixed --nav-hight by addding the import above and scoped lang='scss'
 
 .el-button.sideButton {
   z-index: 2000;
@@ -286,6 +282,13 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+/* Mobile Friendly Styling Adjustments */
+@media only screen and (max-width: $--mobile-width) {
+  .el-container.mapContainer {
+    flex-direction: column;
+  }
 }
 
 </style>

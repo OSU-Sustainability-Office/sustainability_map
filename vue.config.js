@@ -1,15 +1,12 @@
-/**
- * @Author: Brogan Miner <Brogan>
- * @Date:   2019-01-09T13:26:49-08:00
- * @Email:  brogan.miner@oregonstate.edu
- * @Last modified by:   Brogan
- * @Last modified time: 2019-02-01T14:07:17-08:00
- */
+/*
+  Filename: vue.config.js
+  Description: VueCLI config file for modifying Webpack & other plugin settings
+*/
 
 const path = require('path')
 
 module.exports = {
-  publicPath: '',
+  publicPath: process.env.NODE_ENV === 'production' ? '' : '/',
   css: {
     loaderOptions: {
       sass: {
@@ -36,6 +33,7 @@ module.exports = {
     },
     module: {
       rules: [
+        // JS loading
         {
           test: /\.js$/,
           include: path.resolve(__dirname, 'src'),
@@ -45,10 +43,21 @@ module.exports = {
             'babel-loader'
           ]
         },
+        // SVG Loading
         {
           test: /\.svg$/,
           use: [
             'vue-svg-loader'
+          ]
+        },
+        // HJson Loader
+        {
+          test: /\.hjson$/,
+          use: [
+            {
+              loader: path.resolve(__dirname, path.join('util', 'loaders', 'hjson.loader.js')),
+              options: {}
+            }
           ]
         }
       ]

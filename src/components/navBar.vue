@@ -218,22 +218,6 @@ h1 {
   padding-top: 1.1em;
 }
 
-/*
-@media (max-width: 630px) {
-  .sus-title h1 {
-    font-size: 20px;
-  }
-  .sus-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 0;
-  }
-  .sus-nav-item {
-    justify-content: center;
-  }
-}
-*/
 .sus-nav-search{
   padding-top: 1em;
   width: 15em;
@@ -242,4 +226,44 @@ h1 {
 .el-input__icon:hover{
   cursor: pointer;
 }
+
+/* Mobile Friendly Styling Adjustments */
+@media only screen and (max-width: $--mobile-width) {
+  .el-row.sus-nav {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+  .el-col.sus-nav-item {
+    display: flex;
+  }
+
+  .sus-nav-image {
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-self: center;
+  }
+  .sus-title {
+    h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  .sus-nav-search {
+    font-size: 12px;
+  }
+
+  .el-col.sus-nav-item{
+    align-self: center;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
 </style>

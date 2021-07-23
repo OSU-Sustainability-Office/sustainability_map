@@ -78,6 +78,13 @@ body {
   */
   height: $--nav-size !important;
 }
+
+@media only screen and (max-width: $--mobile-width) {
+  .el-header {
+    height: $--nav-size-mobile !important;
+  }
+}
+
 .el-main {
   margin: 0;
   padding: 0;

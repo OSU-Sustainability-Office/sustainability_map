@@ -35,7 +35,7 @@ DownloadBuildingFeatures(overpass_query, overpass_api)
     // Remove excess points
     data.features = data.features.filter(feat => feat.geometry.type === 'Polygon')
 
-    const parent_dir = __dirname.split(path.sep).slice(0, -1).join(path.sep)
+    const parent_dir = __dirname.split(path.sep).slice(0, -2).join(path.sep)
     const filename = path.join(parent_dir, 'src', 'assets', 'GeoJSON', 'building_features.json')
     fs.writeFileSync(filename, JSON.stringify(data))
     console.log(`Data written to ${filename}`)
