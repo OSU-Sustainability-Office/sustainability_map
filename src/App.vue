@@ -81,7 +81,7 @@ body {
 
 @media only screen and (max-width: $--mobile-width) {
   .el-header {
-    height: $--nav-size * 1.5 !important;
+    height: $--nav-size-mobile !important;
   }
 }
 

@@ -8,10 +8,17 @@
 
 .leaflet-tooltip {
   position: absolute;
-  background: none;
-  border: none;
+  display: table-caption;
+  background-color: #3e3e3e;
+  color: #dcdcdc;
+  border: 1px solid #202020;
   border-radius: 0;
-  padding: 0;
+  padding: 1px;
   box-shadow: none;
+  font-size: 12px;
+  font-weight: lighter;
+  z-index: 900;
+  text-align: center;
+  white-space: normal; // wraps text vertically
 }
 

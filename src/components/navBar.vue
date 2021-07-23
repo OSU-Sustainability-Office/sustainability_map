@@ -233,7 +233,8 @@ h1 {
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
-  }
+    padding: 0;
+}
 
   .el-col.sus-nav-item {
     display: flex;
@@ -241,6 +242,7 @@ h1 {
 
   .sus-nav-image {
     height: 50px;
+    width: 100%;
     padding: 0;
     margin: 0;
     align-self: center;
@@ -249,11 +251,11 @@ h1 {
     h1 {
       width: 100%;
       text-align: center;
-      font-size: 15px;
+      font-size: 16px;
     }
   }
   .sus-nav-search {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .el-col.sus-nav-item{

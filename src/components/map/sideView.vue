@@ -167,7 +167,7 @@ $sideMenu-width: 18.2em; //250px;
 
   .colorByTitle {
     color: $--color-white;
-    font-size: 13px;
+    font-size: 16px;
     text-align: center;
     font-family: 'stratumno2';
   }
@@ -182,7 +182,7 @@ $sideMenu-width: 18.2em; //250px;
     padding: 1em;
     min-width:13em;
     text-align:left;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   /*
