@@ -131,6 +131,27 @@ export default {
   width: 20vw;
   font-size: 14px;
 }
+
+@media only screen and (max-width: $--mobile-width) {
+  .result-container {
+    width: 42vw;
+    margin: 0px;
+    font-size: 10px;
+    strong {
+      font-size: 12px;
+    }
+     .el-header {
+       margin-bottom: 20px;
+    }
+  }
+  .el-dropdown-item {
+    line-height: 12px;
+  }
+  .el-main {
+        padding: 0px 20px;
+  }
+}
+
 .result-image {
   margin-top: 0.25em;
   margin-right: 0.5em;
