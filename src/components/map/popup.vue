@@ -3,7 +3,7 @@
     Description: Vue component for the feature pop-up windows
 -->
 <template>
-  <div>
+  <div class="popup">
     <el-row type="flex" justify="center" v-show="image">
       <el-image
         class="popup-image"
@@ -51,6 +51,11 @@ export default {
 </style>
 
 <style scoped lang="scss">
+
+.popup {
+  padding: 0;
+  margin: 0;
+}
 
 .popup-image {
   border-width: 0.18em;
