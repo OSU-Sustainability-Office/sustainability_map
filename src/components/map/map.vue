@@ -92,7 +92,7 @@ export default {
         style: {
           stroke: true,
           color: '#1A1A1A',
-          opacity: 1.0,
+          opacity: 0.5,
           weight: 1,
           fill: true,
           fillColor: '#D73F09',
@@ -189,7 +189,7 @@ export default {
     zoomUpdated (zoom) {
       this.zoom = zoom
       // toggle tool tips
-      if (this.zoom > 16.5) {
+      if (this.zoom > 17) {
         this.showTooltips()
       } else {
         this.hideTooltips()

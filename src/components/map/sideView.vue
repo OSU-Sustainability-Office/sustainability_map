@@ -50,7 +50,7 @@ export default {
       index: 0,
       image: '@/assets/logo.png',
       category_dictionary: {
-        rain: 'Rainwater',
+        rain: 'Stormwater',
         bike: 'Transportation',
         building: 'Building',
         dining: 'Dining',

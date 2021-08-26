@@ -36,33 +36,6 @@
   },
   {
     "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-123.28149, 44.55956]
-    },
-    "properties":{
-      "name": "Reser Stadium",
-      "info": " The $80 million Reser Stadium renovation, prior to the 2005 season, added and expanded a new east side section. This project, while not LEED certified, took sustainability into consideration in many respects.",
-      "category": "building",
-      "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/sustainability/docs/resersheet.pdf"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry":{
-      "type":"Point",
-      "coordinates": [-123.28565, 44.56066]
-    },
-    "properties":{
-      "name": "Magruder Hall",
-      "info": "Built in 1979, Magruder Hall has undergone multiple renovations, most recently in 2008 with the addition of the Large Animal Hospital adding over 25,000 square feet of space.",
-      "category": "building",
-      "LEED": "Silver",
-      "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/sustainability/docs/magruderlargeanimal_audit.pdf"
-    }
-  },
-  {
-    "type": "Feature",
     "geometry":{
       "type": "Point",
       "coordinates": [-123.28925, 44.56409]
@@ -72,20 +45,6 @@
       "info": "OSU's 1920s era heat plant provided steam to most campus buildings until 2009 when the new OSU Energy Center went online, producing steam and electricity to efficiently heat and power OSU's main campus.",
       "category":"building",
       "LEED": "Platinum",
-      "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [-123.27536, 44.56359]
-    },
-    "properties":{
-      "name": "McAlexander Field House",
-      "info": "Renovated back in 2009, the McAlexander Field House was the first project by the DAS (Department of Administration Services) to use the 2009 LEED guidelines.",
-      "category":"building",
-      "LEED": "Gold",
       "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
     }
   }
