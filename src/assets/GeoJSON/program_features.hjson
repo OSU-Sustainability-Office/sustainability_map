@@ -1,0 +1,65 @@
+/*
+    Filename: sustainability_features.hjson
+    Description: Contains misc. sus. programs on campus
+*/
+{
+    "type":"FeatureCollection",
+    "name": "OSU Sustainability Features Tour",
+    "features":[
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.277384, 44.5649348]
+            },
+            "properties":{
+                "name":"Student Sustainability Initiative",
+                "info":"Housed in the SEC, the Student Sustainability Initiative (SSI) is here and they do cool sustainability stuff.",
+                "tags":["building"],
+                "category":"programs",
+                "url": "https://sli.oregonstate.edu/ssi"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.2725883, 44.5613574]
+            },
+            "properties":{
+                "name": "OSUsed Store",
+                "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
+                "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
+                "category":"programs"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates": [-123.2860529, 44.5572981]
+            },
+            "properties":{
+                "name": "OSU Sustainability Office",
+                "info":  "The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.",
+                "tags": [],
+                "category":"programs",
+                "url": "https://fa.oregonstate.edu/sustainability/about/sustainability-office"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates": [-123.2725132, 44.5611433]
+            },
+            "properties":{
+                "name": "Campus Recycling",
+                "info":  "Campus Recycling is responsible for managing a comprehensive waste management system that focuses on reducing, reusing and recycling with disposal as a last resort.",
+                "tags": [],
+                "category":"programs",
+                "url": "https://recycle.oregonstate.edu/"
+            }
+        }
+    ]
+}

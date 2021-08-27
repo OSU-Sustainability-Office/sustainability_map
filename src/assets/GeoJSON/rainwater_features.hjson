@@ -13,12 +13,18 @@
               [-123.2807207, 44.5671209],
               [-123.2831562, 44.5590717],
               [-123.2814288, 44.5617778],
-              [-123.285023, 44.5614185],
               [-123.2870293, 44.5639487],
               [-123.2901943, 44.5669145],
               [-123.2920396, 44.5666164],
+              // @ Magruder Hall
               [-123.2850337, 44.5602566],
-              [-123.2750022, 44.5617243]
+              [-123.2750022, 44.5617243],
+              // outside National Seed Forage Research Center
+              [-123.289593, 44.566674],
+              // @ SW Washington Way & 35th
+              [-123.289603, 44.562221],
+              // South of Western Quad
+              [-123.282265, 44.563574]
           ]
       },
       "properties":{
@@ -39,7 +45,9 @@
             [-123.2734895, 44.5669451],
             [-123.2745731, 44.5603942],
             [-123.2764184, 44.560463],
-            [-123.2882631, 44.5595533]
+            [-123.2882631, 44.5595533],
+            // @ Student Legacy Park (South of Western Quad)
+            [-123.281803, 44.563322]
         ]
     },
     "properties":{
@@ -68,7 +76,7 @@
     "type":"Feature",
     "geometry":{
         "type":"Point",
-        "coordinates": [-123.2883704, 44.5593851]
+        "coordinates": [-123.278666, 44.560524]
     },
     "properties":{
         "name": "Green Roof",
@@ -85,7 +93,9 @@
         "coordinates": [
             [-123.2887244, 44.5642086],
             [-123.2745731, 44.5610898],
-            [-123.2788646, 44.5668381]
+            [-123.2788646, 44.5668381],
+            // West of Oak Creek & 35th--past Organic Growers Club Green House
+            [-123.288434, 44.55953]
         ]
     },
     "properties":{
@@ -93,6 +103,35 @@
         "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
         "tags": [],
         "category":"rain"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"MultiPoint",
+        "coordinates": [
+            [-123.288317, 44.559431],
+            [-123.27711, 44.559656],
+            // Between Milam & Gilkey Hall-- Southwest Memorial Place
+            [-123.277801, 44.566609]
+        ]
+    },
+    "properties":{
+        "name": "Permeable Pavement",
+        "info": '''
+                Permeable paving can be created using a number of different
+                techniques, but the fundamental idea stays the same throughout:
+                infiltration. Permeable pavement allows rainwater to flow through and
+                into a series of subbase materials to suspend any solids and
+                pollutants from the runoff before releasing the water back into the
+                ground water system. Oregon State University has begun implementing porous asphalt in
+                parking lots as pictured to the right. The surface looks just as any other
+                parking lot would, but with a different mix of asphalt which allows water
+                to flow through and infiltrate into the ground.
+                ''',
+        "tags": [],
+        "category":"rain",
+        "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
     }
   }
   ]

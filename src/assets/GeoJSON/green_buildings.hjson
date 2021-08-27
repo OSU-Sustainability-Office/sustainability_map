@@ -47,6 +47,44 @@
       "LEED": "Platinum",
       "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
     }
-  }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+      "type":"Point",
+      "coordinates":[-123.2761395, 44.5602489]
+    },
+    "properties": {
+      "name": "International Living and Learning Center",
+      "info": "The ILLC is the equivalent of LEED Gold rated and is the home of many innovative and sustainable features, as well as housing for international students.",
+      "category":"building"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+      "type":"Point",
+      "coordinates":[-123.2884884, 44.5595533]
+    },
+    "properties":{
+      "name":"Oak Creek Center for Urban Horticulture",
+      "info":"The site, located along Oak Creek, is tucked into a corner of campus once used to teach beekeeping.",
+      "category":"programs"
+    }
+  },
+  {
+    "type":"Feature",
+    "geometry":{
+      "type":"Point",
+      "coordinates":[-123.2944, 44.5665094]
+    },
+    "properties":{
+      "name":"35th Street Solar Array",
+      "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land.",
+      "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3",
+      "category":"programs",
+      "url": "https://fa.oregonstate.edu/sustainability/ground-mounted-photovoltaic-arrays"
+   }
+  },
   ]
 }
