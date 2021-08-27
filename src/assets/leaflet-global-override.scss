@@ -6,13 +6,15 @@
   objects / components.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 .leaflet-tooltip {
   position: absolute;
   background: none;
   border: none;
   box-shadow: none;
   color: rgb(98, 98, 98);
-  font-family: "StratumNo2", Helvetica;
+  font-family: 'Roboto', "StratumNo2", Helvetica;
   font-size: 11px;
   font-weight: 600;
   z-index: 900;
