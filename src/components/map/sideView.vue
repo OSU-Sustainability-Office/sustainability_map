@@ -21,6 +21,13 @@
               {{category_dictionary[category]}}
             </el-button>
             </span>
+            <span>
+            <a href="https://diversity.oregonstate.edu/feature-story/land-acknowledgement" target="_blank">
+              <el-button size="small" class="acknowledgement-button">
+                Land Acknowledgement
+              </el-button>
+            </a>
+            </span>
           </el-row>
         </el-col>
       </el-col>
@@ -132,6 +139,17 @@ $sideMenu-width: 18.2em; //250px;
   padding: 1em;
   min-width:15em;
   text-align: left;
+}
+
+.acknowledgement-button {
+  margin: 0.25em;
+  padding: 1em;
+  min-width: 15em;
+  text-align: left;
+  color: #FFF;
+  $--acknowledgement-button-color: #d73f09;
+  border-color: $--acknowledgement-button-color;
+  background-color: $--acknowledgement-button-color;
 }
 
 /* <transition> component styling */
