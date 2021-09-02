@@ -122,21 +122,40 @@ export default {
         // with the Leaflet class type "Point" but has all the same properties
         // as a GeoJSON feature
         pointToLayer: (feature, latlng) => {
-          let { category, name, info } = feature.properties
+          let { category, name, info, tour } = feature.properties
           if (category === undefined) category = 'general'
 
-          return L.marker(latlng, {
+          const featureMarker = L.marker(latlng, {
             icon: L.icon({
               iconUrl: `images/categories/${category}.png`,
               iconSize: [20, 20], // [27, 27],
               iconAncor: [13, 27],
               popupAnchor: [-20, -20]
+              // className: (tour) ? 'tourDot' : ''
             }),
             keyboard: true,
             title: name,
             alt: info,
-            riseOnHover: true
+            riseOnHover: true,
+            bubblingMouseEvents: true
           })
+          // Dot flair for virtual-tour features
+          if (tour) {
+            console.log(latlng)
+            const circleLat = latlng.lat + 0.00001
+            const circleLng = latlng.lng + 0.00001
+            featureMarker.on('add', (ev) => {
+              const dot = L.circleMarker({ lat: circleLat, lng: circleLng }, {
+                radius: 4,
+                fillColor: 'blue',
+                color: 'blue',
+                className: 'dotFlair'
+              })
+              dot.addTo(ev.target._map)
+              dot.bringToFront()
+            })
+          }
+          return featureMarker
         },
         onEachFeature: (feature, layer) => {
           // Add the pop-up visual
