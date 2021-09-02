@@ -92,11 +92,11 @@ export default {
         style: {
           stroke: true,
           color: '#1A1A1A',
-          opacity: 0.5,
+          opacity: 0.2,
+          fillOpacity: 0.12,
           weight: 1,
           fill: true,
-          fillColor: '#D73F09',
-          fillOpacity: 0.2
+          fillColor: '#D73F09'
         }
       },
       showSide: true
@@ -128,7 +128,7 @@ export default {
           return L.marker(latlng, {
             icon: L.icon({
               iconUrl: `images/categories/${category}.png`,
-              iconSize: [27, 27],
+              iconSize: [20, 20], // [27, 27],
               iconAncor: [13, 27],
               popupAnchor: [-20, -20]
             }),
