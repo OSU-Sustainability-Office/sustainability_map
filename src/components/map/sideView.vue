@@ -28,6 +28,13 @@
               </el-button>
             </a>
             </span>
+            <span>
+            <a href="https://transportation.oregonstate.edu/beaver-bus/beaver-bus-route-maps" target="_blank">
+              <el-button size="small" class="acknowledgement-button">
+                Beaver Bus Routes
+              </el-button>
+            </a>
+            </span>
           </el-row>
         </el-col>
       </el-col>
@@ -60,7 +67,7 @@ export default {
         rain: 'Stormwater',
         bike: 'Transportation',
         building: 'Building',
-        dining: 'Dining',
+        dining: 'Eco2Go',
         programs: 'Programs',
         water: 'Water'
       }
