@@ -140,6 +140,7 @@ export default {
             bubblingMouseEvents: true
           })
           // Dot flair for virtual-tour features
+          /*
           if (tour) {
             console.log(latlng)
             const circleLat = latlng.lat + 0.00001
@@ -155,6 +156,7 @@ export default {
               dot.bringToFront()
             })
           }
+          */
           return featureMarker
         },
         onEachFeature: (feature, layer) => {
