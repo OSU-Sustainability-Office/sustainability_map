@@ -1,20 +1,7 @@
 {
   "type":"FeatureCollection",
-  "name": "OSU Green Buildings",
+  "name": "OSU Eco2Go",
   "features":[
-    {
-      "type":"Feature",
-      "geometry":{
-          "type":"Point",
-          "coordinates":[-123.2734036, 44.564071]
-      },
-      "properties":{
-          "name": "Food Forest",
-          "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
-          "tags":["food"],
-          "category":"dining"
-      }
-  },
   {
     "type": "Feature",
     "geometry":{
