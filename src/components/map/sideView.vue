@@ -61,7 +61,7 @@ export default {
         bike: 'Transportation',
         building: 'Building',
         dining: 'Dining',
-        programs: 'Sustainable Programs',
+        programs: 'Programs',
         water: 'Water'
       }
     }

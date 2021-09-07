@@ -13,11 +13,19 @@
                 "coordinates":[-123.277384, 44.5649348]
             },
             "properties":{
-                "name":"Student Sustainability Initiative",
-                "info":"Housed in the SEC, the Student Sustainability Initiative (SSI) is here and they do cool sustainability stuff.",
+                "name":"Community Engagement & Leadership",
+                "info":
+                '''
+                Housed in the SEC, CEL is a department within Student, Experiences & Engagement (SEE) which creates space for students to craft
+                and advance their collective visions of social, economic, and environmental justice by facilitating community-engaged learning experiences. 
+                In partnership with community-based organizations, CEL provides direct service, advocacy, philanthropy, and other community engagement 
+                opportunities that allow students to work towards a more just, sustainable world. CEL builds community capacity, enhances students' leadership
+                skills, and inspires positive change through connecting students’ interests and talents with community needs.
+                ''',
                 "tags":["building"],
                 "category":"programs",
-                "url": "https://sli.oregonstate.edu/ssi"
+                "url": "https://cel.oregonstate.edu/",
+                "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png"
             }
         },
         {
@@ -37,7 +45,7 @@
             "type":"Feature",
             "geometry":{
                 "type":"Point",
-                "coordinates": [-123.2860529, 44.5572981]
+                "coordinates": [-123.290421, 44.557398]
             },
             "properties":{
                 "name": "OSU Sustainability Office",
@@ -60,6 +68,43 @@
                 "category":"programs",
                 "url": "https://recycle.oregonstate.edu/"
             }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.277784, 44.561137]
+            },
+            "properties":{
+                "name": "Earth2OSU",
+                "info":
+                '''
+                Earth²OSU (E²O), is a vibrant living-learning community located in Finley Hall open to all students in all majors who are passionate about the health and welfare of our home – planet earth.
+                ''',
+                "tags": [],
+                "category": "programs",
+                "url": "https://uhds.oregonstate.edu/housing/earth2osu"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates": [-123.282102, 44.566432]
+            },
+            "properties":{
+                "name": "Sustainability Double Degree",
+                "info":
+                '''
+                 The mission of the Sustainability Double Degree program is to provide all OSU students foundational understanding of coupled human-natural systems, 
+                 critical thinking, and evidence-based analysis so that they can be agents of positive change supporting planetary health, social justice, and economic 
+                 equity in any disciplinary or career path they choose.
+                ''',
+                "tags":[],
+                "category":"programs",
+                "url":"https://agsci.oregonstate.edu/sustainabilitydd"
+            }
         }
+
     ]
 }
