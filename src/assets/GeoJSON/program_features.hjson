@@ -117,7 +117,46 @@
                 "category":"programs",
                 "url":"https://agsci.oregonstate.edu/sustainabilitydd"
             }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.275184, 44.567029]
+            },
+            "properties":{
+                "name": "Energy Efficiency Center",
+                "info": 
+                '''
+                The Oregon State Energy Efficiency Center is a faculty-mentored, student-based team devoted to uncovering opportunities in cost, 
+                energy, and time savings for Pacific Northwest manufacturers. Founded in 1987, the center is among the most historic in the nationwide 
+                network of Industrial Assessment Centers (IACs). IACs offer high-quality operational assessments at no cost to eligible manufacturer, 
+                practical training for students, and a leg up for the United States manufacturing industry.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://eec.oregonstate.edu/"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.277299, 44.565595]
+            },
+            "properties":{
+                "name": "Institute for Natural Resources",
+                "info": 
+                '''
+                 The Institute for Natural Resources (INR) was established in 2001 through the Oregon Legislature (ORS 352.808) to 
+                 fulfill several legislative purposes that provide ready access to relevant science-based data, tools, and information 
+                 for natural resource and environmental decision making. INR works to advance centralized, science-based natural resource 
+                 information for Oregon and the Pacific Northwest.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://inr.oregonstate.edu/"
+            }
         }
-
     ]
 }
