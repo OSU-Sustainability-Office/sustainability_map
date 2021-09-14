@@ -157,6 +157,26 @@
                 "category":"programs",
                 "url":"https://inr.oregonstate.edu/"
             }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.279796, 44.568486]
+            },
+            "properties":{
+                "name": "Oregon Climate Change Research Institute",
+                "info": 
+                '''
+                 The Oregon Climate Change Research Institute (OCCRI) is a network of dozens of researchers and professionals at Oregon State University, 
+                 Portland State University, the University of Oregon, and other universities, agencies, and organizations. OCCRI also houses the Oregon 
+                 Climate Service, which is recognized by the American Association of State Climatologists as Oregon’s state climate office. OCCRI is hosted 
+                 by the College of Earth, Ocean, and Atmospheric Sciences at Oregon State University.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://blogs.oregonstate.edu/occri/"
+            }
         }
     ]
 }
