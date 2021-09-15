@@ -5,12 +5,9 @@
 <template>
   <div class="popup">
     <el-row type="flex" justify="center" v-show="image">
-      <el-image
-        class="popup-image"
-        :src="image"
-        style="max-width:20em; max-height:20em;"
-        alt="Outside the Kelly Engineering Center coming from Johnson Hall"
-      ></el-image>
+      <!--Pop-up Image-->
+      <div ref='popupImage' class='popup-image'>
+      </div>
     </el-row>
     <el-row>
       <h2>{{name}}</h2>
@@ -42,7 +39,17 @@ export default {
     'image',
     'tour',
     'url'
-  ]
+  ],
+  watch: {
+    image: {
+      immediate: true,
+      handler: function (imageURI) {
+        if (imageURI) {
+          this.$refs.popupImage.style.backgroundImage = imageURI
+        }
+      }
+    }
+  }
 }
 </script>
 
@@ -52,12 +59,23 @@ export default {
 
 <style scoped lang="scss">
 
+.el-image {
+  display: block;
+  border: none;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 20em;
+  opacity: 0.9;
+}
+
 .popup {
   padding: 0;
   margin: 0;
 }
 
 .popup-image {
+  width:100%;
   border-width: 0.18em;
   border-style: solid;
   border-color:$--color-primary;
