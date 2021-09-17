@@ -16,7 +16,10 @@
                 "name": "Food Forest",
                 "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
                 "tags":["food"],
-                "category":"dining"
+                "category":"programs",
+                "url": "https://experience.oregonstate.edu/feature-story/growing-food-osu",
+                "image": "https://experience.oregonstate.edu/sites/experience.oregonstate.edu/files/styles/paragraph-1920w/public/feature-story/foodforest4.png",
+                "imageType":"cover"
             }
         },
         {
@@ -38,7 +41,8 @@
                 "tags":["building"],
                 "category":"programs",
                 "url": "https://cel.oregonstate.edu/",
-                "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png"
+                "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png",
+                "imageType":"cover"
             }
         },
         {
@@ -51,7 +55,9 @@
                 "name": "OSUsed Store",
                 "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
                 "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
-                "category":"programs"
+                "category":"programs",
+                "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/2114/files/2019/09/OSUsed-sale.jpg",
+                "imageType":"cover"
             }
         },
         {
@@ -155,7 +161,9 @@
                 ''',
                 "tags":[""],
                 "category":"programs",
-                "url":"https://inr.oregonstate.edu/"
+                "url":"https://inr.oregonstate.edu/",
+                "image":"https://inr.oregonstate.edu/sites/inr.oregonstate.edu/files/logos-07.png",
+                "imageType": "contain"
             }
         },
         {
@@ -175,7 +183,9 @@
                 ''',
                 "tags":[""],
                 "category":"programs",
-                "url":"https://blogs.oregonstate.edu/occri/"
+                "url":"https://blogs.oregonstate.edu/occri/",
+                "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/3952/files/2020/12/cropped-OCCRI_logo_vect-1.png",
+                "imageType": "contain"
             }
         }
     ]

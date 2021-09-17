@@ -25,11 +25,7 @@ export default {
   async created () {
   },
   data () {
-    return {
-      card: {
-        name: 'foo'
-      }
-    }
+    return {}
   },
   beforeDestroy () {
   },

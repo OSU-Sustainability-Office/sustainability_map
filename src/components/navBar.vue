@@ -148,8 +148,12 @@ export default {
     line-height: 12px;
   }
   .el-main {
-        padding: 0px 20px;
+    padding: 0px 20px;
   }
+}
+
+.el-header {
+  line-height: 12px;
 }
 
 .result-image {
