@@ -5,29 +5,24 @@
 <template>
   <div class="popup">
     <el-row type="flex" justify="center" v-show="image">
-      <el-image
-        class="popup-image"
-        :src="image"
-        style="max-width:20em; max-height:20em;"
-        alt="Outside the Kelly Engineering Center coming from Johnson Hall"
-      ></el-image>
+      <!--Pop-up Image-->
+      <div ref='popupImage' class='popup-image'>
+      </div>
     </el-row>
-    <el-row>
+    <el-row class="title">
       <h2>{{name}}</h2>
     </el-row>
     <el-row>
       {{info}}
     </el-row>
-    <el-row class='links-header' v-if="tour || url">
+    <el-row class='links-header title' v-if="tour || url">
       <h3>Additional links</h3>
     </el-row>
-    <el-row type="flex" class="links">
-      <el-col v-if="tour">
-        <h4><a :href="tour" target="_blank">Virtual Tour</a></h4>
-      </el-col>
-      <el-col v-if="url">
-        <h4><a :href="url" target="_blank">Read More</a></h4>
-      </el-col>
+    <el-row class="links">
+      <ul>
+        <li v-if="tour"><h4><a :href="tour" target="_blank"><i class="el-icon-video-camera"></i>Virtual Tour</a></h4></li>
+        <li v-if="url"><h4><a :href="url" target="_blank"><i class="el-icon-info"></i>Read More</a></h4></li>
+      </ul>
     </el-row>
   </div>
 </template>
@@ -40,9 +35,18 @@ export default {
     'info',
     'tags',
     'image',
+    'imageType',
     'tour',
     'url'
-  ]
+  ],
+  mounted: function () {
+    this.$refs.popupImage.style.backgroundImage = `url(${this.image})`
+    if (this.imageType) {
+      this.$refs.popupImage.style.backgroundSize = this.imageType
+    } else {
+      this.$refs.popupImage.style.backgroundSize = 'cover'
+    }
+  }
 }
 </script>
 
@@ -52,37 +56,62 @@ export default {
 
 <style scoped lang="scss">
 
+$--border-width: 0.4em;
+
 .popup {
-  padding: 0;
-  margin: 0;
+  border-width: $--border-width ($--border-width + 0.1) $--border-width ($--border-width + 0.1);
+  border-color: $--color-primary;
+  border-style: solid;
+  border-radius: 6px;
+  :first-child {
+    padding: 0;
+  }
+  :not(:first-child) {
+    padding: 10px;
+  }
 }
 
 .popup-image {
-  border-width: 0.18em;
-  border-style: solid;
-  border-color:$--color-primary;
+  width:100%;
+  height: 10em;
+  border: none;
+  filter:opacity(90%);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
 }
 
 $--text-padding: 6px;
 
 .links {
- text-align: left;
- padding-right: $--text-padding;
- margin-top: 2px;
- font-size: 13px;
- font-weight: 500;
- text-decoration: underline;
+  display: table;
+  ul {
+    li {
+      display: inline-block;
+      text-align: left;
+      padding-right: $--text-padding;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+   }
+ }
 }
 
 .links-header {
   margin-top: 5px;
 }
 
-h2 {
+.title {
+  background-color: $--color-primary;
+
+  h2 {
     font-weight: 600;
-    color: $--color-primary;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    color: white;
+  }
+  h3 {
+    color:white;
+  }
 }
 
 </style>

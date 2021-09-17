@@ -57,7 +57,9 @@
     "properties": {
       "name": "International Living and Learning Center",
       "info": "The ILLC is the equivalent of LEED Gold rated and is the home of many innovative and sustainable features, as well as housing for international students.",
-      "category":"building"
+      "category":"building",
+      "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/illc.jpg",
+      "imageType":"cover"
     }
   },
   {
@@ -83,7 +85,9 @@
       "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land.",
       "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3",
       "category":"programs",
-      "url": "https://fa.oregonstate.edu/sustainability/ground-mounted-photovoltaic-arrays"
+      "url": "https://fa.oregonstate.edu/sustainability/ground-mounted-photovoltaic-arrays",
+      "image":"https://osu-energy-images.s3-us-west-2.amazonaws.com/thumbnails/35th_st_eastward_s.jpg",
+      "imageType":"cover"
    }
   },
   ]

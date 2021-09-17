@@ -16,7 +16,10 @@
                 "name": "Food Forest",
                 "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
                 "tags":["food"],
-                "category":"dining"
+                "category":"programs",
+                "url": "https://experience.oregonstate.edu/feature-story/growing-food-osu",
+                "image": "https://experience.oregonstate.edu/sites/experience.oregonstate.edu/files/styles/paragraph-1920w/public/feature-story/foodforest4.png",
+                "imageType":"cover"
             }
         },
         {
@@ -38,7 +41,8 @@
                 "tags":["building"],
                 "category":"programs",
                 "url": "https://cel.oregonstate.edu/",
-                "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png"
+                "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png",
+                "imageType":"cover"
             }
         },
         {
@@ -51,7 +55,9 @@
                 "name": "OSUsed Store",
                 "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
                 "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
-                "category":"programs"
+                "category":"programs",
+                "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/2114/files/2019/09/OSUsed-sale.jpg",
+                "imageType":"cover"
             }
         },
         {
@@ -117,7 +123,70 @@
                 "category":"programs",
                 "url":"https://agsci.oregonstate.edu/sustainabilitydd"
             }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.275184, 44.567029]
+            },
+            "properties":{
+                "name": "Energy Efficiency Center",
+                "info": 
+                '''
+                The Oregon State Energy Efficiency Center is a faculty-mentored, student-based team devoted to uncovering opportunities in cost, 
+                energy, and time savings for Pacific Northwest manufacturers. Founded in 1987, the center is among the most historic in the nationwide 
+                network of Industrial Assessment Centers (IACs). IACs offer high-quality operational assessments at no cost to eligible manufacturer, 
+                practical training for students, and a leg up for the United States manufacturing industry.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://eec.oregonstate.edu/"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.277299, 44.565595]
+            },
+            "properties":{
+                "name": "Institute for Natural Resources",
+                "info": 
+                '''
+                 The Institute for Natural Resources (INR) was established in 2001 through the Oregon Legislature (ORS 352.808) to 
+                 fulfill several legislative purposes that provide ready access to relevant science-based data, tools, and information 
+                 for natural resource and environmental decision making. INR works to advance centralized, science-based natural resource 
+                 information for Oregon and the Pacific Northwest.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://inr.oregonstate.edu/",
+                "image":"https://inr.oregonstate.edu/sites/inr.oregonstate.edu/files/logos-07.png",
+                "imageType": "contain"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.279796, 44.568486]
+            },
+            "properties":{
+                "name": "Oregon Climate Change Research Institute",
+                "info": 
+                '''
+                 The Oregon Climate Change Research Institute (OCCRI) is a network of dozens of researchers and professionals at Oregon State University, 
+                 Portland State University, the University of Oregon, and other universities, agencies, and organizations. OCCRI also houses the Oregon 
+                 Climate Service, which is recognized by the American Association of State Climatologists as Oregon’s state climate office. OCCRI is hosted 
+                 by the College of Earth, Ocean, and Atmospheric Sciences at Oregon State University.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://blogs.oregonstate.edu/occri/",
+                "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/3952/files/2020/12/cropped-OCCRI_logo_vect-1.png",
+                "imageType": "contain"
+            }
         }
-
     ]
 }
