@@ -105,13 +105,7 @@ export default {
 
 $sideMenu-width: 18.2em; //250px;
 
-.buttonGroup {
-  flex-direction: column;
-  span {
-    align-self: center;
-  }
-}
-
+// Side Menu
 .sideMenu {
     background-color: $--color-black;
     width: $sideMenu-width;
@@ -137,6 +131,14 @@ $sideMenu-width: 18.2em; //250px;
     cursor: pointer;
 }
 
+// Button Styles
+.buttonGroup {
+  flex-direction: column;
+  span {
+    align-self: center;
+  }
+}
+
 .buttons > * {
     text-align: center;
 }
@@ -159,29 +161,6 @@ $sideMenu-width: 18.2em; //250px;
   background-color: $--acknowledgement-button-color;
 }
 
-/* <transition> component styling */
-.side-enter-active, .side-leave-active {
-  transition: all 0.5s;
-  transform: translate(-100%);
-}
-.side-enter-to {
-  transform: translate(0%);
-}
-
-.side-leave-to {
-  transform: translate(-100%);
-}
-
-.sideButton {
-  z-index: 2000;
-  width: 1em;
-  margin: 0em 1em 0.25em 1em;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  left: 0.5em;
-}
-
 /* Mobile Friendly Styling Adjustments */
 @media only screen and (max-width: $--mobile-width) {
   .sideMenu {
@@ -198,23 +177,22 @@ $sideMenu-width: 18.2em; //250px;
   }
 
   .buttonGroup {
+    display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
+    $--mobile-btn-width: 12em;
+    $--mobile-btn-font: 10px;
+    $--mobile-btn-margin: 0.125em;
+    .acknowledgement-button, .sortButton {
+      margin: $--mobile-btn-margin;
+      min-width:$--mobile-btn-width;
+      max-width:$--mobile-btn-width;
+      font-size: $--mobile-btn-font;
+      padding: 0.5em;
+      font-weight: 500;
+    }
   }
-
-  .sortButton {
-    margin: 0.125em;
-    padding: 1em;
-    min-width:13em;
-    text-align:left;
-    font-size: 11px;
-  }
-
-  /*
-  .buttonGroup .el-row {
-    justify-content: flex-start;
-  }
-  */
 }
 
 </style>

@@ -3,7 +3,7 @@
     Description: Vue component for the feature pop-up windows
 -->
 <template>
-  <div class="popup">
+  <div class="popup" ref="popup">
     <el-row type="flex" justify="center" v-show="image">
       <!--Pop-up Image-->
       <div ref='popupImage' class='popup-image'>
@@ -37,7 +37,8 @@ export default {
     'image',
     'imageType',
     'tour',
-    'url'
+    'url',
+    'isMobile'
   ],
   mounted: function () {
     this.$refs.popupImage.style.backgroundImage = `url(${this.image})`
@@ -45,6 +46,9 @@ export default {
       this.$refs.popupImage.style.backgroundSize = this.imageType
     } else {
       this.$refs.popupImage.style.backgroundSize = 'cover'
+    }
+    if (this.isMobile) {
+      // this.$refs.popup.
     }
   }
 }
@@ -104,13 +108,26 @@ $--text-padding: 6px;
 
 .title {
   background-color: $--color-primary;
-
+  /*
+    On chrome there's a whitebox between the popup-border and background-color
+    unless we set the margin to a negative value.  I don't know why "margin: 0"
+    still displays a thin white border, but I'm assuming this is a some weird
+    bug with webkit.
+  */
+  margin: -1px;
   h2 {
     font-weight: 600;
     color: white;
   }
   h3 {
     color:white;
+  }
+}
+
+// Mobile Styling for Popup
+@media only screen and (max-width: $--mobile-width) {
+  .popup {
+    max-width: 300px;
   }
 }
 

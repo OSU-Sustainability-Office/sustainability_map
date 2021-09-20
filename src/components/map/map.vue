@@ -122,7 +122,8 @@ export default {
         // with the Leaflet class type "Point" but has all the same properties
         // as a GeoJSON feature
         pointToLayer: (feature, latlng) => {
-          let { category, name, info, tour } = feature.properties
+          // another feature property is tour--may want to use later
+          let { category, name, info } = feature.properties
           if (category === undefined) category = 'general'
 
           const featureMarker = L.marker(latlng, {
@@ -230,29 +231,6 @@ export default {
 
 <style scoped lang='scss'>
 
-.el-button.sideButton {
-  z-index: 2000;
-  width: 10px;
-  margin: 0.7em 1em 0.25em 1em;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  left: 2em;
-}
-
-/* <transition> component styling */
-.side-enter-active, .side-leave-active {
-  transition: all 0.5s;
-  transform: translate(-100%);
-}
-.side-enter-to {
-  transform: translate(0%);
-}
-
-.side-leave-to {
-  transform: translate(-100%);
-}
-
 /* Popup Styles */
 .popup-item {
   display: flex;
@@ -305,11 +283,35 @@ export default {
     flex-direction: column;
 }
 
+.el-button.sideButton {
+  z-index: 2000;
+  width: 10px;
+  margin: 0.7em 1em 0.25em 1em;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 2em;
+}
+
 /* Mobile Friendly Styling Adjustments */
 @media only screen and (max-width: $--mobile-width) {
   .el-container.mapContainer {
+    // moves the sideView above the map
     flex-direction: column;
   }
+
+  .el-button.sideButton {
+    margin-top: 0.1em;
+    margin-left: 0.1em;
+    margin-right: 0em;
+    margin-bottom: 0em;
+    left: 2.6em;
+    // Make icon point up & down
+    .el-icon-s-unfold, .el-icon-s-fold {
+      transform: rotate(0.25turn);
+    }
+  }
+
 }
 
 </style>

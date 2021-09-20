@@ -128,7 +128,7 @@ export default {
 
 /* Search bar results in drop-down */
 .result-container {
-  width: 20vw;
+  width: 40vw;
   font-size: 14px;
 }
 
@@ -259,7 +259,7 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     padding: 0;
-}
+  }
 
   .el-col.sus-nav-item {
     display: flex;
