@@ -27,9 +27,11 @@
     "geometry":{
         "type":"MultiPoint",
         "coordinates": [
+            // Near Snell Hall
             [-123.27597860000, 44.56434620000],
-            [-123.27838180000, 44.56764060000],
-            [-123.28152540000, 44.55852890000]
+            [-123.27838180000, 44.56764060000]
+            // Old locker near Reser, now removed
+            // [-123.276775, 44.563971]
         ]
     },
     "properties":{
@@ -45,7 +47,8 @@
       "geometry":{
           "type":"MultiPoint",
           "coordinates": [
-              [-123.28672890000, 44.56679980000],
+              // Bikestand @ West (or soon to be--planned to be moved from Motor Pool to WNB)
+              [-123.29053, 44.557871],
               [-123.27267410000, 44.56362000000],
               [-123.27818870000, 44.56325310000]
           ]
@@ -56,6 +59,38 @@
           "tags": [],
           "category":"bike",
           "url": "https://transportation.oregonstate.edu/sites/transportation.oregonstate.edu/files/bike-brochure.pdf"
+      }
+  },
+  {
+      "type":"Feature",
+      "geometry":{
+          "type":"MultiPoint",
+          "coordinates": [
+              // Northeast Cornor of INTO building
+              [-123.275629, 44.560569],
+              // Southwest Cornor of Sackett
+              [-123.284228, 44.564647]
+          ]
+      },
+      "properties":{
+          "name": "Zip Cars",
+          "info":  "Conveniently located around campus, Zipcar vehicles provide a cost-effective around-the-clock alternative to bringing your car to campus. ",
+          "tags": [],
+          "category":"bike",
+          "url": "https://transportation.oregonstate.edu/zipcar"
+      }
+  },
+  {
+      "type":"Feature",
+      "geometry":{
+          "type":"Point",
+          "coordinates": [-123.2866, 44.56657]
+      },
+      "properties":{
+          name:"Motor Pool",
+          "info":" The Transportation Services department operates a motor pool of vans, trucks and sedans for rent at economical rates to individuals authorized to travel on official University or other government business.",
+          "category":"bike",
+          "url":"https://transportation.oregonstate.edu/motorpool"
       }
   }
   ]
