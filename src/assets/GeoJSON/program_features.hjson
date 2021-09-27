@@ -1,6 +1,26 @@
 /*
     Filename: sustainability_features.hjson
     Description: Contains misc. sus. programs on campus
+    
+For copy-pasting new entries:
+    {
+            "type": "Feature",
+            "geometry": {
+                "type":"Point",
+                "coordinates":[]
+            },
+            "properties":{
+                "name":"",
+                "info":
+                '''
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"",
+                "image":"",
+                "imageType":""
+            }
+        }
 */
 {
     "type":"FeatureCollection",
@@ -68,10 +88,27 @@
             },
             "properties":{
                 "name": "OSU Sustainability Office",
-                "info":  "The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.",
+                "info": "The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.",
                 "tags": [],
                 "category":"programs",
                 "url": "https://fa.oregonstate.edu/sustainability/about/sustainability-office"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates": [-123.291057, 44.557593]
+            },
+            "properties": {
+                "name": "Transportation Services",
+                "info": 
+                '''
+                    Transportation Services supports the University’s mission by providing safe, sustainable, customer-focused, and fiscally-sound transportation programs and services.
+                    Helping you get OUT THERE.
+                ''',
+                "category":"programs",
+                "url": "https://transportation.oregonstate.edu/"
             }
         },
         {
@@ -186,6 +223,158 @@
                 "url":"https://blogs.oregonstate.edu/occri/",
                 "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/3952/files/2020/12/cropped-OCCRI_logo_vect-1.png",
                 "imageType": "contain"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type":"Point",
+                "coordinates":[-123.28106, 44.56493]
+            },
+            "properties":{
+                "name":"Asian & Pacific Cultural Center",
+                "info":
+                '''
+                 The Asian & Pacific Cultural Center (APCC) is a space to engage on-campus and online students
+                  and members of the community around the Asian and Pacific Islander experience. APCC provides 
+                  opportunities for engagement around the intersectional experiences of Asian and Pacific Islanders, 
+                  the pursuit towards academic excellence, and the emergence of professional passion.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/apcc",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/asian-cultural-center-600w.png",
+                "imageType":"cover"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type":"Point",
+                "coordinates":[-123.27824, 44.56843]
+            },
+            "properties":{
+                "name":"Lonnie B. Harris Black Cultural Center",
+                "info":
+                '''
+                 The mission of the Lonnie B. Harris Black Cultural Center is to complement the academic program of 
+                 studies and enrich the quality of campus life for African and African-American students on-campus 
+                 and online at Oregon State University.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/bcc",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/black-cultural-center-600w.png",
+                "imageType":"cover"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type":"Point",
+                "coordinates":[-123.27932, 44.56058]
+            },
+            "properties":{
+                "name":"Centro Cultural César Chávez",
+                "info":
+                '''
+                 The Centro Cultural César Chávez exists to support the Latinx and Chicanx student community in the 
+                 achievement of their educational and professional goals and retention of their culture. Further, the 
+                 Centro Cultural César Chávez provides a space for students to share their culture and heritage with 
+                 the broader OSU community and inform the OSU community about issues central to Chicanx/Latinx people. 
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/cccc",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/cccc-600w.png",
+                "imageType":"cover"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.27725, 44.564853]
+            },
+            "properties":{
+                "name":"Ettihad Cultural Center",
+                "info":
+                '''
+                Ettihad means "unity" or “alliance” in multiple languages from the Ettihad Cultural Center’s community 
+                including Farsi, Urdu, Hebrew and Arabic. The Ettihad Cultural Center is inclusive of communities from 
+                the Horn of Africa, North Africa, West Asia, Central Asia, and South Asia. The Ettihad Cultural Center 
+                initially established itself as a student organization in the spring of 2012 and then eventually became 
+                a Cultural Resource Center with the grand opening of the Ettihad Cultural Center on October 2014 in Snell Hall 424. 
+                Ettihad Cultural Center since relocated to their current home at the Student Experience Center in SEC 380.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/ecc",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/ettihad-center-600w.png",
+                "imageType":"cover"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.279637, 44.564028]
+            },
+            "properties":{
+                "name":"Kaku-Ixt Mana Ina Haws",
+                "info":
+                '''
+                The Kaku-Ixt Mana Ina Haws (Ina Haws) represents the Indigenous people of the Americas and Pacific Islands. 
+                The Kaku-Ixt Mana Ina Haws strives to deconstruct colonial borders’ impact on Indigenous identities while 
+                also honoring the sovereignty of Tribes. While protecting and preserving the rights of Indigenous people, 
+                the Ina Haws provides a sense of home/community for Indigenous students that helps preserve their Indigenous identities 
+                while in college. The Ina Haws provides a source of support honoring the cultures of the first people of these 
+                lands and waters. The Ina Haws also provides educational opportunities to educate all about the regions Tribes.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/inahaws",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/longhouse-600w.png",
+                "imageType":"cover"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.274835, 44.560983]
+            },
+            "properties":{
+                "name":"Pride Center",
+                "info":
+                '''
+                 The Pride Center provides programs and support services for lesbian, gay, bisexual, transgender, queer, questioning, 
+                 intersex, and asexual members of the on-campus and online OSU community and their allies (LGBTQQIAA). The Pride Center 
+                 affirms the identities and empowers the lives of people who are LGBTQQIAA by providing education, outreach, program support, 
+                 consultation, community development, visibility, and advocacy. The Pride Center is a safe space for all members of our 
+                 community to explore aspects of sexual orientation and gender identity in an open and non-judgmental atmosphere.
+                ''',
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/pc"
+            }
+        },
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-123.274776, 44.565852]
+            },
+            "properties":{
+                "name":"Hattie Redmond Women & Gender Center",
+                "info":
+                '''
+                The Hattie Redmond Women & Gender Center (WGC) serves as a campus focal point for projects directed at addressing women's issues on campus, in the community-at-large, and globally. 
+                As an open community of leaders inspiring change, the WGC provides advocacy, resources, and opportunities to transform ideas into positive action and reality.
+                ''',
+                "category":"programs",
+                "url":"https://dce.oregonstate.edu/wgc",
+                "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/womenscenter-600w.png",
+                "imageType":"cover"
             }
         }
     ]
