@@ -66,10 +66,12 @@
       "geometry":{
           "type":"MultiPoint",
           "coordinates": [
+              // Locations from https://www.zipcar.com/universities/oregon-state-university 
               // Northeast Cornor of INTO building
-              [-123.275629, 44.560569],
-              // Southwest Cornor of Sackett
-              [-123.284228, 44.564647]
+              [-123.275377, 44.560678],
+              // Outside Fairbanks hall (on street)
+              [-123.280114, 44.564599],
+
           ]
       },
       "properties":{
