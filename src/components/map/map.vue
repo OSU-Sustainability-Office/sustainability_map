@@ -129,7 +129,7 @@ export default {
           const featureMarker = L.marker(latlng, {
             icon: L.icon({
               iconUrl: `images/categories/${category}.png`,
-              iconSize: [20, 20], // [27, 27],
+              iconSize: [21, 21], // [27, 27],
               iconAncor: [13, 27],
               popupAnchor: [-20, -20]
               // className: (tour) ? 'tourDot' : ''
