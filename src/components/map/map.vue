@@ -123,12 +123,12 @@ export default {
         // as a GeoJSON feature
         pointToLayer: (feature, latlng) => {
           // another feature property is tour--may want to use later
-          let { category, name, info } = feature.properties
-          if (category === undefined) category = 'general'
+          let { icon, name, info } = feature.properties
+          if (icon === undefined) icon = 'general'
 
           const featureMarker = L.marker(latlng, {
             icon: L.icon({
-              iconUrl: `images/categories/${category}.png`,
+              iconUrl: `images/categories/${icon}.png`,
               iconSize: [21, 21], // [27, 27],
               iconAncor: [13, 27],
               popupAnchor: [-20, -20]

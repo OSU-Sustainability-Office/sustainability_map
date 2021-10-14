@@ -42,6 +42,7 @@
       "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out containers. These points denote locations where students can return the containers.",
       "tags":["food", "recycle"],
       "category": "dining",
+      "icon": "dining",
       "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
     }
   }

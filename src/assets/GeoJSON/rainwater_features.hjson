@@ -32,6 +32,7 @@
           "info": "Bioswales are features designed to slow the flow of water, decreasing the magnitude of surge events caused by the lack of permeable surfaces, allowing sediments to drop out, heavy metals to bind to soil particles, and water to cool.",
           "tags": ["recycling"],
           "category":"rain",
+          "icon":"rain",
           "url": "https://blogs.oregonstate.edu/ecologue/2016/11/29/digging-into-bioswales/"
       }
   },
@@ -55,6 +56,7 @@
         "info":  "Rain gardens are vegetated depressions that catch rain runoff from impervious areas such as roofs, driveways, walkways, parking lots, and even some compacted lawn areas. They are designed to absorb stormwater rather than filter it of its pollutants.",
         "tags": [],
         "category":"rain",
+        "icon":"rain",
         "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
     }
   },
@@ -69,6 +71,7 @@
         "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
         "tags": [],
         "category":"rain",
+        "icon":"rain",
         "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
     }
   },
@@ -83,6 +86,7 @@
         "info":  "A green roof, or “vegetative roof”, is a rooftop of a building that is covered with planted vegetation laying over a waterproofing system.Green roofs absorb rainwater, provide insulation, create habitat for wildlife,and decrease urban air temperatures.",
         "tags": [],
         "category":"rain",
+        "icon":"rain",
         "url": "https://horticulture.oregonstate.edu/oak-creek-center-urban-horticulture"
     }
   },
@@ -102,7 +106,8 @@
         "name": "Rain Collection",
         "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
         "tags": [],
-        "category":"rain"
+        "category":"rain",
+        "icon":"rain",
     }
   },
   {
@@ -131,6 +136,7 @@
                 ''',
         "tags": [],
         "category":"rain",
+        "icon":"rain",
         "url": "https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/2021-07/stormwater_brochure_v12.pdf"
     }
   }
