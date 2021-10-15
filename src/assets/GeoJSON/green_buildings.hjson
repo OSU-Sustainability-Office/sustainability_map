@@ -13,6 +13,7 @@
             "info":"In 2008 Kearney Hall was remodeled to provide the Civil Engineering and Construction Engineering Management programs with state-of-the-art classrooms, offices, and a 120 seat auditorium. The project received a LEED Gold rating by the US Green Building Council.",
             "tags":["building", "LEED Gold"],
             "category": "building",
+            "icon":"buildings",
             "LEED": "Gold",
             "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
         }
@@ -28,6 +29,7 @@
           "info":"A certified LEED Gold building with the following features: 16,500 gallon rainwater collection system, modular raised floor system that allows air to circulate eliminating the need for ceiling air ducts, systems designed to use ~50% less electricity and ~70% less water than required, and much more.",
           "tags":["building"],
           "category":"building",
+          "icon":"buildings",
           "LEED":"Gold",
           "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/4172-Campus-0195.jpg",
           "tour": "https://tour.metareal.com/apps/player?asset=13261cff-fb8e-4b05-a055-fbac82d08dc8",
@@ -44,6 +46,7 @@
       "name":"OSU Energy Center",
       "info": "OSU's 1920s era heat plant provided steam to most campus buildings until 2009 when the new OSU Energy Center went online, producing steam and electricity to efficiently heat and power OSU's main campus.",
       "category":"building",
+      "icon":"buildings",
       "LEED": "Platinum",
       "url": "https://fa.oregonstate.edu/sustainability/operations/green-building/completed-construction"
     }
@@ -58,6 +61,7 @@
       "name": "International Living and Learning Center",
       "info": "The ILLC is the equivalent of LEED Gold rated and is the home of many innovative and sustainable features, as well as housing for international students.",
       "category":"building",
+      "icon": "buildings"
       "image": "https://osu-energy-images.s3-us-west-2.amazonaws.com/illc.jpg",
       "imageType":"cover"
     }
@@ -71,7 +75,8 @@
     "properties":{
       "name":"Oak Creek Center for Urban Horticulture",
       "info":"The site, located along Oak Creek, is tucked into a corner of campus once used to teach beekeeping.",
-      "category":"programs"
+      "category":"building",
+      "icon": "buildings"
     }
   },
   {
@@ -84,7 +89,8 @@
       "name":"35th Street Solar Array",
       "info":"A 1.435 megawatt array is located adjacent to the Campus Way bike path just west of OSU's farm services buildings. Sheep still graze this pasture, which now serves double duty providing electricity and grass. This installation produces enough electricity to power 167 homes for a year or offset CO2 emissions from 136,206 gallons of gasoline per year. This array is one of five large ground-mounted solar electric (photovoltaic) arrays installed on OSU land.",
       "tour": "https://tour.metareal.com/apps/player?asset=a46ef967-f816-4195-b638-24321e504cf3",
-      "category":"programs",
+      "category":"building",
+      "icon":"buildings",
       "url": "https://fa.oregonstate.edu/sustainability/ground-mounted-photovoltaic-arrays",
       "image":"https://osu-energy-images.s3-us-west-2.amazonaws.com/thumbnails/35th_st_eastward_s.jpg",
       "imageType":"cover"

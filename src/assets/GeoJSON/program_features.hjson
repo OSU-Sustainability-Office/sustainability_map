@@ -37,6 +37,7 @@ For copy-pasting new entries:
                 "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
                 "tags":["food"],
                 "category":"programs",
+                "icon":"programs",
                 "url": "https://experience.oregonstate.edu/feature-story/growing-food-osu",
                 "image": "https://experience.oregonstate.edu/sites/experience.oregonstate.edu/files/styles/paragraph-1920w/public/feature-story/foodforest4.png",
                 "imageType":"cover"
@@ -60,6 +61,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":["building"],
                 "category":"programs",
+                "icon":"programs",
                 "url": "https://cel.oregonstate.edu/",
                 "image":"https://cel.oregonstate.edu/sites/cel.oregonstate.edu/files/styles/paragraph-1920w/public/cel_imagine_tree_website_banner_5.png",
                 "imageType":"cover"
@@ -76,6 +78,7 @@ For copy-pasting new entries:
                 "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
                 "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
                 "category":"programs",
+                "icon":"programs",
                 "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/2114/files/2019/09/OSUsed-sale.jpg",
                 "imageType":"cover"
             }
@@ -91,6 +94,7 @@ For copy-pasting new entries:
                 "info": "The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.",
                 "tags": [],
                 "category":"programs",
+                "icon":"programs",
                 "url": "https://fa.oregonstate.edu/sustainability/about/sustainability-office"
             }
         },
@@ -108,6 +112,7 @@ For copy-pasting new entries:
                     Helping you get OUT THERE.
                 ''',
                 "category":"programs",
+                "icon":"programs",
                 "url": "https://transportation.oregonstate.edu/"
             }
         },
@@ -122,6 +127,7 @@ For copy-pasting new entries:
                 "info":  "Campus Recycling is responsible for managing a comprehensive waste management system that focuses on reducing, reusing and recycling with disposal as a last resort.",
                 "tags": [],
                 "category":"programs",
+                "icon":"programs",
                 "url": "https://recycle.oregonstate.edu/"
             }
         },
@@ -139,6 +145,7 @@ For copy-pasting new entries:
                 ''',
                 "tags": [],
                 "category": "programs",
+                "icon":"programs",
                 "url": "https://uhds.oregonstate.edu/housing/earth2osu"
             }
         },
@@ -158,6 +165,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://agsci.oregonstate.edu/sustainabilitydd"
             }
         },
@@ -178,6 +186,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://eec.oregonstate.edu/"
             }
         },
@@ -198,6 +207,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://inr.oregonstate.edu/",
                 "image":"https://inr.oregonstate.edu/sites/inr.oregonstate.edu/files/logos-07.png",
                 "imageType": "contain"
@@ -220,6 +230,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://blogs.oregonstate.edu/occri/",
                 "image": "https://osu-wams-blogs-uploads.s3.amazonaws.com/blogs.dir/3952/files/2020/12/cropped-OCCRI_logo_vect-1.png",
                 "imageType": "contain"
@@ -242,6 +253,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/apcc",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/asian-cultural-center-600w.png",
                 "imageType":"cover"
@@ -263,6 +275,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/bcc",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/black-cultural-center-600w.png",
                 "imageType":"cover"
@@ -285,6 +298,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/cccc",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/cccc-600w.png",
                 "imageType":"cover"
@@ -309,6 +323,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/ecc",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/ettihad-center-600w.png",
                 "imageType":"cover"
@@ -333,6 +348,7 @@ For copy-pasting new entries:
                 ''',
                 "tags":[""],
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/inahaws",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/longhouse-600w.png",
                 "imageType":"cover"
@@ -355,6 +371,7 @@ For copy-pasting new entries:
                  community to explore aspects of sexual orientation and gender identity in an open and non-judgmental atmosphere.
                 ''',
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/pc"
             }
         },
@@ -372,6 +389,7 @@ For copy-pasting new entries:
                 As an open community of leaders inspiring change, the WGC provides advocacy, resources, and opportunities to transform ideas into positive action and reality.
                 ''',
                 "category":"programs",
+                "icon":"programs",
                 "url":"https://dce.oregonstate.edu/wgc",
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/womenscenter-600w.png",
                 "imageType":"cover"

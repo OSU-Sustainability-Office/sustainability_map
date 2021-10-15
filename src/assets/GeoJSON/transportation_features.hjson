@@ -19,6 +19,7 @@
           "info":  "OSU has 21 electric vehicle (EV) charging stations on the Corvallis campus, on two different charging networks. There are 18 Blink Network Level 2 chargers and three ChargePoint Level 2 chargers. In Newport at the Gladys Valley Marine Studies Building, there are two dual head ChargePoint chargers. A membership card or account from the respective company may be required to use their units.",
           "tags": [],
           "category":"bike",
+          "icon":"bike",
           "url":"https://transportation.oregonstate.edu/ev-charging-locations"
       }
   },
@@ -39,6 +40,7 @@
         "info":  "Bike lockers are more secure than bike racks, especially if your bike will be locked on campus overnight. Lockers protect both your bike and any unsecured parts such as the wheels and seat. Bike lockers also protect bikes from the elements.",
         "tags": ["bike"],
         "category":"bike",
+        "icon":"bike",
         "url":"https://transportation.oregonstate.edu/bike-lockers"
     }
   },
@@ -58,6 +60,7 @@
           "info":  "Locations on campus containing free access to a pump and basic bike tools.",
           "tags": [],
           "category":"bike",
+          "icon":"bike",
           "url": "https://transportation.oregonstate.edu/sites/transportation.oregonstate.edu/files/bike-brochure.pdf"
       }
   },
@@ -79,6 +82,7 @@
           "info":  "Conveniently located around campus, Zipcar vehicles provide a cost-effective around-the-clock alternative to bringing your car to campus. ",
           "tags": [],
           "category":"bike",
+          "icon":"bike",
           "url": "https://transportation.oregonstate.edu/zipcar"
       }
   },
@@ -92,6 +96,7 @@
           name:"Motor Pool",
           "info":" The Transportation Services department operates a motor pool of vans, trucks and sedans for rent at economical rates to individuals authorized to travel on official University or other government business.",
           "category":"bike",
+          "icon":"bike",
           "url":"https://transportation.oregonstate.edu/motorpool"
       }
   }
