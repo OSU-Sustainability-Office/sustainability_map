@@ -94,7 +94,7 @@
       },
       "properties":{
           name:"Motor Pool",
-          "info":" The Transportation Services department operates a motor pool of vans, trucks and sedans for rent at economical rates to individuals authorized to travel on official University or other government business.",
+          "info":"The Transportation Services department operates a motor pool of vans, trucks and sedans for rent at economical rates to individuals authorized to travel on official University or other government business.",
           "category":"bike",
           "icon":"car",
           "url":"https://transportation.oregonstate.edu/motorpool"
