@@ -13,7 +13,10 @@
       <h2>{{name}}</h2>
     </el-row>
     <el-row>
-      {{info}}
+      // eslint-disable-next-line vue/require-v-for-key
+      <div v-for="line of info.split('\n')">
+        {{ line.trim() }}
+      </div>
     </el-row>
     <el-row class='links-header title' v-if="tour || url">
       <h3>Additional links</h3>
@@ -50,6 +53,12 @@ export default {
     if (this.isMobile) {
       // this.$refs.popup.
     }
+  },
+  // use filter for text content (maybe)
+  filters: {
+    newlines: function (value) {
+      return value.split('\n')
+    }
   }
 }
 </script>
@@ -73,6 +82,10 @@ $--border-width: 0.4em;
   :not(:first-child) {
     padding: 10px;
   }
+}
+
+.el-row.content {
+      white-space: pre;
 }
 
 .popup-image {

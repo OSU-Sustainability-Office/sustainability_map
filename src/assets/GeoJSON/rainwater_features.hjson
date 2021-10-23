@@ -29,7 +29,7 @@
       },
       "properties":{
           "name": "Bioswale",
-          "info": "Bioswales are features designed to slow the flow of water, decreasing the magnitude of surge events caused by the lack of permeable surfaces, allowing sediments to drop out, heavy metals to bind to soil particles, and water to cool.",
+          "info": "Bioswales are features designed to slow the flow of water, decreasing the magnitude of surge events caused by the lack of permeable surfaces This allows sediments to drop out, heavy metals to bind to soil particles, and water to cool.",
           "tags": ["recycling"],
           "category":"rain",
           "icon":"rain",
@@ -53,7 +53,7 @@
     },
     "properties":{
         "name": "Rain Garden",
-        "info":  "Rain gardens are vegetated depressions that catch rain runoff from impervious areas such as roofs, driveways, walkways, parking lots, and even some compacted lawn areas. They are designed to absorb stormwater rather than filter it of its pollutants.",
+        "info": "Rain gardens are vegetated depressions that catch rain runoff from impervious areas such as roofs, driveways, walkways, parking lots, and even some compacted lawn areas. They are designed to absorb stormwater rather than filter it of its pollutants.",
         "tags": [],
         "category":"rain",
         "icon":"rain",
@@ -68,7 +68,7 @@
     },
     "properties":{
         "name": "Sewer Access Structure",
-        "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
+        "info": "A sewer access structure screens, separates, and traps pollutants that would normally flow directly into local streams. These separators drop out solids in the center by spiraling inflow and capturing oils and floatables. The filtered rain water then flows into the local water system.",
         "tags": [],
         "category":"rain",
         "icon":"rain",
@@ -83,7 +83,7 @@
     },
     "properties":{
         "name": "Green Roof",
-        "info":  "A green roof, or “vegetative roof”, is a rooftop of a building that is covered with planted vegetation laying over a waterproofing system.Green roofs absorb rainwater, provide insulation, create habitat for wildlife,and decrease urban air temperatures.",
+        "info":  "A green roof, or “vegetative roof”, is a rooftop that is covered with planted vegetation over a waterproofing system. Green roofs absorb rainwater, provide insulation, create habitat for wildlife, and decrease urban air temperatures.",
         "tags": [],
         "category":"rain",
         "icon":"rain",
@@ -104,7 +104,7 @@
     },
     "properties":{
         "name": "Rain Collection",
-        "info":  "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
+        "info": "Rainwater collection is the storage of rain in large tanks that can be located indoors or outdoors. Rainwater can be collected from roofs and redirected to these tanks for later use as irrigation, toilet flushing, or other non-potable uses.",
         "tags": [],
         "category":"rain",
         "icon":"rain",
@@ -124,15 +124,7 @@
     "properties":{
         "name": "Permeable Pavement",
         "info": '''
-                Permeable paving can be created using a number of different
-                techniques, but the fundamental idea stays the same throughout:
-                infiltration. Permeable pavement allows rainwater to flow through and
-                into a series of subbase materials to suspend any solids and
-                pollutants from the runoff before releasing the water back into the
-                ground water system. Oregon State University has begun implementing porous asphalt in
-                parking lots as pictured to the right. The surface looks just as any other
-                parking lot would, but with a different mix of asphalt which allows water
-                to flow through and infiltrate into the ground.
+                Permeable paving can be created using a number of different techniques, but the fundamental idea stays the same throughout: infiltration. Permeable pavement allows rainwater to flow through and into a series of subbase materials to suspend any solids and pollutants from the runoff before releasing the water back into the groundwater system. OSU has begun implementing porous asphalt in parking lots. The surface looks just as any other parking lot would, but with a different mix of asphalt which allows water to flow through and infiltrate into the ground.
                 ''',
         "tags": [],
         "category":"rain",
