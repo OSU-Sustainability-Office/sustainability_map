@@ -34,7 +34,7 @@ For copy-pasting new entries:
             },
             "properties":{
                 "name": "Food Forest",
-                "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing and Dining Services (UHDS) with some fresh, organic produce.",
+                "info": "Located outside of Callahan Hall, the Food Forest is a small student-and-volunteer-run organic garden that provides teaching and volunteering opportunities, as well as supplying University Housing & Dining Services (UHDS) with fresh, organic produce.",
                 "tags":["food"],
                 "category":"programs",
                 "icon":"programs",
@@ -53,11 +53,7 @@ For copy-pasting new entries:
                 "name":"Community Engagement & Leadership",
                 "info":
                 '''
-                Housed in the SEC, CEL is a department within Student, Experiences & Engagement (SEE) which creates space for students to craft
-                and advance their collective visions of social, economic, and environmental justice by facilitating community-engaged learning experiences. 
-                In partnership with community-based organizations, CEL provides direct service, advocacy, philanthropy, and other community engagement 
-                opportunities that allow students to work towards a more just, sustainable world. CEL builds community capacity, enhances students' leadership
-                skills, and inspires positive change through connecting students’ interests and talents with community needs.
+                Housed in the Student Experience Center, CEL is a department within Student, Experiences & Engagement (SEE) which creates space for students to craft and advance their collective visions of social, economic, and environmental justice by facilitating community-engaged learning experiences. In partnership with community-based organizations, CEL provides direct service, advocacy, philanthropy, and other community engagement that allow students to work towards a more just, sustainable world. CEL builds community capacity, enhances students' leadership skills, and inspires positive change through connecting students’ interests and talents with community needs.
                 ''',
                 "tags":["building"],
                 "category":"programs",
@@ -75,7 +71,11 @@ For copy-pasting new entries:
             },
             "properties":{
                 "name": "OSUsed Store",
-                "info": "The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. Shopping Hours: Tues. 5:30-7:30 pm, Fri. 12-3 pm.",
+                "info": '''
+                The OSUsed Store, OSU's-campus thrift store, carries a remarkable variety of items, including computers, electronics, furniture and more. The store is run by Surplus Property, which works to reuse property no longer needed by OSU and other local government agencies. 
+                
+                The OSUsed store serves as a donation center for surplus and donated items, which are then donated again elsewhere or sold to the public during designated sales hours. 
+                ''',
                 "url": "https://blogs.oregonstate.edu/ecologue/2019/09/23/check-out-the-osused-store-osus-thrift-store/",
                 "category":"programs",
                 "icon":"programs",
@@ -91,7 +91,9 @@ For copy-pasting new entries:
             },
             "properties":{
                 "name": "OSU Sustainability Office",
-                "info": "The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.",
+                "info": '''
+                The Sustainability Office exists to - in the most sustainable way possible - support OSU’s mission to promote economic, social, cultural and environmental progress for the people of Oregon, the nation and the world. The Sustainability Office fosters a culture of sustainability, enhances student competency around issues of sustainability, reduces the university’s overall environmental impact and communicates sustainability efforts to the campus community and external audiences.
+                ''',
                 "tags": [],
                 "category":"programs",
                 "icon":"programs",
@@ -108,12 +110,11 @@ For copy-pasting new entries:
                 "name": "Transportation Services",
                 "info": 
                 '''
-                    Transportation Services supports the University’s mission by providing safe, sustainable, customer-focused, and fiscally-sound transportation programs and services.
-                    Helping you get OUT THERE.
+                    Transportation Services supports the University’s mission by providing safe, sustainable, customer-focused, and fiscally-sound transportation programs and services. Transportation Services has launched the Sustainable Transportation Strategy with a goal to reduce single occupancy vehicle trips by 10% in the next 10 years or less. 
                 ''',
                 "category":"programs",
                 "icon":"programs",
-                "url": "https://transportation.oregonstate.edu/"
+                "url": "https://transportation.oregonstate.edu/sustainable-transportation"
             }
         },
         {
@@ -124,7 +125,7 @@ For copy-pasting new entries:
             },
             "properties":{
                 "name": "Campus Recycling",
-                "info":  "Campus Recycling is responsible for managing a comprehensive waste management system that focuses on reducing, reusing and recycling with disposal as a last resort.",
+                "info":  "Campus Recycling is responsible for managing a comprehensive waste management system that focuses on reducing, reusing and recycling with disposal as a last resort.  Campus Recycling also oversees the Waste Watchers student club, with a goal to engage students and the community in waste reduction at OSU by providing educational programming, meaningful opportunities for action, and empowerment of future leaders.",
                 "tags": [],
                 "category":"programs",
                 "icon":"programs",
@@ -141,7 +142,7 @@ For copy-pasting new entries:
                 "name": "Earth2OSU",
                 "info":
                 '''
-                Earth²OSU (E²O), is a vibrant living-learning community located in Finley Hall open to all students in all majors who are passionate about the health and welfare of our home – planet earth.
+                Earth²OSU (E²O), is a vibrant living-learning community located in Finley Hall open to all students in all majors who are passionate about the health and welfare of our home – Planet Earth.
                 ''',
                 "tags": [],
                 "category": "programs",
@@ -159,9 +160,7 @@ For copy-pasting new entries:
                 "name": "Sustainability Double Degree",
                 "info":
                 '''
-                 The mission of the Sustainability Double Degree program is to provide all OSU students foundational understanding of coupled human-natural systems, 
-                 critical thinking, and evidence-based analysis so that they can be agents of positive change supporting planetary health, social justice, and economic 
-                 equity in any disciplinary or career path they choose.
+                The mission of the Sustainability Double Degree program is to provide all OSU students foundational understanding of coupled human-natural systems, critical thinking, and evidence-based analysis so that they can be agents of positive change supporting planetary health, social justice, and economic equity in any disciplinary or career path they choose. The double degree pairs with any OSU bachelor's degree, making it accessible to any student. 
                 ''',
                 "tags":[],
                 "category":"programs",
@@ -179,10 +178,7 @@ For copy-pasting new entries:
                 "name": "Energy Efficiency Center",
                 "info": 
                 '''
-                The Oregon State Energy Efficiency Center is a faculty-mentored, student-based team devoted to uncovering opportunities in cost, 
-                energy, and time savings for Pacific Northwest manufacturers. Founded in 1987, the center is among the most historic in the nationwide 
-                network of Industrial Assessment Centers (IACs). IACs offer high-quality operational assessments at no cost to eligible manufacturer, 
-                practical training for students, and a leg up for the United States manufacturing industry.
+                The Oregon State Energy Efficiency Center is a faculty-mentored, student-based team devoted to uncovering opportunities in cost, energy, and time savings for Pacific Northwest manufacturers. Founded in 1987, the Center is among the most historic in the nationwide network of Industrial Assessment Centers (IACs). IACs offer high-quality operational assessments at no cost to eligible manufacturers, practical training for students, and a leg up for the United States manufacturing industry.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -200,10 +196,7 @@ For copy-pasting new entries:
                 "name": "Institute for Natural Resources",
                 "info": 
                 '''
-                 The Institute for Natural Resources (INR) was established in 2001 through the Oregon Legislature (ORS 352.808) to 
-                 fulfill several legislative purposes that provide ready access to relevant science-based data, tools, and information 
-                 for natural resource and environmental decision making. INR works to advance centralized, science-based natural resource 
-                 information for Oregon and the Pacific Northwest.
+                The Institute for Natural Resources (INR) was established in 2001 through the Oregon Legislature to fulfill several legislative purposes that provide ready access to relevant science-based data, tools, and information for natural resource and environmental decision making. INR works to advance centralized, science-based natural resource information for Oregon and the Pacific Northwest.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -223,10 +216,7 @@ For copy-pasting new entries:
                 "name": "Oregon Climate Change Research Institute",
                 "info": 
                 '''
-                 The Oregon Climate Change Research Institute (OCCRI) is a network of dozens of researchers and professionals at Oregon State University, 
-                 Portland State University, the University of Oregon, and other universities, agencies, and organizations. OCCRI also houses the Oregon 
-                 Climate Service, which is recognized by the American Association of State Climatologists as Oregon’s state climate office. OCCRI is hosted 
-                 by the College of Earth, Ocean, and Atmospheric Sciences at Oregon State University.
+                The Oregon Climate Change Research Institute (OCCRI) is a network of dozens of researchers and professionals at Oregon State University, Portland State University, the University of Oregon, and other universities, agencies, and organizations. . OCCRI is hosted by the College of Earth, Ocean, and Atmospheric Sciences and  seeks to achieve a climate-prepared Northwest by building a climate knowledge network, cultivating climate-informed communities, and advancing understanding of regional climate. It serves leaders, agencies, and fellow residents; engages with communities that may be affected disproportionately by climate change; and trains future generations.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -246,10 +236,7 @@ For copy-pasting new entries:
                 "name":"Asian & Pacific Cultural Center",
                 "info":
                 '''
-                 The Asian & Pacific Cultural Center (APCC) is a space to engage on-campus and online students
-                  and members of the community around the Asian and Pacific Islander experience. APCC provides 
-                  opportunities for engagement around the intersectional experiences of Asian and Pacific Islanders, 
-                  the pursuit towards academic excellence, and the emergence of professional passion.
+                The Asian & Pacific Cultural Center (APCC) is a space to engage on-campus and online students and members of the community around the Asian and Pacific Islander experience. APCC provides opportunities for engagement around the intersectional experiences of Asian and Pacific Islanders, the pursuit towards academic excellence, and the emergence of professional passion.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -269,9 +256,7 @@ For copy-pasting new entries:
                 "name":"Lonnie B. Harris Black Cultural Center",
                 "info":
                 '''
-                 The mission of the Lonnie B. Harris Black Cultural Center is to complement the academic program of 
-                 studies and enrich the quality of campus life for African and African-American students on-campus 
-                 and online at Oregon State University.
+                The mission of the Lonnie B. Harris Black Cultural Center is to complement the academic program of studies and enrich the quality of campus life for African and African-American students on-campus and online at Oregon State University.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -291,10 +276,7 @@ For copy-pasting new entries:
                 "name":"Centro Cultural César Chávez",
                 "info":
                 '''
-                 The Centro Cultural César Chávez exists to support the Latinx and Chicanx student community in the 
-                 achievement of their educational and professional goals and retention of their culture. Further, the 
-                 Centro Cultural César Chávez provides a space for students to share their culture and heritage with 
-                 the broader OSU community and inform the OSU community about issues central to Chicanx/Latinx people. 
+                The Centro Cultural César Chávez exists to support the Latinx and Chicanx student community in the achievement of their educational and professional goals and retention of their culture. Further, the Centro Cultural César Chávez provides a space for students to share their culture and heritage with the broader OSU community and inform the OSU community about issues central to Chicanx/Latinx people.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -314,12 +296,7 @@ For copy-pasting new entries:
                 "name":"Ettihad Cultural Center",
                 "info":
                 '''
-                Ettihad means "unity" or “alliance” in multiple languages from the Ettihad Cultural Center’s community 
-                including Farsi, Urdu, Hebrew and Arabic. The Ettihad Cultural Center is inclusive of communities from 
-                the Horn of Africa, North Africa, West Asia, Central Asia, and South Asia. The Ettihad Cultural Center 
-                initially established itself as a student organization in the spring of 2012 and then eventually became 
-                a Cultural Resource Center with the grand opening of the Ettihad Cultural Center on October 2014 in Snell Hall 424. 
-                Ettihad Cultural Center since relocated to their current home at the Student Experience Center in SEC 380.
+                Ettihad means "unity" or “alliance” in multiple languages from the Ettihad Cultural Center’s community including Farsi, Urdu, Hebrew and Arabic. The Ettihad Cultural Center is inclusive of communities from the Horn of Africa, North Africa, West Asia, Central Asia, and South Asia. The Ettihad Cultural Center initially established itself as a student organization in the 2012 and then eventually became a Cultural Resource Center with the grand opening of the Ettihad Cultural Center in 2014.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -339,12 +316,7 @@ For copy-pasting new entries:
                 "name":"Kaku-Ixt Mana Ina Haws",
                 "info":
                 '''
-                The Kaku-Ixt Mana Ina Haws (Ina Haws) represents the Indigenous people of the Americas and Pacific Islands. 
-                The Kaku-Ixt Mana Ina Haws strives to deconstruct colonial borders’ impact on Indigenous identities while 
-                also honoring the sovereignty of Tribes. While protecting and preserving the rights of Indigenous people, 
-                the Ina Haws provides a sense of home/community for Indigenous students that helps preserve their Indigenous identities 
-                while in college. The Ina Haws provides a source of support honoring the cultures of the first people of these 
-                lands and waters. The Ina Haws also provides educational opportunities to educate all about the regions Tribes.
+                The Kaku-Ixt Mana Ina Haws (Ina Haws) represents the Indigenous people of the Americas and Pacific Islands. The Ina Haws strives to deconstruct colonial borders’ impact on Indigenous identities while also honoring the sovereignty of Tribes. While protecting and preserving the rights of Indigenous people, the Ina Haws provides a sense of home/community for Indigenous students that helps preserve their Indigenous identities while in college. The Ina Haws provides a source of support honoring the cultures of the first people of these lands and waters. The Ina Haws also provides educational opportunities to educate all about the regions Tribes.
                 ''',
                 "tags":[""],
                 "category":"programs",
@@ -364,11 +336,7 @@ For copy-pasting new entries:
                 "name":"Pride Center",
                 "info":
                 '''
-                 The Pride Center provides programs and support services for lesbian, gay, bisexual, transgender, queer, questioning, 
-                 intersex, and asexual members of the on-campus and online OSU community and their allies (LGBTQQIAA). The Pride Center 
-                 affirms the identities and empowers the lives of people who are LGBTQQIAA by providing education, outreach, program support, 
-                 consultation, community development, visibility, and advocacy. The Pride Center is a safe space for all members of our 
-                 community to explore aspects of sexual orientation and gender identity in an open and non-judgmental atmosphere.
+                The Pride Center provides programs and support services for lesbian, gay, bisexual, transgender, queer, questioning, intersex, and asexual members of the on-campus and online OSU community and their allies (LGBTQQIAA). The Pride Center affirms the identities and empowers the lives of people who are LGBTQQIAA by providing education, outreach, program support, consultation, community development, visibility, and advocacy. The Pride Center is a safe space for all members of our community to explore aspects of sexual orientation and gender identity in an open and non-judgmental atmosphere.
                 ''',
                 "category":"programs",
                 "icon":"programs",
@@ -385,8 +353,7 @@ For copy-pasting new entries:
                 "name":"Hattie Redmond Women & Gender Center",
                 "info":
                 '''
-                The Hattie Redmond Women & Gender Center (WGC) serves as a campus focal point for projects directed at addressing women's issues on campus, in the community-at-large, and globally. 
-                As an open community of leaders inspiring change, the WGC provides advocacy, resources, and opportunities to transform ideas into positive action and reality.
+                The Hattie Redmond Women & Gender Center (WGC) serves as a campus focal point for projects directed at addressing women's issues on campus, in the community-at-large, and globally. As an open community of leaders inspiring change, the WGC provides advocacy, resources, and opportunities to transform ideas into positive action and reality.
                 ''',
                 "category":"programs",
                 "icon":"programs",
@@ -394,6 +361,26 @@ For copy-pasting new entries:
                 "image":"https://dce.oregonstate.edu/sites/dce.oregonstate.edu/files/womenscenter-600w.png",
                 "imageType":"cover"
             }
+        },
+        {
+         "type": "Feature",
+            "geometry": {
+                "type":"Point",
+                "coordinates":[-123.269121,44.565156]
+            },
+            "properties":{
+                "name":"Human Services Resource Center",
+                "info":
+                '''
+                The HSRC provides direct service, outreach, education, and referral services to students experiencing hardship and is focused on alleviating the effects of hunger and poverty. Programs include a food pantry, textbook lending program, on-site shower and laundry, and more. HSRC also works to create a dynamic learning environment in which students, faculty, staff, and the community can learn how to best address current societal challenges facing college students.
+                ''',
+                "tags":[""],
+                "category":"programs",
+                "icon":"programs",
+                "url":"https://studentlife.oregonstate.edu/hsrc/about-hsrc",
+                "image":"",
+                "imageType":""
+            }   
         }
     ]
 }

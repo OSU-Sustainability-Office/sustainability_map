@@ -39,7 +39,7 @@
     },
     "properties":{
       "name": "Eco2Go Return Locations",
-      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out containers. These points denote locations where students can return the containers.",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
       "tags":["food", "recycle"],
       "category": "dining",
       "icon": "eco2go",

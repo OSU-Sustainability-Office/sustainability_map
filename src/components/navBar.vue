@@ -31,11 +31,11 @@
           </el-dropdown-menu>
 
           <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
-            <el-dropdown-item v-for="({properties: {name, info, category}, geometry: {coordinates}}, index) in activeFeatures" :key="index" @click.native="handleSelect(coordinates)">
+            <el-dropdown-item v-for="({properties: {name, info, icon}, geometry: {coordinates}}, index) in activeFeatures" :key="index" @click.native="handleSelect(coordinates)">
               <el-container class="result-container">
                <el-header>
                  <div class="result-image">
-                   <el-avatar class="result-image" size="small" fit="scale-down" :src="'images/categories/' + category + '.png'">
+                   <el-avatar class="result-image" size="small" fit="scale-down" :src="'images/categories/' + icon + '.png'">
                    </el-avatar>
                  </div>
                  <strong>{{name}}: </strong>

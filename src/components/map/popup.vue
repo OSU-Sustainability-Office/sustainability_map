@@ -13,7 +13,9 @@
       <h2>{{name}}</h2>
     </el-row>
     <el-row>
-      {{info}}
+      <div v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
+        {{ line.trim() }}
+      </div>
     </el-row>
     <el-row class='links-header title' v-if="tour || url">
       <h3>Additional links</h3>
@@ -50,6 +52,12 @@ export default {
     if (this.isMobile) {
       // this.$refs.popup.
     }
+  },
+  // use filter for text content (maybe)
+  filters: {
+    newlines: function (value) {
+      return value.split('\n')
+    }
   }
 }
 </script>
@@ -71,8 +79,12 @@ $--border-width: 0.4em;
     padding: 0;
   }
   :not(:first-child) {
-    padding: 10px;
+    padding: 5px;
   }
+}
+
+.el-row.content {
+      white-space: pre;
 }
 
 .popup-image {
