@@ -11,20 +11,20 @@ import ProgramFeatures from '@/assets/GeoJSON/program_features.hjson'
 import GreenBuildings from '@/assets/GeoJSON/green_buildings.hjson'
 import RainwaterFeatures from '@/assets/GeoJSON/rainwater_features.hjson'
 import TransportationFeatures from '@/assets/GeoJSON/transportation_features.hjson'
-import Eco2GoFeatures from '@/assets/GeoJSON/eco2go_features.hjson'
+// import Eco2GoFeatures from '@/assets/GeoJSON/eco2go_features.hjson'
 
 const state = {
   sustainabilityFeatures: {
     ProgramFeatures,
     TransportationFeatures,
     GreenBuildings,
-    RainwaterFeatures,
-    Eco2GoFeatures
+    RainwaterFeatures
+    // Eco2GoFeatures
   },
   visibleCategories: {
     bike: true,
     programs: true,
-    dining: false,
+    // dining: false,
     building: true,
     rain: true
   }

@@ -13,8 +13,7 @@
       <h2>{{name}}</h2>
     </el-row>
     <el-row>
-      // eslint-disable-next-line vue/require-v-for-key
-      <div v-for="line of info.split('\n')">
+      <div v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
         {{ line.trim() }}
       </div>
     </el-row>
@@ -80,7 +79,7 @@ $--border-width: 0.4em;
     padding: 0;
   }
   :not(:first-child) {
-    padding: 10px;
+    padding: 5px;
   }
 }
 
