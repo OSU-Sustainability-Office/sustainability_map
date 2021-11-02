@@ -112,5 +112,28 @@
       "imageType":"cover"
    }
   },
+  {
+    "type":"Feature",
+    "geometry":{
+      "type":"Point",
+      "coordinates":[-123.277422, 44.564911]
+    },
+    "properties":{
+      "name":"Student Experience Center",
+      "info":'''
+      The SEC is home to Community Engagement and Leadership and many student
+      - Organizations. Features include:
+      - Reclaimed lumber used throughout the project from wood salvaged from downed trees on the Corvallis Campus
+      - Indoor air quality is maximized by selecting low - or no - VOC paints, sealants and carpets
+      - A student maintained edible garden on the southeast corner of the building showcases what edibles can look like in a core university campus setting
+      - Radiant heating and cooling throughout the building cuts costs for ventilation, reduces noise from fans,and improves air quality
+      - A bicycle fix-it-station is on the northside of the building
+      - Rooftop solar produces about 5% of the building’s electricity, saving about $4,500 annually
+      ''',
+      "category":"building",
+      "icon":"buildings",
+      "url":"https://see.oregonstate.edu/"
+    }
+  }
   ]
 }
