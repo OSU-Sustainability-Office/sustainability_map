@@ -9,7 +9,7 @@ const fs = require('fs')
 const path = require('path')
 
 // Query selects all OSU university buildings @ corvallis
-const overpass_query = '[out:json];(area["name"="Oregon State University"];way["name"]["leisure"!~".*"]["landuse"!~".*"]["natural"!~".*"]["amenity"!~".*"]["highway"!~".*"]["name"!~"Hilton|Property|Lot"]["building"!~"commercial"]["boundary"!~"protected_area"](area);node(w););out;'
+const overpass_query = '[out:json];(area["name"="Oregon State University"];way["name"]["highway"!~".*"]["landuse"!~".*"]["amenity"!~"cafe"]["name"!~"Hilton|Property|Lot|Oregon State University Historic District|Oregon State University Dairy Farm"](area);node(w);way["landuse"!~".*"](44.55908,-123.28915,44.55974,-123.28788);node(w););out;'
 const overpass_api = 'https://overpass.kumi.systems/api/interpreter' // 'https://lz4.overpass-api.de/api/interpreter'
 
 // Downloads JSON OSM features and converts them to GeoJSON
