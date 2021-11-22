@@ -36,6 +36,22 @@
           "url": "https://blogs.oregonstate.edu/ecologue/2016/11/29/digging-into-bioswales/"
       }
   },
+  // WIP: feature for Wildilfe Habitat outside Peavy Hall
+  {
+    "type":"Feature",
+    "geometry":{
+        "type":"Point",
+        "coordinates":[-123.28521, 44.5636]
+    },
+    "properties":{
+        "name":"Certified Wildlife Habitat outside Peavy Hall",
+        "info":"TODO",
+        "tags":["bioswale", "wildlife", "landuse"],
+        "category":"rain",
+        "icon":"rain",
+        "url":"#"
+    }
+  },
   {
     "type":"Feature",
     "geometry":{
