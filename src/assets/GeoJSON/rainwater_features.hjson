@@ -44,7 +44,7 @@
     },
     "properties":{
         "name":"Peavy Hall Arboretum",
-        "info":"The arboretum at the Oregon Forest Science Complex contains many native trees and shrubs, as well as a rain garden. The moon tree (which was planted from seeds that had orbited the moon in 1971 with astronaut Stuart Roosa of the Apollo 14 team) is a centerpiece, as are the numerous dawn redwoods. The area is a certified as a wildlife habitat by the National Wildlife Federation. This means wildlife can find food, cover, water, and places to raise young.  Wildlife visitors could include bees, butterflies, birds, and more!  Tree identification and other forestry classes also use the arboretum as a teaching and learning space.",
+        "info":"The arboretum at the <a href='https://www.forestry.oregonstate.edu/ofsc/' target='_blank'>Oregon Forest Science Complex</a> contains many native trees and shrubs, as well as a rain garden. The moon tree (which was planted from seeds that had orbited the moon in 1971 with astronaut Stuart Roosa of the Apollo 14 team) is a centerpiece, as are the numerous dawn redwoods. The area is a <a href='https://www.nwf.org/certifiedwildlifehabitat' target='_blank'>certified as a wildlife habitat</a> by the National Wildlife Federation. This means wildlife can find food, cover, water, and places to raise young.  Wildlife visitors could include bees, butterflies, birds, and more!  Tree identification and other forestry classes also use the arboretum as a teaching and learning space.",
         "tags":["bioswale", "wildlife", "landuse"],
         "category":"rain",
         "icon":"rain",

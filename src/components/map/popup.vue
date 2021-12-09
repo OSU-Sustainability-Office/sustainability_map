@@ -13,8 +13,9 @@
       <h2>{{name}}</h2>
     </el-row>
     <el-row>
-      <div v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
-        {{ line.trim() }}
+      <div class='info' v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
+        <p v-if="line.includes('<')" v-html="line.trim()"></p>
+        <p v-else>{{ line.trim() }}</p>
       </div>
     </el-row>
     <el-row class='links-header title' v-if="tour || url">
@@ -75,12 +76,12 @@ $--border-width: 0.4em;
   border-color: $--color-primary;
   border-style: solid;
   border-radius: 6px;
-  :first-child {
-    padding: 0;
-  }
-  :not(:first-child) {
-    padding: 5px;
-  }
+}
+.popup:first-child {
+  padding: 0;
+}
+.popup:not(:first-child){
+  padding: 5px;
 }
 
 .el-row.content {
@@ -116,6 +117,14 @@ $--text-padding: 6px;
 
 .links-header {
   margin-top: 5px;
+}
+
+.info {
+  p {
+    padding-left: 5px;
+    padding-right: 2px;
+    margin: 0;
+  }
 }
 
 .title {
