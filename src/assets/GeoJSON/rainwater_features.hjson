@@ -140,7 +140,7 @@
     "properties":{
         "name": "Permeable Pavement",
         "info": '''
-                Permeable paving can be created using a number of different techniques, but the fundamental idea stays the same throughout: infiltration. Permeable pavement allows rainwater to flow through and into a series of subbase materials to suspend any solids and pollutants from the runoff before releasing the water back into the groundwater system. OSU has begun implementing porous asphalt in parking lots. The surface looks just as any other parking lot would, but with a different mix of asphalt which allows water to flow through and infiltrate into the ground.
+                Permeable paving can be created using a number of different techniques, but the fundamental idea stays the same throughout: infiltration. Permeable pavement allows rainwater to flow through and into a series of subbase materials to suspend any solids and pollutants from the runoff before releasing the water back into the groundwater system. The surface looks similar to other hardscapes but allows water to flow through and infiltrate into the ground.
                 ''',
         "tags": [],
         "category":"rain",
