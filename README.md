@@ -1,4 +1,4 @@
-# Sustainability Map [![Build Status](https://api.travis-ci.com/OSU-Sustainability-Office/sustainability_map.svg?branch=master&status=unknown)](https://api.travis-ci.com/OSU-Sustainability-Office/sustainability_map)
+# Sustainability Map ![Frontend Status](https://github.com/OSU-Sustainability-Office/sustainability_map/actions/workflows/gh-deploy.yml/badge.svg)![Test Build Status](https://github.com/OSU-Sustainability-Office/sustainability_map/actions/workflows/test-workflow.yml/badge.svg)
 An interactive map showing the sustainability features available at Oregon State University's Corvallis campus! 
 
 
