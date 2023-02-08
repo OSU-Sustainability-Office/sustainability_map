@@ -1,17 +1,19 @@
+// use google maps for coordinates, more accurate
+
 {
   "type":"FeatureCollection",
   "name": "OSU Eco2Go",
   "features":[
   {
     "type": "Feature",
-    "geometry":{
+    "geometry":
+    {
       "type":"MultiPoint",
       "coordinates": [
-        [-123.285531, 44.560177], // Magruder Hall.
-         
-      ]
+        [-123.285531, 44.560177] ]                  // Magruder Hall.
     },
-    "properties":{
+    "properties":
+    {
       "name": "Magruder Hall",
       "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
       "tags":["food", "recycle"],
