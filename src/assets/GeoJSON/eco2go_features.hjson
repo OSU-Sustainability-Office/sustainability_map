@@ -28,6 +28,60 @@
     {
       "type":"MultiPoint",
       "coordinates": [
+        [44.56493292418493, -123.2698564596387] ]                  // Dixon Lodge.
+    },
+    "properties":
+    {
+      "name": "Dixon Lodge",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
+        [44.56510343617717, -123.27902875963876] ]                  // Off The Quad.
+    },
+    "properties":
+    {
+      "name": "Off The Quad",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
+        [44.56400817684945, -123.28356145534312] ]                  // Marketplace West Dining Center.
+    },
+    "properties":
+    {
+      "name": "Marketplace West Dining Center",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
         [-123.274376, 44.559245] ]                  // University Plaza.
     },
     "properties":
@@ -190,11 +244,29 @@
     {
       "type":"MultiPoint",
       "coordinates": [
-        [-123.272461, 44.563829] ]                  // McNary Dining Area.
+        [44.56448363739877, -123.27188027313446] ]                  // McNary Hall.
     },
     "properties":
     {
-      "name": "McNary Dining Area",
+      "name": "McNary Hall",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
+        [44.564215125788394, -123.27214155963878] ]                  // McNary Dining Center.
+    },
+    "properties":
+    {
+      "name": "McNary Dining Center",
       "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
       "tags":["food", "recycle"],
       "category": "dining",
@@ -406,11 +478,47 @@
     {
       "type":"MultiPoint",
       "coordinates": [
-        [-123.283764, 44.563687] ]                  //West Dining Hall.
+        [44.563665639011035, -123.28413264614322] ]                  //West Hall.
     },
     "properties":
     {
-      "name": "West Dining Hall",
+      "name": "West Hall",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
+        [44.5637562351297, -123.27222964429953] ]                  //Wilson Hall.
+    },
+    "properties":
+    {
+      "name": "Wilson Hall",
+      "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
+      "tags":["food", "recycle"],
+      "category": "dining",
+      "icon": "eco2go",
+      "url": "https://uhds.oregonstate.edu/feature-story/eco2go-food-containers"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry":
+    {
+      "type":"MultiPoint",
+      "coordinates": [
+        [44.56166306590792, -123.27539513080396] ]                  //Cascade Hall.
+    },
+    "properties":
+    {
+      "name": "Cascade Hall",
       "info": "Eco2Go is a University Housing & Dining Services program that provides customers with reusable take-out food containers. This program saves around 400,000 single use plastic containers per year! Mappoints denote locations where containers can be returned.",
       "tags":["food", "recycle"],
       "category": "dining",
