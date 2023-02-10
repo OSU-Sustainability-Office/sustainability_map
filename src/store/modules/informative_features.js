@@ -24,7 +24,7 @@ const state = {
   visibleCategories: {
     bike: true,
     programs: true,
-    dining: false,
+    dining: true,
     building: true,
     rain: true
   }
