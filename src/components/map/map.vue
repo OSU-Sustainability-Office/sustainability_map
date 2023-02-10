@@ -16,6 +16,7 @@
   <!-- The Map -->
   <el-main class="mapDisplay">
     <l-map :minZoom="minZoom" :max-bounds="maxBounds" :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
+      <button class = "resetMapButton" @click="resetMap()">Reset Map</button> <!-- ported in from energy-dashboard repo-->
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
       <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
       <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
@@ -35,8 +36,7 @@ import {
 } from 'vue2-leaflet'
 
 import {
-  mapGetters,
-  mapMutations
+  mapGetters
 } from 'vuex'
 
 import sideView from '@/components/map/sideView'
@@ -82,12 +82,27 @@ export default {
         // !! NOTE: the tool tip styling override must be global so it's in in style-variables.scss
         onEachFeature: ({ properties: { tags: { name } } }, layer) => {
           layer.bindTooltip(name, {
-            permanent: true,
-            direction: 'center'
+            // permanent: true,
+            // direction: 'center'
           })
 
           // add tooltip layer to store for easy toggling
           this.$store.commit('LayerModule/addTooltip', layer)
+
+          // code below ported over from energy-dashboard, allow you to see building tooltips by hovering mouse over, even when zoomed out
+          layer.on('click', e => {
+            this.polyClick(e.target.feature.properties.id, e.target.feature, layer.getBounds().getCenter())
+          })
+          layer.on('mouseover', function (e) {
+            if (!e.target.setStyle) return
+            e.target.oldStyle = { fillColor: e.target.options.fillColor, color: e.target.options.color }
+            e.target.setStyle({ fillColor: '#000', color: '#000' })
+            e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
+          })
+          layer.on('mouseout', e => {
+            if (!e.target.setStyle) return
+            e.target.setStyle({ ...e.target.oldStyle })
+          })
         },
         style: {
           stroke: true,
@@ -103,9 +118,9 @@ export default {
     }
   },
   mounted () {
-    // this prevents the tooltips from being visible at initial page load
-    this.$nextTick(function () {
-      this.hideTooltips()
+  // used for resetmap() function
+    this.$nextTick(() => {
+      this.map = this.$refs.map.mapObject
     })
   },
   computed: {
@@ -210,17 +225,11 @@ export default {
     },
     zoomUpdated (zoom) {
       this.zoom = zoom
-      // toggle tool tips
-      if (this.zoom > 17) {
-        this.showTooltips()
-      } else {
-        this.hideTooltips()
-      }
     },
-    ...mapMutations({
-      showTooltips: 'LayerModule/showTooltips',
-      hideTooltips: 'LayerModule/hideTooltips'
-    })
+    // ported in from energy-dashboard repo
+    resetMap () {
+      this.map.setView(L.latLng(44.5638, -123.2815), 15.5)
+    }
   }
 }
 </script>
@@ -311,7 +320,24 @@ export default {
       transform: rotate(0.25turn);
     }
   }
-
+}
+.resetMapButton{
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 55px;
+    width: 90px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    border-radius: 4.5px;
+    opacity: 1.0;
+    justify-content: center;
+    z-index: 500;
+    cursor: pointer;
 }
 
 </style>
