@@ -1,3 +1,5 @@
+// use google maps for coordinates, more accurate
+
 {
   "type":"FeatureCollection",
   "name": "OSU Eco2Go",
@@ -7,34 +9,68 @@
     "geometry":{
       "type":"MultiPoint",
       "coordinates": [
-        [-123.285531, 44.560177], // Magruder Hall
-        [-123.274376, 44.559245], // University Plaza
-        [-123.276264, 44.560223], // Int. Living Learning Ccenter
-        [-123.277573, 44.560093], // Bloss
-        [-123.27789,  44.560533], // Arnold
-        [-123.277874, 44.561022], // Finley
-        [-123.276645, 44.561003], // Halsell
-        [-123.272735, 44.562639], // Tebeau
-        [-123.27922, 44.563113],  // Dixon Rec Center
-        [-123.285748, 44.56329],  // Richardson / Peavy Hall
-        [-123.272461, 44.563829], // McNary Dining Area
-        [-123.273485, 44.56397],  // Callahan Hall
+
+        // Inside (UHDS Dining Halls) - https://uhds.oregonstate.edu/menus
+        [-123.27211771275113, 44.564087065169836], // McNary Dining Center (not to be confused with Mcnary Hall)
+        [-123.28357233744809, 44.56396961602317], // Marketplace West Dining Center (not to be confused with West Hall)
+        [-123.27770221063265, 44.560631256734005], // Arnold Dining Center.
+
+        // Inside (UHDS Residence Halls) - https://uhds.oregonstate.edu/housing/halls
+        // Unless specified otherwise (e.g. a specific cafe or restaurant inside a larger building), I placed the eco2go somewhere
+        // in the middle of the building inside.
+
+        [-123.27752952783666, 44.560141809861804], // Bloss.
+        [-123.28159979149916, 44.56438160404067], // Buxton Hall.
+        [-123.27337258948464, 44.56405752355515],  // Callahan Hall.
+        [-123.2827455642011, 44.56369550338441], // Cauthorn Hall.
+        [-123.26988207982659, 44.56479501427478],   // Dixon Lodge
+        [-123.27774067380538, 44.561089039983486], // Finley.
+        [-123.2766267416104, 44.56115336876674], // Halsell.
+        [-123.28273165796209, 44.56440307345514], // Hawley Hall.
+        [-123.2761155874166, 44.56015255501253], // Int. Living Learning Center (ILLC)
+        [-123.27185984943819, 44.56438329965402], // McNary Hall (not to be confused with McNary Dining Area)
+        [-123.28157333593195, 44.56369637600066], // Poling Hall.
+        [-123.28351656366307, 44.56524785636432], // Sackett Hall.
+        [-123.27245992384995, 44.56281604778216], // Tebeau.
+        [-123.2805659257728, 44.56408462284122], // Weatherford Hall.
+        [-123.28405220196905, 44.56355513336444], // West Hall (not to be confused with Marketplace West Dining Center)
+        [-123.27235911175512, 44.563775760822786],  // Wilson Hall (UHDS Residence)
+
+        // Inside (Other) - https://uhds.oregonstate.edu/feature-story/eco2go-food-containers
+        [-123.27900991932363, 44.56499838042203],  // Memorial Union ("Off the Quad" restaurant inside, mezzanine level)
+        [-123.27609947075723, 44.565051068486696],   // Valley Library (inside)
+        [-123.27544495168983, 44.56157869718168],   // Cascade Hall
+        // [-123.28016576724922, 44.56410084342818]  // Weatherford ("Bing's Cafe", inside. Temporarily Closed)
+        [-123.27891250757035, 44.566987194703024],    // KEC (inside, e-cafe)
+
+        // Outside - https://uhds.oregonstate.edu/feature-story/eco2go-food-containers
+        // Refer to link above as well as descriptions below - where the direction outside (e.g. "NW Corner") is not specified, 
+        // I chose an arbitrary spot outside of the building to put the eco2go. That isn't ideal, but is important to distinguish 
+        // inside from outside eco2go's, especially for buildings like Valley Library that have both inside and outside KEC
+
+        [-123.28174008376459, 44.56480836986394],     // Austin hall (SE Corner)
+        [-123.28262384082637, 44.564922629029645], // Austin Hall (West Entrance)
+        [-123.2823685893676, 44.566541238777035], // Agriculture & Life Sciences building.
+        [-123.27922, 44.563113],  // Dixon Rec Center.
+        [-123.27472444313968, 44.56708226085357], // Covell Hall (Outside)
+        [-123.2817055856986, 44.56558500946664], // LInC.
         [-123.274784, 44.564379], // Outside Kerr Admin.
+        [-123.2827952937462, 44.56237224951695],      // Legacy Park Pavillion
+        [-123.2779370228369, 44.56492643833105],  // SEC Plaza
         [-123.275996, 44.565426], // Outside Valley Library
-        [-123.274997, 44.566791], // Outside Covell Hall
-        [-123.277863, 44.56475],  // Near SEC
-        [-123.27981,  44.564612],  // South of MU Westwing (Common Hall)
-        [-123.280507, 44.563192], // Outside weatherford hall
-        [-123.281602, 44.563234], // Buxton Hall
-        [-123.281607, 44.563783], // Poling Hall
-        [-123.282814, 44.563672], // Cauthorn Hall
-        [-123.282857, 44.564261], // Hawley Hall
-        [-123.283764, 44.563687], // West Dining Hall
-        [-123.283383, 44.565021], // Sackett Hall
-        [-123.281269, 44.565518], // LInC
-        [-123.282149, 44.566523], // Agriculture & Life Sciences building
-        [-123.28033, 44.566902], // Hallie Ford Center
-        [-123.278088, 44.566894], // East of Kelley Eng. Center
+        [-123.28582727474159, 44.56317263241984],  // Richardson Hall (South Entrance)
+        [-123.28482215383578, 44.56059664592913], // Magruder Hall. (East Entrance)
+        [-123.27255303942077, 44.562653479297396],  // Tebeau (South Entrance)
+        [-123.28007441873905, 44.56671156844731],  // 26th and Campus Way (Southwest corner)
+        [-123.27794598436508, 44.56685905649879],  // SW Memorial & Campus Way (NW corner)
+
+        // I was unable to find the following locations listed on https://uhds.oregonstate.edu/feature-story/eco2go-food-containers, or on list of UHDS dining hall / residence halls (Or they are valid locations but named confusingly), so I commented these 
+        // below out. They were already added before Feb 6, 2023.
+
+        // [-123.274376, 44.559245], // University Plaza
+        // [-123.27981,  44.564612], // South of MU Westwing (Common Hall).
+        // [-123.28033, 44.566902],  // Hallie Ford Center.
+        // [-123.278088, 44.566894], // East of Kelley Eng. Center.
       ]
     },
     "properties":{
