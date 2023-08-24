@@ -5,9 +5,10 @@ An interactive map showing the sustainability features available at Oregon State
 ## Installation Steps
 
 - Clone the repo
-- Use nvm to get node version 14 (`nvm install 14 && nvm use 14`)
-- `npm install`
-- `npm run serve` to test-run the website
+- Use nvm to get node version 18 (```nvm install 16 && nvm use 18```)
+- ```npm install```
+- ```npm run serve``` to test-run the website
+
 
 ## Notes about the build process:
 
