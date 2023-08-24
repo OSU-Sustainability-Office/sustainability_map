@@ -6,15 +6,15 @@
   objects / components.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 .leaflet-tooltip {
   position: absolute;
-  background-color: rgba(255, 255, 255, 1.0);
+  background-color: rgba(255, 255, 255, 1);
   border: none;
   box-shadow: none;
   color: rgb(98, 98, 98);
-  font-family: 'Roboto', "StratumNo2", Helvetica;
+  font-family: "Roboto", "StratumNo2", Helvetica;
   font-size: 11px;
   font-weight: 600;
   z-index: 900;
@@ -24,7 +24,7 @@
 }
 
 .leaflet-popup-tip {
-  background-color: #D73F09;
+  background-color: #d73f09;
 }
 
 $--popupBorderRadius: 5px;
@@ -34,7 +34,7 @@ $--popupBorderRadius: 5px;
 }
 
 .leaflet-popup-content {
-  padding:0;
+  padding: 0;
   margin: 0;
 }
 
@@ -42,7 +42,7 @@ a.leaflet-popup-close-button {
   font-size: 20px !important;
   color: rgb(254, 254, 254) !important;
   text-shadow: 1px 1px 2px black !important;
-  :hover  {
+  :hover {
     color: rgb(200, 200, 200) !important;
   }
 }

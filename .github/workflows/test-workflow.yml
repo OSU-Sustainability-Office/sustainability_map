@@ -1,9 +1,8 @@
 name: test build
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - master
-      - gh-pages
 
 jobs:
   build-deploy-gh-pages:
@@ -15,10 +14,12 @@ jobs:
       - name: Set-up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 18
       - name: npm install
         run: |
           npm install
       - name: npm build frontend
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
           npm run build-stage
