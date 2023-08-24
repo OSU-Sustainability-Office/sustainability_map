@@ -7,9 +7,9 @@
                about writing a webpack loader.
 */
 
-const Hjson = require('hjson')
+const Hjson = require("hjson");
 
 module.exports = function (fileContents) {
-  const JSON_DATA = Hjson.parse(fileContents)
-  return `export default ${JSON.stringify(JSON_DATA)}`
-}
+  const JSON_DATA = Hjson.parse(fileContents);
+  return `export default ${JSON.stringify(JSON_DATA)}`;
+};

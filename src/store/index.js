@@ -5,9 +5,7 @@
 */
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {
-  Geoloc
-} from 'vuelayers'
+import { Geoloc } from 'vuelayers'
 
 // const osmtogeojson = require('osmtogeojson')
 

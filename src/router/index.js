@@ -1,7 +1,7 @@
 /**
  * Filename: index.js
  * Description: This file describes the routes used by the Vue client-side router.
-*/
+ */
 
 import Vue from 'vue'
 import Router from 'vue-router'

@@ -3,41 +3,53 @@
   Description: The vue component showing the interactive map with the Sustainability Features.
 -->
 <template>
-<el-container class="mapContainer">
-  <!-- Side Button -->
-  <el-button class="sideButton" @click="showSide = !showSide">
-    <i v-if="showSide" class="el-icon-s-fold"></i>
-    <i v-else class="el-icon-s-unfold"></i>
-  </el-button>
+  <el-container class="mapContainer">
+    <!-- Side Button -->
+    <el-button class="sideButton" @click="showSide = !showSide">
+      <i v-if="showSide" class="el-icon-s-fold"></i>
+      <i v-else class="el-icon-s-unfold"></i>
+    </el-button>
 
-  <!-- Side Menu or 'Key' -->
-  <sideView :showSide=showSide></sideView>
+    <!-- Side Menu or 'Key' -->
+    <sideView :showSide="showSide"></sideView>
 
-  <!-- The Map -->
-  <el-main class="mapDisplay">
-    <l-map :minZoom="minZoom" :max-bounds="maxBounds" :style="mapStyle" :zoom="zoom" :center="center" ref='map' @update:zoom="zoomUpdated" @update:center="centerUpdated" @update:bounds="boundsUpdated">
-      <button class = "resetMapButton" @click="resetMap()">Reset Map</button> <!-- ported in from energy-dashboard repo-->
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer> <!-- This is where the actual map layer comes from-->
-      <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
-      <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
-    </l-map>
-  </el-main>
-</el-container>
+    <!-- The Map -->
+    <el-main class="mapDisplay">
+      <l-map
+        :minZoom="minZoom"
+        :max-bounds="maxBounds"
+        :style="mapStyle"
+        :zoom="zoom"
+        :center="center"
+        ref="map"
+        @update:zoom="zoomUpdated"
+        @update:center="centerUpdated"
+        @update:bounds="boundsUpdated"
+      >
+        <button class="resetMapButton" @click="resetMap()">Reset Map</button>
+        <!-- ported in from energy-dashboard repo-->
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <!-- This is where the actual map layer comes from-->
+        <l-geo-json
+          :geojson="getFeatures"
+          :options="featureOptions"
+        ></l-geo-json>
+        <l-geo-json
+          :geojson="getBuildings"
+          :options="buildingOptions"
+        ></l-geo-json>
+      </l-map>
+    </el-main>
+  </el-container>
 </template>
 <script>
 // The order in which we load these leaflet files matters
 // https://github.com/ghybs/leaflet-defaulticon-compatibility
 import L from 'leaflet'
 import 'leaflet-defaulticon-compatibility'
-import {
-  LMap,
-  LTileLayer,
-  LGeoJson
-} from 'vue2-leaflet'
+import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
 
-import {
-  mapGetters
-} from 'vuex'
+import { mapGetters } from 'vuex'
 
 import sideView from '@/components/map/sideView'
 import popUp from '@/components/map/popup'
@@ -66,7 +78,8 @@ export default {
       center: L.latLng(44.5638, -123.2815),
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
       bounds: null,
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
       maxBounds: L.latLngBounds([
@@ -80,7 +93,14 @@ export default {
       buildingOptions: {
         // Adds tool-tips
         // !! NOTE: the tool tip styling override must be global so it's in in style-variables.scss
-        onEachFeature: ({ properties: { tags: { name } } }, layer) => {
+        onEachFeature: (
+          {
+            properties: {
+              tags: { name }
+            }
+          },
+          layer
+        ) => {
           layer.bindTooltip(name, {
             // permanent: true,
             // direction: 'center'
@@ -90,16 +110,25 @@ export default {
           this.$store.commit('LayerModule/addTooltip', layer)
 
           // code below ported over from energy-dashboard, allow you to see building tooltips by hovering mouse over, even when zoomed out
-          layer.on('click', e => {
-            this.polyClick(e.target.feature.properties.id, e.target.feature, layer.getBounds().getCenter())
+          layer.on('click', (e) => {
+            this.polyClick(
+              e.target.feature.properties.id,
+              e.target.feature,
+              layer.getBounds().getCenter()
+            )
           })
           layer.on('mouseover', function (e) {
             if (!e.target.setStyle) return
-            e.target.oldStyle = { fillColor: e.target.options.fillColor, color: e.target.options.color }
+            e.target.oldStyle = {
+              fillColor: e.target.options.fillColor,
+              color: e.target.options.color
+            }
             e.target.setStyle({ fillColor: '#000', color: '#000' })
-            e.target.bindTooltip(e.target.feature.properties.name).openTooltip()
+            e.target
+              .bindTooltip(e.target.feature.properties.name)
+              .openTooltip()
           })
-          layer.on('mouseout', e => {
+          layer.on('mouseout', (e) => {
             if (!e.target.setStyle) return
             e.target.setStyle({ ...e.target.oldStyle })
           })
@@ -118,7 +147,7 @@ export default {
     }
   },
   mounted () {
-  // used for resetmap() function
+    // used for resetmap() function
     this.$nextTick(() => {
       this.map = this.$refs.map.mapObject
     })
@@ -202,7 +231,10 @@ export default {
           )
 
           // Add layer to Vuex store (for searching)
-          this.$store.commit('LayerModule/addLayer', { layer, coordinates: feature.geometry.coordinates })
+          this.$store.commit('LayerModule/addLayer', {
+            layer,
+            coordinates: feature.geometry.coordinates
+          })
         },
         // style: (feature) => {},
         // Function which determines whether to include
@@ -234,12 +266,11 @@ export default {
 }
 </script>
 
-<style >
+<style>
 @import "../../../node_modules/leaflet/dist/leaflet.css";
 </style>
 
-<style scoped lang='scss'>
-
+<style scoped lang="scss">
 /* Popup Styles */
 .popup-item {
   display: flex;
@@ -248,7 +279,7 @@ export default {
   align-items: flex-start;
 }
 
-.popup-head{
+.popup-head {
   font-weight: 500;
   font-size: 1.4em;
   padding: 0.5em;
@@ -260,36 +291,36 @@ export default {
   margin: 0;
 }
 
-.mapDisplay, .side-view {
+.mapDisplay,
+.side-view {
   padding: 0;
   margin: 0;
   height: inherit;
 }
 
 .el-button {
-    font-family: 'stratumno2';
-    margin: 5px;
-    width: 15em;
-
+  font-family: "stratumno2";
+  margin: 5px;
+  width: 15em;
 }
 .buttonGroup {
-    display: flex;
-    color: $--color-white;
-    font-family: 'stratumno2';
-    font-size: 13px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  color: $--color-white;
+  font-family: "stratumno2";
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .toggleGroup {
-    padding-top: 3em;
-    display: flex;
-    color: $--color-white;
-    font-family: 'stratumno2';
-    font-size: 13px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  padding-top: 3em;
+  display: flex;
+  color: $--color-white;
+  font-family: "stratumno2";
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .el-button.sideButton {
@@ -316,28 +347,29 @@ export default {
     margin-bottom: 0em;
     left: 2.6em;
     // Make icon point up & down
-    .el-icon-s-unfold, .el-icon-s-fold {
+    .el-icon-s-unfold,
+    .el-icon-s-fold {
       transform: rotate(0.25turn);
     }
   }
 }
-.resetMapButton{
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 10px;
-    left: 55px;
-    width: 90px;
-    height: 50px;
-    background-color: white;
-    border: 2px solid rgba(0,0,0,0.2);
-    background-clip: padding-box;
-    border-radius: 4.5px;
-    opacity: 1.0;
-    justify-content: center;
-    z-index: 500;
-    cursor: pointer;
+.resetMapButton {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  width: 90px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border-radius: 4.5px;
+  opacity: 1;
+  justify-content: center;
+  z-index: 500;
+  cursor: pointer;
 }
-
 </style>

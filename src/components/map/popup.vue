@@ -6,25 +6,40 @@
   <div class="popup" ref="popup">
     <el-row type="flex" justify="center" v-show="image">
       <!--Pop-up Image-->
-      <div ref='popupImage' class='popup-image'>
-      </div>
+      <div ref="popupImage" class="popup-image"></div>
     </el-row>
     <el-row class="title">
-      <h2>{{name}}</h2>
+      <h2>{{ name }}</h2>
     </el-row>
     <el-row>
-      <div class='info' v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
+      <div
+        class="info"
+        v-for="(line, index) of info.trim().split('\n')"
+        :key="`line-${index}`"
+      >
         <p v-if="line.includes('<')" v-html="line.trim()"></p>
         <p v-else>{{ line.trim() }}</p>
       </div>
     </el-row>
-    <el-row class='links-header title' v-if="tour || url">
+    <el-row class="links-header title" v-if="tour || url">
       <h3>Additional links</h3>
     </el-row>
     <el-row class="links">
       <ul>
-        <li v-if="tour"><h4><a :href="tour" target="_blank"><i class="el-icon-video-camera"></i>Virtual Tour</a></h4></li>
-        <li v-if="url"><h4><a :href="url" target="_blank"><i class="el-icon-info"></i>Read More</a></h4></li>
+        <li v-if="tour">
+          <h4>
+            <a :href="tour" target="_blank"
+              ><i class="el-icon-video-camera"></i>Virtual Tour</a
+            >
+          </h4>
+        </li>
+        <li v-if="url">
+          <h4>
+            <a :href="url" target="_blank"
+              ><i class="el-icon-info"></i>Read More</a
+            >
+          </h4>
+        </li>
       </ul>
     </el-row>
   </div>
@@ -63,16 +78,16 @@ export default {
 }
 </script>
 
-<style >
+<style>
 @import "../../../node_modules/leaflet/dist/leaflet.css";
 </style>
 
 <style scoped lang="scss">
-
 $--border-width: 0.4em;
 
 .popup {
-  border-width: $--border-width ($--border-width + 0.1) $--border-width ($--border-width + 0.1);
+  border-width: $--border-width ($--border-width + 0.1) $--border-width
+    ($--border-width + 0.1);
   border-color: $--color-primary;
   border-style: solid;
   border-radius: 6px;
@@ -80,19 +95,19 @@ $--border-width: 0.4em;
 .popup:first-child {
   padding: 0;
 }
-.popup:not(:first-child){
+.popup:not(:first-child) {
   padding: 5px;
 }
 
 .el-row.content {
-      white-space: pre;
+  white-space: pre;
 }
 
 .popup-image {
-  width:100%;
+  width: 100%;
   height: 10em;
   border: none;
-  filter:opacity(90%);
+  filter: opacity(90%);
   background-repeat: no-repeat;
   background-position: center;
   margin: 0;
@@ -111,8 +126,8 @@ $--text-padding: 6px;
       font-size: 14px;
       font-weight: 500;
       text-decoration: underline;
-   }
- }
+    }
+  }
 }
 
 .links-header {
@@ -141,7 +156,7 @@ $--text-padding: 6px;
     color: white;
   }
   h3 {
-    color:white;
+    color: white;
   }
 }
 
@@ -151,5 +166,4 @@ $--text-padding: 6px;
     max-width: 300px;
   }
 }
-
 </style>
