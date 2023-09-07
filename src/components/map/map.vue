@@ -360,7 +360,7 @@ export default {
   align-items: center;
   position: absolute;
   top: 10px;
-  left: 55px;
+  left: 95px;
   width: 90px;
   height: 50px;
   background-color: white;
