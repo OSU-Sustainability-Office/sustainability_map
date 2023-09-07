@@ -125,7 +125,7 @@ export default {
             }
             e.target.setStyle({ fillColor: '#000', color: '#000' })
             e.target
-              .bindTooltip(e.target.feature.properties.name)
+              .bindTooltip(e.target.feature.properties.tags.name)
               .openTooltip()
           })
           layer.on('mouseout', (e) => {
