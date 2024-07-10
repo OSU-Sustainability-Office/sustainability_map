@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set-up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: npm install
         run: |
           npm install
@@ -24,7 +24,7 @@ jobs:
         run: |
           npm run build
       - name: deploy frontend to gh pages
-        uses: crazy-max/ghaction-github-pages@v3     # https://github.com/crazy-max/ghaction-github-pages
+        uses: crazy-max/ghaction-github-pages@v4     # https://github.com/crazy-max/ghaction-github-pages
         with:
           target_branch: gh-pages
           build_dir: dist
