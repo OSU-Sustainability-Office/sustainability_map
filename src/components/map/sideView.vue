@@ -85,7 +85,6 @@ export default {
   components: {},
   data () {
     return {
-      api: process.env.VUE_APP_ROOT_API,
       title: '',
       unit: 'day',
       int: 1,
