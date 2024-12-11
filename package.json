@@ -12,17 +12,13 @@
     "format": "npm-run-all --continue-on-error prettier \"lint -- --fix\""
   },
   "dependencies": {
-    "aws-sdk": "^2.713.0",
     "axios": "^0.19.2",
     "cache-loader": "^4.1.0",
-    "core-js": "^2.6.5",
     "element-ui": "^2.13.1",
     "hjson": "^3.2.2",
     "leaflet": "^1.6.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "osmtogeojson": "^3.0.0-beta.4",
-    "plantuml": "0.0.1",
-    "plantuml-viewer": "^1.0.0",
     "prettier": "^2.7.1",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
@@ -32,8 +28,7 @@
     "vue-svg-loader": "^0.16.0",
     "vue2-leaflet": "^2.5.2",
     "vuelayers": "^0.11.27",
-    "vuex": "^3.2.0",
-    "xml2js": "^0.4.23"
+    "vuex": "^3.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
