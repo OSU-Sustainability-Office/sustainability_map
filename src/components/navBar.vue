@@ -7,21 +7,9 @@
   <el-row class="sus-nav" type="flex">
     <!--:span="8"-->
     <el-col class="sus-nav-item" :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
-      <svgLogo
-        class="sus-nav-image"
-        width="auto"
-        alt=""
-        @click="$router.push({ path: '/' })"
-      />
+      <svgLogo class="sus-nav-image" width="auto" alt="" @click="$router.push({ path: '/' })" />
     </el-col>
-    <el-col
-      class="sus-title sus-nav-item"
-      :xs="11"
-      :sm="13"
-      :md="13"
-      :lg="16"
-      :xl="18"
-    >
+    <el-col class="sus-title sus-nav-item" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
       <h1>Sustainability Map</h1>
     </el-col>
     <!--
@@ -32,21 +20,9 @@
           4. the called method gets the referenced layer indexed by coordinates
           5. the method then calls the "popupopen" function & maybe clears input
       -->
-    <el-col
-      class="sus-nav-search sus-nav-item"
-      :xs="2"
-      :sm="2"
-      :md="4"
-      :lg="2"
-      :xl="1"
-    >
+    <el-col class="sus-nav-search sus-nav-item" :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
       <el-dropdown size="large" placement="bottom-start">
-        <el-input
-          size="medium"
-          class="sus-nav-search-input"
-          placeholder="Search..."
-          v-model="input"
-        >
+        <el-input size="medium" class="sus-nav-search-input" placeholder="Search..." v-model="input">
           <i slot="suffix" class="el-input__icon el-icon-search"> </i>
         </el-input>
 
@@ -56,10 +32,7 @@
 
         <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
           <el-dropdown-item
-            v-for="(
-              { properties: { name, info, icon }, geometry: { coordinates } },
-              index
-            ) in activeFeatures"
+            v-for="({ properties: { name, info, icon }, geometry: { coordinates } }, index) in activeFeatures"
             :key="index"
             @click.native="handleSelect(coordinates)"
           >
@@ -97,10 +70,6 @@ export default {
   },
   data () {
     return {
-      loginLink:
-        'https://api.sustainability.oregonstate.edu/v2/auth/login?returnURI=' +
-        process.env.VUE_APP_HOST_ADDRESS +
-        '/#/map',
       activeIndex: '',
       input: ''
     }
@@ -130,7 +99,7 @@ export default {
 }
 </script>
 <style>
-@import "../../node_modules/leaflet/dist/leaflet.css";
+@import '../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
@@ -231,7 +200,7 @@ h1 {
   color: $--color-white !important;
 }
 .sus-nav-menu > *:not(.is-active):hover:after {
-  content: "\a0";
+  content: '\a0';
   display: block;
   padding: 0 2px;
   line-height: 1px;
@@ -262,7 +231,7 @@ h1 {
 .sus-nav-search {
   padding-top: 1em;
   width: 15em;
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
 }
 .el-input__icon:hover {
   cursor: pointer;

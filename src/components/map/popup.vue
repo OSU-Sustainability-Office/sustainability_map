@@ -12,11 +12,7 @@
       <h2>{{ name }}</h2>
     </el-row>
     <el-row>
-      <div
-        class="info"
-        v-for="(line, index) of info.trim().split('\n')"
-        :key="`line-${index}`"
-      >
+      <div class="info" v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
         <p v-if="line.includes('<')" v-html="line.trim()"></p>
         <p v-else>{{ line.trim() }}</p>
       </div>
@@ -28,16 +24,12 @@
       <ul>
         <li v-if="tour">
           <h4>
-            <a :href="tour" target="_blank"
-              ><i class="el-icon-video-camera"></i>Virtual Tour</a
-            >
+            <a :href="tour" target="_blank"><i class="el-icon-video-camera"></i>Virtual Tour</a>
           </h4>
         </li>
         <li v-if="url">
           <h4>
-            <a :href="url" target="_blank"
-              ><i class="el-icon-info"></i>Read More</a
-            >
+            <a :href="url" target="_blank"><i class="el-icon-info"></i>Read More</a>
           </h4>
         </li>
       </ul>
@@ -48,16 +40,7 @@
 <script>
 export default {
   name: 'popUp',
-  props: [
-    'name',
-    'info',
-    'tags',
-    'image',
-    'imageType',
-    'tour',
-    'url',
-    'isMobile'
-  ],
+  props: ['name', 'info', 'tags', 'image', 'imageType', 'tour', 'url', 'isMobile'],
   mounted: function () {
     this.$refs.popupImage.style.backgroundImage = `url(${this.image})`
     if (this.imageType) {
@@ -79,15 +62,14 @@ export default {
 </script>
 
 <style>
-@import "../../../node_modules/leaflet/dist/leaflet.css";
+@import '../../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
 $--border-width: 0.4em;
 
 .popup {
-  border-width: $--border-width ($--border-width + 0.1) $--border-width
-    ($--border-width + 0.1);
+  border-width: $--border-width ($--border-width + 0.1) $--border-width ($--border-width + 0.1);
   border-color: $--color-primary;
   border-style: solid;
   border-radius: 6px;

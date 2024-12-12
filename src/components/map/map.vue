@@ -30,14 +30,8 @@
         <!-- ported in from energy-dashboard repo-->
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <!-- This is where the actual map layer comes from-->
-        <l-geo-json
-          :geojson="getFeatures"
-          :options="featureOptions"
-        ></l-geo-json>
-        <l-geo-json
-          :geojson="getBuildings"
-          :options="buildingOptions"
-        ></l-geo-json>
+        <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
+        <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
       </l-map>
     </el-main>
   </el-container>
@@ -51,15 +45,15 @@ import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
 
 import { mapGetters } from 'vuex'
 
-import sideView from '@/components/map/sideView'
-import popUp from '@/components/map/popup'
+import sideView from '@/components/map/sideView.vue'
+import popUp from '@/components/map/popup.vue'
 
 import Vue from 'vue'
 import elm from 'element-ui'
 import Vuei18n from 'vue-i18n'
 import locale from 'element-ui/lib/locale/lang/en'
 Vue.use(Vuei18n)
-Vue.use(elm, { locale: locale })
+Vue.use(elm, { locale })
 Vue.config.lang = 'en'
 
 export default {
@@ -78,8 +72,7 @@ export default {
       center: L.latLng(44.5638, -123.2815),
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
       bounds: null,
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapStyle: 'height: 100vh width: 100%;',
       map: null,
       maxBounds: L.latLngBounds([
@@ -110,12 +103,8 @@ export default {
           this.$store.commit('LayerModule/addTooltip', layer)
 
           // code below ported over from energy-dashboard, allow you to see building tooltips by hovering mouse over, even when zoomed out
-          layer.on('click', (e) => {
-            this.polyClick(
-              e.target.feature.properties.id,
-              e.target.feature,
-              layer.getBounds().getCenter()
-            )
+          layer.on('click', e => {
+            this.polyClick(e.target.feature.properties.id, e.target.feature, layer.getBounds().getCenter())
           })
           layer.on('mouseover', function (e) {
             if (!e.target.setStyle) return
@@ -124,11 +113,9 @@ export default {
               color: e.target.options.color
             }
             e.target.setStyle({ fillColor: '#000', color: '#000' })
-            e.target
-              .bindTooltip(e.target.feature.properties.tags.name)
-              .openTooltip()
+            e.target.bindTooltip(e.target.feature.properties.tags.name).openTooltip()
           })
-          layer.on('mouseout', (e) => {
+          layer.on('mouseout', e => {
             if (!e.target.setStyle) return
             e.target.setStyle({ ...e.target.oldStyle })
           })
@@ -207,7 +194,7 @@ export default {
         onEachFeature: (feature, layer) => {
           // Add the pop-up visual
           layer.bindPopup(
-            (layer) => {
+            layer => {
               // Programmatically return popup component
               const popupElement = new Vue({
                 ...popUp,
@@ -238,7 +225,7 @@ export default {
         },
         // style: (feature) => {},
         // Function which determines whether to include
-        filter: (feature) => {
+        filter: feature => {
           return true
         }
       }
@@ -267,7 +254,7 @@ export default {
 </script>
 
 <style>
-@import "../../../node_modules/leaflet/dist/leaflet.css";
+@import '../../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
@@ -299,14 +286,14 @@ export default {
 }
 
 .el-button {
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
   margin: 5px;
   width: 15em;
 }
 .buttonGroup {
   display: flex;
   color: $--color-white;
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
   font-size: 13px;
   justify-content: center;
   align-items: center;
@@ -316,7 +303,7 @@ export default {
   padding-top: 3em;
   display: flex;
   color: $--color-white;
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
   font-size: 13px;
   justify-content: center;
   align-items: center;
@@ -354,8 +341,8 @@ export default {
   }
 }
 .resetMapButton {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
+    sans-serif;
   display: flex;
   align-items: center;
   position: absolute;
