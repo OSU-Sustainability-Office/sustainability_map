@@ -41,20 +41,13 @@
 // https://github.com/ghybs/leaflet-defaulticon-compatibility
 import L from 'leaflet'
 import 'leaflet-defaulticon-compatibility'
-import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
+import { LMap, LTileLayer, LGeoJson } from '@vue-leaflet/vue-leaflet'
 
 import { mapGetters } from 'vuex'
 
 import sideView from '@/components/map/sideView.vue'
 import popUp from '@/components/map/popup.vue'
-
-import Vue from 'vue'
-import elm from 'element-ui'
-import Vuei18n from 'vue-i18n'
-import locale from 'element-ui/lib/locale/lang/en'
-Vue.use(Vuei18n)
-Vue.use(elm, { locale })
-Vue.config.lang = 'en'
+import { createApp } from 'vue'
 
 export default {
   name: 'mapComponent',
@@ -64,7 +57,7 @@ export default {
     LGeoJson,
     sideView
   },
-  data () {
+  data() {
     return {
       // Map attributions start
       zoom: 15.5,
@@ -73,7 +66,10 @@ export default {
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
       bounds: null,
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      mapStyle: 'height: 100vh width: 100%;',
+      mapStyle: {
+        height: '100vh',
+        width: '100%'
+      },
       map: null,
       maxBounds: L.latLngBounds([
         [44.5228, -123.3334],
@@ -133,7 +129,7 @@ export default {
       showSide: true
     }
   },
-  mounted () {
+  mounted() {
     // used for resetmap() function
     this.$nextTick(() => {
       this.map = this.$refs.map.mapObject
@@ -196,11 +192,9 @@ export default {
           layer.bindPopup(
             layer => {
               // Programmatically return popup component
-              const popupElement = new Vue({
-                ...popUp,
-                parent: this,
-                propsData: feature.properties
-              }).$mount()
+              const popupElement = createApp(popUp, {
+                ...feature.properties
+              }).mount(document.createElement('div'))
               return popupElement.$el
             },
             // pop-up options
@@ -233,20 +227,20 @@ export default {
   },
   methods: {
     // Map updaters
-    boundsUpdated (bounds) {
+    boundsUpdated(bounds) {
       this.bounds = bounds
     },
-    centerUpdated (center) {
+    centerUpdated(center) {
       this.center = center
     },
-    getPoint (index) {
+    getPoint(index) {
       return this.getPoints[index]
     },
-    zoomUpdated (zoom) {
+    zoomUpdated(zoom) {
       this.zoom = zoom
     },
     // ported in from energy-dashboard repo
-    resetMap () {
+    resetMap() {
       this.map.setView(L.latLng(44.5638, -123.2815), 15.5)
     }
   }

@@ -68,7 +68,7 @@ export default {
   components: {
     svgLogo
   },
-  data () {
+  data() {
     return {
       activeIndex: '',
       input: ''
@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     // Check which features get matched by input
-    activeFeatures () {
+    activeFeatures() {
       return this.searchFeatures(this.input)
     },
     ...mapGetters({
@@ -84,7 +84,7 @@ export default {
       getLayer: 'LayerModule/getLayerByCoordinates'
     })
   },
-  mounted () {
+  mounted() {
     this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {},

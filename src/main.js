@@ -1,29 +1,28 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import elm from 'element-ui'
-import Vuei18n from 'vue-i18n'
-import locale from 'element-ui/lib/locale/lang/en'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import { createI18n } from 'vue-i18n'
 
-import 'element-ui/lib/theme-chalk/reset.css'
-import 'element-ui/lib/theme-chalk/index.css'
 // The order in which we load these leaflet css files matters
 // https://github.com/ghybs/leaflet-defaulticon-compatibility
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css' // Re-uses images from ~leaflet package
 import '@/assets/leaflet-global-override.scss'
 
-Vue.use(Vuei18n)
-Vue.use(elm, { locale })
+const i18n = createI18n({
+  locale: 'en',
+  messages: {}
+})
 
-Vue.config.lang = 'en'
+const app = createApp(App)
 
-Vue.config.productionTip = false
+app.use(router)
+app.use(store)
+app.use(i18n)
+app.use(ElementPlus)
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+
+app.mount('#app')

@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
-import { createVuePlugin as vue } from 'vite-plugin-vue2'
-import { createSvgPlugin } from 'vite-plugin-vue2-svg'
+import vue from '@vitejs/plugin-vue'
+import svgLoader from 'vite-svg-loader'
 import hjsonPlugin from './util/loaders/hjson.plugin'
 const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), createSvgPlugin(), hjsonPlugin()],
+  plugins: [vue(), svgLoader(), hjsonPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
