@@ -22,6 +22,21 @@
   white-space: normal; // wraps text vertically
   padding: 5px;
 }
+/* Default size for the marker image */
+img.leaflet-marker-icon {
+  width: 30px;  /* Set the initial size of the marker */
+  height: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for both size and shadow */
+}
+
+/* Hover effect: increase size and add shadow */
+img.leaflet-marker-icon:hover {
+  transform: scale(1.5);  /* Enlarge the marker */
+  box-shadow: 0px 4px 8px rgba(4, 0, 4, 0.798);  /* Add shadow */
+}
+
+
+
 
 .leaflet-popup-tip {
   background-color: #d73f09;
