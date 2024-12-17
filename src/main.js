@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createI18n } from 'vue-i18n'
 
 // The order in which we load these leaflet css files matters
@@ -24,5 +25,9 @@ app.use(store)
 app.use(i18n)
 app.use(ElementPlus)
 
+// register all Element Plus icons globally
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 
 app.mount('#app')

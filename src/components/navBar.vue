@@ -4,12 +4,12 @@
 -->
 
 <template>
-  <el-row class="sus-nav" type="flex">
+  <el-row class="sus-nav">
     <!--:span="8"-->
-    <el-col class="sus-nav-item" :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
+    <el-col class="sus-nav-item" :xs="7" :sm="7" :md="5" :lg="4" :xl="3">
       <svgLogo class="sus-nav-image" width="auto" alt="" @click="$router.push({ path: '/' })" />
     </el-col>
-    <el-col class="sus-title sus-nav-item" :xs="11" :sm="13" :md="13" :lg="16" :xl="18">
+    <el-col class="sus-title sus-nav-item" :xs="7" :sm="12" :md="14" :lg="16" :xl="18">
       <h1>Sustainability Map</h1>
     </el-col>
     <!--
@@ -20,41 +20,43 @@
           4. the called method gets the referenced layer indexed by coordinates
           5. the method then calls the "popupopen" function & maybe clears input
       -->
-    <el-col class="sus-nav-search sus-nav-item" :xs="2" :sm="2" :md="4" :lg="2" :xl="1">
+    <el-col class="sus-nav-search sus-nav-item" :xs="10" :sm="5" :md="5" :lg="4" :xl="1">
       <el-dropdown size="large" placement="bottom-start">
-        <el-input size="medium" class="sus-nav-search-input" placeholder="Search..." v-model="input">
-          <i slot="suffix" class="el-input__icon el-icon-search"> </i>
-        </el-input>
+        <template #default>
+          <el-input class="sus-nav-search-input" suffix-icon="Search" placeholder="Search..." v-model="input" />
+        </template>
 
-        <el-dropdown-menu slot="dropdown" v-if="activeFeatures.length === 0">
-          <el-dropdown-item>No features found.</el-dropdown-item>
-        </el-dropdown-menu>
+        <template #dropdown>
+          <el-dropdown-menu v-if="activeFeatures.length === 0">
+            <el-dropdown-item>No features found.</el-dropdown-item>
+          </el-dropdown-menu>
 
-        <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
-          <el-dropdown-item
-            v-for="({ properties: { name, info, icon }, geometry: { coordinates } }, index) in activeFeatures"
-            :key="index"
-            @click.native="handleSelect(coordinates)"
-          >
-            <el-container class="result-container">
-              <el-header>
-                <div class="result-image">
-                  <el-avatar
-                    class="result-image"
-                    size="small"
-                    fit="scale-down"
-                    :src="'images/categories/' + icon + '.png'"
-                  >
-                  </el-avatar>
-                </div>
-                <strong>{{ name }}: </strong>
-              </el-header>
-              <el-main class="result">
-                {{ info }}
-              </el-main>
-            </el-container>
-          </el-dropdown-item>
-        </el-dropdown-menu>
+          <el-dropdown-menu class="scroll-bar" v-else>
+            <el-dropdown-item
+              v-for="({ properties: { name, info, icon }, geometry: { coordinates } }, index) in activeFeatures"
+              :key="index"
+              @click="handleSelect(coordinates)"
+            >
+              <el-container class="result-container">
+                <el-header>
+                  <div class="result-image">
+                    <el-avatar
+                      class="result-image"
+                      size="small"
+                      fit="scale-down"
+                      :src="'images/categories/' + icon + '.png'"
+                    >
+                    </el-avatar>
+                  </div>
+                  <strong>{{ name }}: </strong>
+                </el-header>
+                <el-main class="result">
+                  {{ info }}
+                </el-main>
+              </el-container>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
     </el-col>
   </el-row>
@@ -68,7 +70,7 @@ export default {
   components: {
     svgLogo
   },
-  data() {
+  data () {
     return {
       activeIndex: '',
       input: ''
@@ -76,7 +78,7 @@ export default {
   },
   computed: {
     // Check which features get matched by input
-    activeFeatures() {
+    activeFeatures () {
       return this.searchFeatures(this.input)
     },
     ...mapGetters({
@@ -84,7 +86,7 @@ export default {
       getLayer: 'LayerModule/getLayerByCoordinates'
     })
   },
-  mounted() {
+  mounted () {
     this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {},
@@ -171,9 +173,12 @@ h1 {
   overflow: hidden;
 }
 
+.sus-nav-item {
+  height: 100%;
+}
+
 .sus-nav-image {
   height: 100%;
-  justify-self: center;
   cursor: pointer;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -225,12 +230,11 @@ h1 {
   font-size: $--font-size-large;
   font-family: StratumNo2;
   color: $--color-black;
-  padding-top: 1.1em;
 }
 
 .sus-nav-search {
   padding-top: 1em;
-  width: 15em;
+  width: 100%;
   font-family: 'stratumno2';
 }
 .el-input__icon:hover {
@@ -258,10 +262,13 @@ h1 {
     align-self: center;
   }
   .sus-title {
+    max-height: 30px;
     h1 {
       width: 100%;
       text-align: center;
       font-size: 16px;
+      margin: 0;
+      margin-top: 0.25em;
     }
   }
   .sus-nav-search {
