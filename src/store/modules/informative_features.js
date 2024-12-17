@@ -43,12 +43,10 @@ const getters = {
     }, [])
 
     // remove GeoJSON features from non-visible categories
-    return displayedFeatures.filter(
-      (feature) => state.visibleCategories[feature.properties.category]
-    )
+    return displayedFeatures.filter(feature => state.visibleCategories[feature.properties.category])
   },
 
-  getTour: (state, getters) => (tourName) => {
+  getTour: (state, getters) => tourName => {
     return state.sustainabilityFeatures[tourName]
   },
 
@@ -57,17 +55,13 @@ const getters = {
   },
 
   getVisibleCategories: (state, getters) => {
-    return getters.getCategories.filter(
-      (category) => state.visibleCategories[category]
-    )
+    return getters.getCategories.filter(category => state.visibleCategories[category])
   },
   // returns closure which will return features which contain text string
-  searchFeatures: (state, getters) => (query) => {
+  searchFeatures: (state, getters) => query => {
     // the filter argument function just takes in a feature object which I'm destructuring
     return getters.getFeatures.filter(({ properties: { info, name } }) => {
-      return (info.toLowerCase() + name.toLowerCase()).includes(
-        query.toLowerCase()
-      )
+      return (info.toLowerCase() + name.toLowerCase()).includes(query.toLowerCase())
     })
   }
 }

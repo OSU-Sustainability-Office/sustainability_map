@@ -5,64 +5,35 @@
 
 <template>
   <!--transition name="side">-->
-  <el-menu
-    v-if="showSide"
-    class="sideMenu"
-    mode="vertical"
-    backgroundColor="#1A1A1A"
-  >
+  <el-menu v-if="showSide" class="sideMenu" mode="vertical" backgroundColor="#1A1A1A">
     <el-menu-item-group>
       <el-col>
         <div class="colorByTitle">Toggle Features By Category</div>
         <br />
-        <el-button
-          class="sortButton"
-          icon="el-icon-star-off"
-          size="small"
-          :loading="true"
-          v-if="!tours.length"
-          >Loading...</el-button
-        >
+        <el-button class="sortButton" icon="Star" :loading="true" v-if="!tours.length">Loading...</el-button>
         <el-col>
           <el-row class="buttonGroup" :span="12" type="flex" justify="center">
             <span v-for="(category, index) in categories" :key="index">
               <el-button
                 v-if="visibleCategories.includes(category)"
                 class="sortButton"
-                icon="el-icon-star-on"
-                size="small"
+                icon="StarFilled"
                 @click="toggle(category)"
               >
                 {{ category_dictionary[category] }}
               </el-button>
-              <el-button
-                v-else
-                class="sortButton"
-                icon="el-icon-star-off"
-                size="small"
-                @click="toggle(category)"
-              >
+              <el-button v-else class="sortButton" icon="Star" @click="toggle(category)">
                 {{ category_dictionary[category] }}
               </el-button>
             </span>
             <span>
-              <a
-                href="https://diversity.oregonstate.edu/feature-story/land-acknowledgement"
-                target="_blank"
-              >
-                <el-button size="small" class="acknowledgement-button">
-                  Land Acknowledgement
-                </el-button>
+              <a href="https://diversity.oregonstate.edu/feature-story/land-acknowledgement" target="_blank">
+                <el-button class="acknowledgement-button"> Land Acknowledgement </el-button>
               </a>
             </span>
             <span>
-              <a
-                href="https://transportation.oregonstate.edu/beaver-bus/beaver-bus-route-maps"
-                target="_blank"
-              >
-                <el-button size="small" class="acknowledgement-button">
-                  Beaver Bus Routes
-                </el-button>
+              <a href="https://transportation.oregonstate.edu/beaver-bus/beaver-bus-route-maps" target="_blank">
+                <el-button class="acknowledgement-button"> Beaver Bus Routes </el-button>
               </a>
             </span>
           </el-row>
@@ -123,7 +94,7 @@ export default {
 </script>
 
 <style>
-@import "../../../node_modules/leaflet/dist/leaflet.css";
+@import '../../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
@@ -139,7 +110,7 @@ $sideMenu-width: 18.2em; //250px;
   color: $--color-white;
   font-size: 26px;
   text-align: center;
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
 }
 
 .title {
@@ -148,7 +119,7 @@ $sideMenu-width: 18.2em; //250px;
   height: auto;
   background-color: rgb(215, 63, 9);
   color: #fff;
-  font-family: "StratumNo2";
+  font-family: 'StratumNo2';
   border-bottom: solid 1px #fff;
 }
 .close-box {
@@ -185,6 +156,10 @@ $sideMenu-width: 18.2em; //250px;
   background-color: $--acknowledgement-button-color;
 }
 
+.el-button {
+  justify-content: flex-start;
+}
+
 /* Mobile Friendly Styling Adjustments */
 @media only screen and (max-width: $--mobile-width) {
   .sideMenu {
@@ -197,7 +172,7 @@ $sideMenu-width: 18.2em; //250px;
     color: $--color-white;
     font-size: 16px;
     text-align: center;
-    font-family: "stratumno2";
+    font-family: 'stratumno2';
   }
 
   .buttonGroup {

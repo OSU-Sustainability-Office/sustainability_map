@@ -3,9 +3,7 @@
   Description:
     This is the main file which sets up the Vuex store.
 */
-import Vue from 'vue'
-import Vuex from 'vuex'
-import { Geoloc } from 'vuelayers'
+import { createStore } from 'vuex'
 
 // const osmtogeojson = require('osmtogeojson')
 
@@ -13,15 +11,12 @@ import DecorativeFeatureModule from './modules/decorative_features.js'
 import FeatureModule from './modules/informative_features.js'
 import LayerModule from './modules/layers.js'
 
-Vue.use(Vuex)
-Vue.use(Geoloc)
-
 const getters = {}
 const mutations = {}
 const actions = {}
 const state = {}
 
-const store = new Vuex.Store({
+const store = createStore({
   state,
   mutations,
   getters,
