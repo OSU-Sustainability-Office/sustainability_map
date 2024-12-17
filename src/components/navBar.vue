@@ -106,11 +106,6 @@ export default {
     }
   },
   computed: {
-    onid: {
-      get () {
-        return this.$store.getters['user/onid']
-      }
-    },
     // Check which features get matched by input
     activeFeatures () {
       return this.searchFeatures(this.input)
@@ -120,28 +115,16 @@ export default {
       getLayer: 'LayerModule/getLayerByCoordinates'
     })
   },
-  created () {
-    // this.$store.dispatch('user/user').then( user => {
-    //   console.log(user)
-    //   this.user = user
-    // })
-  },
   mounted () {
     this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {},
   methods: {
-    logOut: function () {
-      // this.$store.dispatch('logout')
-    },
     // returns function which calls pop-up method
     handleSelect: function (coordinates) {
       // this.$router.push({ path: '/' + select })
       // this.activeIndex = select
       this.getLayer(coordinates).openPopup()
-    },
-    what: function () {
-      console.log('yoooo')
     }
   }
 }
