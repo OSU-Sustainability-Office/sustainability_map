@@ -5,10 +5,8 @@
 <template>
   <el-container class="mapContainer">
     <!-- Side Button -->
-    <el-button class="sideButton" @click="showSide = !showSide">
-      <i v-if="showSide" class="el-icon-s-fold"></i>
-      <i v-else class="el-icon-s-unfold"></i>
-    </el-button>
+    <el-button size="large" v-if="showSide" icon="Fold" class="sideButton" @click="showSide = !showSide" />
+    <el-button size="large" v-else icon="Fold" class="sideButton" @click="showSide = !showSide" />
 
     <!-- Side Menu or 'Key' -->
     <sideView :showSide="showSide"></sideView>
@@ -57,7 +55,7 @@ export default {
     LGeoJson,
     sideView
   },
-  data() {
+  data () {
     return {
       // Map attributions start
       zoom: 15.5,
@@ -129,7 +127,7 @@ export default {
       showSide: true
     }
   },
-  mounted() {
+  mounted () {
     // used for resetmap() function
     this.$nextTick(() => {
       this.map = this.$refs.map.mapObject
@@ -227,20 +225,20 @@ export default {
   },
   methods: {
     // Map updaters
-    boundsUpdated(bounds) {
+    boundsUpdated (bounds) {
       this.bounds = bounds
     },
-    centerUpdated(center) {
+    centerUpdated (center) {
       this.center = center
     },
-    getPoint(index) {
+    getPoint (index) {
       return this.getPoints[index]
     },
-    zoomUpdated(zoom) {
+    zoomUpdated (zoom) {
       this.zoom = zoom
     },
     // ported in from energy-dashboard repo
-    resetMap() {
+    resetMap () {
       this.map.setView(L.latLng(44.5638, -123.2815), 15.5)
     }
   }
@@ -311,7 +309,7 @@ export default {
   display: flex;
   justify-content: center;
   position: absolute;
-  left: 2em;
+  left: 2.5em;
 }
 
 /* Mobile Friendly Styling Adjustments */
@@ -322,11 +320,11 @@ export default {
   }
 
   .el-button.sideButton {
-    margin-top: 0.1em;
+    margin-top: 0.6em;
     margin-left: 0.1em;
     margin-right: 0em;
     margin-bottom: 0em;
-    left: 2.6em;
+    left: 3.5em;
     // Make icon point up & down
     .el-icon-s-unfold,
     .el-icon-s-fold {

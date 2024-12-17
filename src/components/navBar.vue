@@ -20,7 +20,7 @@
           4. the called method gets the referenced layer indexed by coordinates
           5. the method then calls the "popupopen" function & maybe clears input
       -->
-    <el-col class="sus-nav-search sus-nav-item" :xs="10" :sm="5" :md="5" :lg="4" :xl="1">
+    <el-col class="sus-nav-search sus-nav-item" :xs="10" :sm="5" :md="5" :lg="4" :xl="3">
       <el-dropdown size="large" placement="bottom-start">
         <template #default>
           <el-input class="sus-nav-search-input" suffix-icon="Search" placeholder="Search..." v-model="input" />
