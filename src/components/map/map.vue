@@ -114,15 +114,15 @@ export default {
             if (!e.target.setStyle) return
             e.target.setStyle({ ...e.target.oldStyle })
           })
-        },
-        style: {
-          stroke: true,
-          color: '#1A1A1A',
-          opacity: 0.2,
-          fillOpacity: 0.12,
-          weight: 1,
-          fill: true,
-          fillColor: '#D73F09'
+
+          layer.setStyle({
+            color: '#1A1A1A',
+            opacity: 0.2,
+            fillOpacity: 0.12,
+            weight: 1,
+            fill: true,
+            fillColor: '#D73F09'
+          })
         }
       },
       showSide: true
