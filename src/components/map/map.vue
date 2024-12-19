@@ -23,6 +23,7 @@
         @update:zoom="zoomUpdated"
         @update:center="centerUpdated"
         @update:bounds="boundsUpdated"
+        @ready="updateMapRef"
       >
         <button class="resetMapButton" @click="resetMap()">Reset Map</button>
         <!-- ported in from energy-dashboard repo-->
@@ -127,12 +128,6 @@ export default {
       showSide: true
     }
   },
-  mounted () {
-    // used for resetmap() function
-    this.$nextTick(() => {
-      this.map = this.$refs.map.mapObject
-    })
-  },
   computed: {
     ...mapGetters({
       getFeatures: 'FeatureModule/getFeatures',
@@ -236,6 +231,9 @@ export default {
     },
     zoomUpdated (zoom) {
       this.zoom = zoom
+    },
+    updateMapRef () {
+      this.map = this.$refs.map.leafletObject
     },
     // ported in from energy-dashboard repo
     resetMap () {
