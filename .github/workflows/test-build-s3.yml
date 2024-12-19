@@ -21,6 +21,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
+      - name: Clean npm cache
+        run: npm cache clean --force
+      - name: Remove node_modules and package-lock.json
+        run: |
+          rm -rf node_modules
+          rm package-lock.json
       - name: npm install
         run: |
           npm install
