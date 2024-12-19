@@ -62,7 +62,7 @@
   </el-row>
 </template>
 <script>
-import svgLogo from '../../public/images/logo.svg'
+import svgLogo from '../assets/logo.svg'
 import { mapGetters } from 'vuex'
 
 export default {

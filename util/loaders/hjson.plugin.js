@@ -5,7 +5,7 @@
                a custom plugin used in the vite.config.js file.
 */
 
-const Hjson = require('hjson')
+import Hjson from 'hjson'
 
 function hjsonPlugin() {
   return {

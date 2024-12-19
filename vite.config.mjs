@@ -2,7 +2,8 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
 import hjsonPlugin from './util/loaders/hjson.plugin'
-const path = require('path')
+import path from 'path'
+import autoprefixer from 'autoprefixer'
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -25,7 +26,7 @@ export default ({ mode }) => {
         }
       },
       postcss: {
-        plugins: [require('autoprefixer')()]
+        plugins: [autoprefixer()]
       }
     }
   })

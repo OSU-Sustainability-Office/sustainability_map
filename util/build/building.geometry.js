@@ -3,10 +3,10 @@
     Description: builds OSU Building geojson geometry from OSM overpass API
 */
 
-const axios = require('axios')
-const osmtogeojson = require('osmtogeojson')
-const fs = require('fs')
-const path = require('path')
+import axios from 'axios'
+import osmtogeojson from 'osmtogeojson'
+import fs from 'fs'
+import path from 'path'
 
 // Query selects all OSU university buildings @ corvallis
 const overpass_query =

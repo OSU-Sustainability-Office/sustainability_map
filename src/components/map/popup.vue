@@ -40,12 +40,20 @@
 </template>
 
 <script setup>
+// These need to be imported here because they are not recognized
+// when created dynamically in map.vue with the new Vue 3 setup
 import { InfoFilled, VideoCamera } from '@element-plus/icons-vue'
+import { ElRow } from 'element-plus'
 </script>
 
 <script>
 export default {
   name: 'popUp',
+  components: {
+    InfoFilled,
+    VideoCamera,
+    ElRow
+  },
   props: ['name', 'info', 'tags', 'image', 'imageType', 'tour', 'url', 'isMobile'],
   mounted: function () {
     this.$refs.popupImage.style.backgroundImage = `url(${this.image})`
@@ -146,6 +154,7 @@ $--text-padding: 10px;
     color: white;
     margin: 0;
     padding: 0.1em;
+    width: 100%;
   }
   h3 {
     color: white;
@@ -153,6 +162,7 @@ $--text-padding: 10px;
     font-weight: 100;
     margin: 0;
     padding: 0.1em;
+    width: 100%;
   }
 }
 

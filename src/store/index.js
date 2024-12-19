@@ -4,9 +4,6 @@
     This is the main file which sets up the Vuex store.
 */
 import { createStore } from 'vuex'
-
-// const osmtogeojson = require('osmtogeojson')
-
 import DecorativeFeatureModule from './modules/decorative_features.js'
 import FeatureModule from './modules/informative_features.js'
 import LayerModule from './modules/layers.js'
