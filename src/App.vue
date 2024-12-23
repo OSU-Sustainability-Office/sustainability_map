@@ -22,11 +22,11 @@ export default {
   components: {
     navigbar
   },
-  async created() {},
-  data() {
+  async created () {},
+  data () {
     return {}
   },
-  beforeDestroy() {},
+  beforeDestroy () {},
   methods: {},
   watch: {}
 }

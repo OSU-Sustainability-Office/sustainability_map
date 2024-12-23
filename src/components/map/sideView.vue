@@ -54,7 +54,7 @@ export default {
     showSide: Boolean
   },
   components: {},
-  data() {
+  data () {
     return {
       title: '',
       unit: 'day',
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     media: {
-      get() {
+      get () {
         return this.point.img
       }
     },
@@ -89,7 +89,7 @@ export default {
     })
   },
   watch: {},
-  async mounted() {}
+  async mounted () {}
 }
 </script>
 
