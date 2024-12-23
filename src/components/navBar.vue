@@ -70,7 +70,7 @@ export default {
   components: {
     svgLogo
   },
-  data () {
+  data() {
     return {
       activeIndex: '',
       input: ''
@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     // Check which features get matched by input
-    activeFeatures () {
+    activeFeatures() {
       return this.searchFeatures(this.input)
     },
     ...mapGetters({
@@ -86,7 +86,7 @@ export default {
       getLayer: 'LayerModule/getLayerByCoordinates'
     })
   },
-  mounted () {
+  mounted() {
     this.activeIndex = this.$route.path.split('/')[1]
   },
   watch: {},
@@ -109,7 +109,7 @@ export default {
 .scroll-bar {
   max-height: 50vh;
   overflow-y: scroll;
-  scrollbar-color: $--color-primary $--color-white;
+  scrollbar-color: $color-primary $color-white;
   scrollbar-width: thin;
 }
 
@@ -119,7 +119,7 @@ export default {
   font-size: 14px;
 }
 
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .result-container {
     width: 42vw;
     margin: 0px;
@@ -157,13 +157,13 @@ export default {
 
 h1 {
   text-align: center;
-  color: $--color-white;
+  color: $color-white;
   font-size: 26px;
 }
 
 .sus-nav {
-  background-color: $--color-primary !important;
-  /*border-bottom: solid 1px $--color-white;*/
+  background-color: $color-primary !important;
+  /*border-bottom: solid 1px $color-white;*/
   display: flex;
   margin: inherit;
   width: 100%;
@@ -186,23 +186,23 @@ h1 {
 
 .sus-nav-menu > * {
   padding-top: 5px;
-  height: $--nav-height - 2px !important;
-  color: $--color-white;
+  height: $nav-height - 2px !important;
+  color: $color-white;
   border: none;
 }
 .el-menu-item {
-  color: $--color-white !important;
+  color: $color-white !important;
   border: none !important;
   height: 100% !important;
 }
 .sus-nav-menu > *:not(.is-active):hover {
-  color: $--color-black !important;
+  color: $color-black !important;
   background-color: rgba(0, 0, 0, 0) !important;
 }
 .sus-nav-menu > *.is-active {
   border-bottom: none !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
-  color: $--color-white !important;
+  color: $color-white !important;
 }
 .sus-nav-menu > *:not(.is-active):hover:after {
   content: '\a0';
@@ -213,8 +213,8 @@ h1 {
 }
 .sus-nav-sign {
   color: #ffffff !important;
-  height: $--nav-height !important;
-  line-height: $--nav-height !important;
+  height: $nav-height !important;
+  line-height: $nav-height !important;
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -227,9 +227,9 @@ h1 {
   text-decoration: none;
 }
 .sus-title {
-  font-size: $--font-size-large;
+  font-size: $font-size-large;
   font-family: StratumNo2;
-  color: $--color-black;
+  color: $color-black;
 }
 
 .sus-nav-search {
@@ -242,7 +242,7 @@ h1 {
 }
 
 /* Mobile Friendly Styling Adjustments */
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .el-row.sus-nav {
     flex-direction: column;
     justify-content: center;

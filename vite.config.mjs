@@ -5,7 +5,6 @@ import hjsonPlugin from './util/loaders/hjson.plugin'
 import path from 'path'
 import autoprefixer from 'autoprefixer'
 
-// https://vitejs.dev/config/
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
@@ -20,7 +19,7 @@ export default ({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
-          @import "@/assets/style-variables.scss";
+          @use "@/assets/style-variables.scss" as *;
           $font-path: "${process.env.VITE_FONT_PATH}";
           `
         }

@@ -22,11 +22,11 @@ export default {
   components: {
     navigbar
   },
-  async created () {},
-  data () {
+  async created() {},
+  data() {
     return {}
   },
-  beforeDestroy () {},
+  beforeDestroy() {},
   methods: {},
   watch: {}
 }
@@ -50,7 +50,7 @@ body {
 }
 </style>
 <style lang="scss">
-@import 'element-plus/theme-chalk/src/index.scss';
+@use 'element-plus/theme-chalk/src/index.scss';
 </style>
 
 <style scoped lang="scss">
@@ -64,12 +64,12 @@ body {
   /* We need the !important flag to override the prop el-header takes in for height as size
      This is sort of a limitation with using Elements-UI and scss variables.
   */
-  height: $--nav-size !important;
+  height: $nav-size !important;
 }
 
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .el-header {
-    height: $--nav-size-mobile !important;
+    height: $nav-size-mobile !important;
   }
 }
 

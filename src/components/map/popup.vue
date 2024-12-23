@@ -80,11 +80,11 @@ export default {
 </style>
 
 <style scoped lang="scss">
-$--border-width: 0.4em;
+$border-width: 0.4em;
 
 .popup {
-  border-width: $--border-width ($--border-width + 0.1) $--border-width ($--border-width + 0.1);
-  border-color: $--color-primary;
+  border-width: $border-width ($border-width + 0.1) $border-width ($border-width + 0.1);
+  border-color: $color-primary;
   border-style: solid;
   border-radius: 6px;
 }
@@ -104,7 +104,7 @@ $--border-width: 0.4em;
   padding: 0;
 }
 
-$--text-padding: 10px;
+$text-padding: 10px;
 
 .links {
   display: table;
@@ -116,7 +116,7 @@ $--text-padding: 10px;
     li {
       display: flex;
       text-align: left;
-      padding-right: $--text-padding;
+      padding-right: $text-padding;
       font-size: 14px;
       text-decoration: underline;
 
@@ -150,7 +150,7 @@ $--text-padding: 10px;
 
 .title {
   h2 {
-    background-color: $--color-primary;
+    background-color: $color-primary;
     color: white;
     margin: 0;
     padding: 0.1em;
@@ -158,7 +158,7 @@ $--text-padding: 10px;
   }
   h3 {
     color: white;
-    background-color: $--color-primary;
+    background-color: $color-primary;
     font-weight: 100;
     margin: 0;
     padding: 0.1em;
@@ -167,7 +167,7 @@ $--text-padding: 10px;
 }
 
 // Mobile Styling for Popup
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .popup {
     max-width: 300px;
     /* There's a small white space on the right side of the popup that this fixes */

@@ -54,7 +54,7 @@ export default {
     showSide: Boolean
   },
   components: {},
-  data () {
+  data() {
     return {
       title: '',
       unit: 'day',
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     media: {
-      get () {
+      get() {
         return this.point.img
       }
     },
@@ -89,7 +89,7 @@ export default {
     })
   },
   watch: {},
-  async mounted () {}
+  async mounted() {}
 }
 </script>
 
@@ -102,12 +102,12 @@ $sideMenu-width: 18.2em; //250px;
 
 // Side Menu
 .sideMenu {
-  background-color: $--color-black;
+  background-color: $color-black;
   width: $sideMenu-width;
   padding-top: 3em;
 }
 .colorByTitle {
-  color: $--color-white;
+  color: $color-white;
   font-size: 26px;
   text-align: center;
   font-family: 'stratumno2';
@@ -151,9 +151,9 @@ $sideMenu-width: 18.2em; //250px;
   min-width: 15em;
   text-align: left;
   color: #fff;
-  $--acknowledgement-button-color: #d73f09;
-  border-color: $--acknowledgement-button-color;
-  background-color: $--acknowledgement-button-color;
+  $acknowledgement-button-color: #d73f09;
+  border-color: $acknowledgement-button-color;
+  background-color: $acknowledgement-button-color;
 }
 
 .el-button {
@@ -161,7 +161,7 @@ $sideMenu-width: 18.2em; //250px;
 }
 
 /* Mobile Friendly Styling Adjustments */
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .sideMenu {
     width: 100%;
     margin: 0;
@@ -169,7 +169,7 @@ $sideMenu-width: 18.2em; //250px;
   }
 
   .colorByTitle {
-    color: $--color-white;
+    color: $color-white;
     font-size: 16px;
     text-align: center;
     font-family: 'stratumno2';
@@ -180,15 +180,15 @@ $sideMenu-width: 18.2em; //250px;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    $--mobile-btn-width: 12em;
-    $--mobile-btn-font: 10px;
-    $--mobile-btn-margin: 0.125em;
+    $mobile-btn-width: 12em;
+    $mobile-btn-font: 10px;
+    $mobile-btn-margin: 0.125em;
     .acknowledgement-button,
     .sortButton {
-      margin: $--mobile-btn-margin;
-      min-width: $--mobile-btn-width;
-      max-width: $--mobile-btn-width;
-      font-size: $--mobile-btn-font;
+      margin: $mobile-btn-margin;
+      min-width: $mobile-btn-width;
+      max-width: $mobile-btn-width;
+      font-size: $mobile-btn-font;
       padding: 0.5em;
       font-weight: 500;
     }
