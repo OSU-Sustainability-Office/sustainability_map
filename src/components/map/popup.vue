@@ -12,11 +12,7 @@
       <h2>{{ name }}</h2>
     </el-row>
     <el-row>
-      <div
-        class="info"
-        v-for="(line, index) of info.trim().split('\n')"
-        :key="`line-${index}`"
-      >
+      <div class="info" v-for="(line, index) of info.trim().split('\n')" :key="`line-${index}`">
         <p v-if="line.includes('<')" v-html="line.trim()"></p>
         <p v-else>{{ line.trim() }}</p>
       </div>
@@ -27,17 +23,15 @@
     <el-row class="links">
       <ul>
         <li v-if="tour">
+          <VideoCamera class="link-icon" />
           <h4>
-            <a :href="tour" target="_blank"
-              ><i class="el-icon-video-camera"></i>Virtual Tour</a
-            >
+            <a :href="tour" target="_blank"><i class="el-icon-video-camera"></i>Virtual Tour</a>
           </h4>
         </li>
         <li v-if="url">
+          <InfoFilled class="link-icon" />
           <h4>
-            <a :href="url" target="_blank"
-              ><i class="el-icon-info"></i>Read More</a
-            >
+            <a :href="url" target="_blank">Read More</a>
           </h4>
         </li>
       </ul>
@@ -45,19 +39,22 @@
   </div>
 </template>
 
+<script setup>
+// These need to be imported here because they are not recognized
+// when created dynamically in map.vue with the new Vue 3 setup
+import { InfoFilled, VideoCamera } from '@element-plus/icons-vue'
+import { ElRow } from 'element-plus'
+</script>
+
 <script>
 export default {
   name: 'popUp',
-  props: [
-    'name',
-    'info',
-    'tags',
-    'image',
-    'imageType',
-    'tour',
-    'url',
-    'isMobile'
-  ],
+  components: {
+    InfoFilled,
+    VideoCamera,
+    ElRow
+  },
+  props: ['name', 'info', 'tags', 'image', 'imageType', 'tour', 'url', 'isMobile'],
   mounted: function () {
     this.$refs.popupImage.style.backgroundImage = `url(${this.image})`
     if (this.imageType) {
@@ -79,24 +76,17 @@ export default {
 </script>
 
 <style>
-@import "../../../node_modules/leaflet/dist/leaflet.css";
+@import '../../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
-$--border-width: 0.4em;
+$border-width: 0.4em;
 
 .popup {
-  border-width: $--border-width ($--border-width + 0.1) $--border-width
-    ($--border-width + 0.1);
-  border-color: $--color-primary;
+  border-width: $border-width ($border-width + 0.1) $border-width ($border-width + 0.1);
+  border-color: $color-primary;
   border-style: solid;
   border-radius: 6px;
-}
-.popup:first-child {
-  padding: 0;
-}
-.popup:not(:first-child) {
-  padding: 5px;
 }
 
 .el-row.content {
@@ -114,56 +104,74 @@ $--border-width: 0.4em;
   padding: 0;
 }
 
-$--text-padding: 6px;
+$text-padding: 10px;
 
 .links {
   display: table;
   ul {
+    display: flex;
+    padding-left: 1em;
+    margin: 0;
+
     li {
-      display: inline-block;
+      display: flex;
       text-align: left;
-      padding-right: $--text-padding;
+      padding-right: $text-padding;
       font-size: 14px;
-      font-weight: 500;
       text-decoration: underline;
+
+      a {
+        font-weight: 100;
+      }
+
+      .link-icon {
+        width: 1.2em;
+        margin-right: 0.1em;
+        padding-top: 0.1em;
+        color: #0078a8;
+      }
     }
   }
 }
 
 .links-header {
   margin-top: 5px;
+  padding: 0;
 }
 
 .info {
   p {
-    padding-left: 5px;
-    padding-right: 2px;
     margin: 0;
+    padding: 5px;
+    word-spacing: 0.3em;
+    line-height: 1.5;
   }
 }
 
 .title {
-  background-color: $--color-primary;
-  /*
-    On chrome there's a whitebox between the popup-border and background-color
-    unless we set the margin to a negative value.  I don't know why "margin: 0"
-    still displays a thin white border, but I'm assuming this is a some weird
-    bug with webkit.
-  */
-  margin: -1px;
   h2 {
-    font-weight: 600;
+    background-color: $color-primary;
     color: white;
+    margin: 0;
+    padding: 0.1em;
+    width: 100%;
   }
   h3 {
     color: white;
+    background-color: $color-primary;
+    font-weight: 100;
+    margin: 0;
+    padding: 0.1em;
+    width: 100%;
   }
 }
 
 // Mobile Styling for Popup
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .popup {
     max-width: 300px;
+    /* There's a small white space on the right side of the popup that this fixes */
+    margin: -1px;
   }
 }
 </style>

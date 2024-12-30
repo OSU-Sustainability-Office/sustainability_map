@@ -7,11 +7,7 @@ An interactive map showing the sustainability features available at Oregon State
 - Clone the repo
 - Use nvm to get node version 18 (`nvm install 18 && nvm use 18`)
 - `npm install`
-- `npm run serve` to test-run the website
-
-## Notes about the build process:
-
-The source code (under `src`) gets automatically bundled by vue-cli (which uses webpack) into compact static assets under `public`, additional static assets dependent on outside sources (e.g. OSU building geometry from Open Street Maps) get created before the vue-cli webpack build via scripts under the `util` directory.
+- `npm run dev` to test-run the website
 
 ## Helpful References for Development
 
@@ -27,6 +23,7 @@ The source code (under `src`) gets automatically bundled by vue-cli (which uses 
 - [Leaflet GeoJSON Features](https://leafletjs.com/examples/geojson/)
 - [Leaflet Quickstart Guide](https://leafletjs.com/examples/quick-start/)
 - [Official Leaflet Docs](https://leafletjs.com/reference-1.6.0.html)
-- [Vue2Leaflet GitHub Page](https://github.com/vue-leaflet/Vue2Leaflet)
+- [Vue-Leaflet GitHub Page](https://github.com/vue-leaflet/vue-leaflet)
 - [Vue2Leaflet Docs](https://vue2-leaflet.netlify.app/quickstart/#accessing-leaflet-api)
+  - Vue2Leaflet is not compatible with Vue 3, so we switched to Vue-Leaflet, which mimics Vue2Leaflet as much as possible and does not have a separate Docs page
 - [Vuex Store Docs](https://vuex.vuejs.org/)

@@ -4,24 +4,12 @@
 -->
 
 <template>
-  <el-row class="sus-nav" type="flex">
+  <el-row class="sus-nav">
     <!--:span="8"-->
-    <el-col class="sus-nav-item" :xs="9" :sm="7" :md="5" :lg="4" :xl="3">
-      <svgLogo
-        class="sus-nav-image"
-        width="auto"
-        alt=""
-        @click="$router.push({ path: '/' })"
-      />
+    <el-col class="sus-nav-item" :xs="7" :sm="7" :md="5" :lg="4" :xl="3">
+      <svgLogo class="sus-nav-image" width="100%" alt="" @click="$router.push({ path: '/' })" />
     </el-col>
-    <el-col
-      class="sus-title sus-nav-item"
-      :xs="11"
-      :sm="13"
-      :md="13"
-      :lg="16"
-      :xl="18"
-    >
+    <el-col class="sus-title sus-nav-item" :xs="7" :sm="12" :md="14" :lg="16" :xl="18">
       <h1>Sustainability Map</h1>
     </el-col>
     <!--
@@ -32,62 +20,49 @@
           4. the called method gets the referenced layer indexed by coordinates
           5. the method then calls the "popupopen" function & maybe clears input
       -->
-    <el-col
-      class="sus-nav-search sus-nav-item"
-      :xs="2"
-      :sm="2"
-      :md="4"
-      :lg="2"
-      :xl="1"
-    >
+    <el-col class="sus-nav-search sus-nav-item" :xs="10" :sm="5" :md="5" :lg="4" :xl="3">
       <el-dropdown size="large" placement="bottom-start">
-        <el-input
-          size="medium"
-          class="sus-nav-search-input"
-          placeholder="Search..."
-          v-model="input"
-        >
-          <i slot="suffix" class="el-input__icon el-icon-search"> </i>
-        </el-input>
+        <template #default>
+          <el-input class="sus-nav-search-input" suffix-icon="Search" placeholder="Search..." v-model="input" />
+        </template>
 
-        <el-dropdown-menu slot="dropdown" v-if="activeFeatures.length === 0">
-          <el-dropdown-item>No features found.</el-dropdown-item>
-        </el-dropdown-menu>
+        <template #dropdown>
+          <el-dropdown-menu v-if="activeFeatures.length === 0">
+            <el-dropdown-item>No features found.</el-dropdown-item>
+          </el-dropdown-menu>
 
-        <el-dropdown-menu class="scroll-bar" slot="dropdown" v-else>
-          <el-dropdown-item
-            v-for="(
-              { properties: { name, info, icon }, geometry: { coordinates } },
-              index
-            ) in activeFeatures"
-            :key="index"
-            @click.native="handleSelect(coordinates)"
-          >
-            <el-container class="result-container">
-              <el-header>
-                <div class="result-image">
-                  <el-avatar
-                    class="result-image"
-                    size="small"
-                    fit="scale-down"
-                    :src="'images/categories/' + icon + '.png'"
-                  >
-                  </el-avatar>
-                </div>
-                <strong>{{ name }}: </strong>
-              </el-header>
-              <el-main class="result">
-                {{ info }}
-              </el-main>
-            </el-container>
-          </el-dropdown-item>
-        </el-dropdown-menu>
+          <el-dropdown-menu class="scroll-bar" v-else>
+            <el-dropdown-item
+              v-for="({ properties: { name, info, icon }, geometry: { coordinates } }, index) in activeFeatures"
+              :key="index"
+              @click="handleSelect(coordinates)"
+            >
+              <el-container class="result-container">
+                <el-header>
+                  <div class="result-image">
+                    <el-avatar
+                      class="result-image"
+                      size="small"
+                      fit="scale-down"
+                      :src="'images/categories/' + icon + '.png'"
+                    >
+                    </el-avatar>
+                  </div>
+                  <strong>{{ name }}: </strong>
+                </el-header>
+                <el-main class="result">
+                  {{ info }}
+                </el-main>
+              </el-container>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
     </el-col>
   </el-row>
 </template>
 <script>
-import svgLogo from '../../public/images/logo.svg'
+import svgLogo from '../assets/logo.svg'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -97,10 +72,6 @@ export default {
   },
   data () {
     return {
-      loginLink:
-        'https://api.sustainability.oregonstate.edu/v2/auth/login?returnURI=' +
-        process.env.VUE_APP_HOST_ADDRESS +
-        '/#/map',
       activeIndex: '',
       input: ''
     }
@@ -130,7 +101,7 @@ export default {
 }
 </script>
 <style>
-@import "../../node_modules/leaflet/dist/leaflet.css";
+@import '../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
@@ -138,7 +109,7 @@ export default {
 .scroll-bar {
   max-height: 50vh;
   overflow-y: scroll;
-  scrollbar-color: $--color-primary $--color-white;
+  scrollbar-color: $color-primary $color-white;
   scrollbar-width: thin;
 }
 
@@ -148,7 +119,7 @@ export default {
   font-size: 14px;
 }
 
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .result-container {
     width: 42vw;
     margin: 0px;
@@ -186,13 +157,13 @@ export default {
 
 h1 {
   text-align: center;
-  color: $--color-white;
+  color: $color-white;
   font-size: 26px;
 }
 
 .sus-nav {
-  background-color: $--color-primary !important;
-  /*border-bottom: solid 1px $--color-white;*/
+  background-color: $color-primary !important;
+  /*border-bottom: solid 1px $color-white;*/
   display: flex;
   margin: inherit;
   width: 100%;
@@ -202,9 +173,12 @@ h1 {
   overflow: hidden;
 }
 
+.sus-nav-item {
+  height: 100%;
+}
+
 .sus-nav-image {
   height: 100%;
-  justify-self: center;
   cursor: pointer;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -212,26 +186,26 @@ h1 {
 
 .sus-nav-menu > * {
   padding-top: 5px;
-  height: $--nav-height - 2px !important;
-  color: $--color-white;
+  height: $nav-height - 2px !important;
+  color: $color-white;
   border: none;
 }
 .el-menu-item {
-  color: $--color-white !important;
+  color: $color-white !important;
   border: none !important;
   height: 100% !important;
 }
 .sus-nav-menu > *:not(.is-active):hover {
-  color: $--color-black !important;
+  color: $color-black !important;
   background-color: rgba(0, 0, 0, 0) !important;
 }
 .sus-nav-menu > *.is-active {
   border-bottom: none !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
-  color: $--color-white !important;
+  color: $color-white !important;
 }
 .sus-nav-menu > *:not(.is-active):hover:after {
-  content: "\a0";
+  content: '\a0';
   display: block;
   padding: 0 2px;
   line-height: 1px;
@@ -239,8 +213,8 @@ h1 {
 }
 .sus-nav-sign {
   color: #ffffff !important;
-  height: $--nav-height !important;
-  line-height: $--nav-height !important;
+  height: $nav-height !important;
+  line-height: $nav-height !important;
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -253,23 +227,22 @@ h1 {
   text-decoration: none;
 }
 .sus-title {
-  font-size: $--font-size-large;
+  font-size: $font-size-large;
   font-family: StratumNo2;
-  color: $--color-black;
-  padding-top: 1.1em;
+  color: $color-black;
 }
 
 .sus-nav-search {
   padding-top: 1em;
-  width: 15em;
-  font-family: "stratumno2";
+  width: 100%;
+  font-family: 'stratumno2';
 }
 .el-input__icon:hover {
   cursor: pointer;
 }
 
 /* Mobile Friendly Styling Adjustments */
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .el-row.sus-nav {
     flex-direction: column;
     justify-content: center;
@@ -289,10 +262,13 @@ h1 {
     align-self: center;
   }
   .sus-title {
+    max-height: 30px;
     h1 {
       width: 100%;
       text-align: center;
       font-size: 16px;
+      margin: 0;
+      margin-top: 0.25em;
     }
   }
   .sus-nav-search {

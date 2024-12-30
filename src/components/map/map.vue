@@ -5,10 +5,8 @@
 <template>
   <el-container class="mapContainer">
     <!-- Side Button -->
-    <el-button class="sideButton" @click="showSide = !showSide">
-      <i v-if="showSide" class="el-icon-s-fold"></i>
-      <i v-else class="el-icon-s-unfold"></i>
-    </el-button>
+    <el-button size="large" v-if="showSide" icon="Fold" class="sideButton" @click="showSide = !showSide" />
+    <el-button size="large" v-else icon="Fold" class="sideButton" @click="showSide = !showSide" />
 
     <!-- Side Menu or 'Key' -->
     <sideView :showSide="showSide"></sideView>
@@ -25,19 +23,14 @@
         @update:zoom="zoomUpdated"
         @update:center="centerUpdated"
         @update:bounds="boundsUpdated"
+        @ready="updateMapRef"
       >
         <button class="resetMapButton" @click="resetMap()">Reset Map</button>
         <!-- ported in from energy-dashboard repo-->
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <!-- This is where the actual map layer comes from-->
-        <l-geo-json
-          :geojson="getFeatures"
-          :options="featureOptions"
-        ></l-geo-json>
-        <l-geo-json
-          :geojson="getBuildings"
-          :options="buildingOptions"
-        ></l-geo-json>
+        <l-geo-json :geojson="getFeatures" :options="featureOptions"></l-geo-json>
+        <l-geo-json :geojson="getBuildings" :options="buildingOptions"></l-geo-json>
       </l-map>
     </el-main>
   </el-container>
@@ -47,20 +40,13 @@
 // https://github.com/ghybs/leaflet-defaulticon-compatibility
 import L from 'leaflet'
 import 'leaflet-defaulticon-compatibility'
-import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
+import { LMap, LTileLayer, LGeoJson } from '@vue-leaflet/vue-leaflet'
 
 import { mapGetters } from 'vuex'
 
-import sideView from '@/components/map/sideView'
-import popUp from '@/components/map/popup'
-
-import Vue from 'vue'
-import elm from 'element-ui'
-import Vuei18n from 'vue-i18n'
-import locale from 'element-ui/lib/locale/lang/en'
-Vue.use(Vuei18n)
-Vue.use(elm, { locale: locale })
-Vue.config.lang = 'en'
+import sideView from '@/components/map/sideView.vue'
+import popUp from '@/components/map/popup.vue'
+import { createApp } from 'vue'
 
 export default {
   name: 'mapComponent',
@@ -78,9 +64,11 @@ export default {
       center: L.latLng(44.5638, -123.2815),
       url: 'https://api.mapbox.com/styles/v1/jack-woods/cjmi2qpp13u4o2spgb66d07ci/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFjay13b29kcyIsImEiOiJjamg2aWpjMnYwMjF0Mnd0ZmFkaWs0YzN0In0.qyiDXCvvSj3O4XvPsSiBkA',
       bounds: null,
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      mapStyle: 'height: 100vh width: 100%;',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      mapStyle: {
+        height: '100vh',
+        width: '100%'
+      },
       map: null,
       maxBounds: L.latLngBounds([
         [44.5228, -123.3334],
@@ -110,13 +98,6 @@ export default {
           this.$store.commit('LayerModule/addTooltip', layer)
 
           // code below ported over from energy-dashboard, allow you to see building tooltips by hovering mouse over, even when zoomed out
-          layer.on('click', (e) => {
-            this.polyClick(
-              e.target.feature.properties.id,
-              e.target.feature,
-              layer.getBounds().getCenter()
-            )
-          })
           layer.on('mouseover', function (e) {
             if (!e.target.setStyle) return
             e.target.oldStyle = {
@@ -124,33 +105,25 @@ export default {
               color: e.target.options.color
             }
             e.target.setStyle({ fillColor: '#000', color: '#000' })
-            e.target
-              .bindTooltip(e.target.feature.properties.tags.name)
-              .openTooltip()
+            e.target.bindTooltip(e.target.feature.properties.tags.name).openTooltip()
           })
-          layer.on('mouseout', (e) => {
+          layer.on('mouseout', e => {
             if (!e.target.setStyle) return
             e.target.setStyle({ ...e.target.oldStyle })
           })
-        },
-        style: {
-          stroke: true,
-          color: '#1A1A1A',
-          opacity: 0.2,
-          fillOpacity: 0.12,
-          weight: 1,
-          fill: true,
-          fillColor: '#D73F09'
+
+          layer.setStyle({
+            color: '#1A1A1A',
+            opacity: 0.2,
+            fillOpacity: 0.12,
+            weight: 1,
+            fill: true,
+            fillColor: '#D73F09'
+          })
         }
       },
       showSide: true
     }
-  },
-  mounted () {
-    // used for resetmap() function
-    this.$nextTick(() => {
-      this.map = this.$refs.map.mapObject
-    })
   },
   computed: {
     ...mapGetters({
@@ -207,13 +180,11 @@ export default {
         onEachFeature: (feature, layer) => {
           // Add the pop-up visual
           layer.bindPopup(
-            (layer) => {
+            layer => {
               // Programmatically return popup component
-              const popupElement = new Vue({
-                ...popUp,
-                parent: this,
-                propsData: feature.properties
-              }).$mount()
+              const popupElement = createApp(popUp, {
+                ...feature.properties
+              }).mount(document.createElement('div'))
               return popupElement.$el
             },
             // pop-up options
@@ -238,7 +209,7 @@ export default {
         },
         // style: (feature) => {},
         // Function which determines whether to include
-        filter: (feature) => {
+        filter: feature => {
           return true
         }
       }
@@ -258,6 +229,9 @@ export default {
     zoomUpdated (zoom) {
       this.zoom = zoom
     },
+    updateMapRef () {
+      this.map = this.$refs.map.leafletObject
+    },
     // ported in from energy-dashboard repo
     resetMap () {
       this.map.setView(L.latLng(44.5638, -123.2815), 15.5)
@@ -267,7 +241,7 @@ export default {
 </script>
 
 <style>
-@import "../../../node_modules/leaflet/dist/leaflet.css";
+@import '../../../node_modules/leaflet/dist/leaflet.css';
 </style>
 
 <style scoped lang="scss">
@@ -299,14 +273,14 @@ export default {
 }
 
 .el-button {
-  font-family: "stratumno2";
+  font-family: 'stratumno2';
   margin: 5px;
   width: 15em;
 }
 .buttonGroup {
   display: flex;
-  color: $--color-white;
-  font-family: "stratumno2";
+  color: $color-white;
+  font-family: 'stratumno2';
   font-size: 13px;
   justify-content: center;
   align-items: center;
@@ -315,8 +289,8 @@ export default {
 .toggleGroup {
   padding-top: 3em;
   display: flex;
-  color: $--color-white;
-  font-family: "stratumno2";
+  color: $color-white;
+  font-family: 'stratumno2';
   font-size: 13px;
   justify-content: center;
   align-items: center;
@@ -330,22 +304,22 @@ export default {
   display: flex;
   justify-content: center;
   position: absolute;
-  left: 2em;
+  left: 2.5em;
 }
 
 /* Mobile Friendly Styling Adjustments */
-@media only screen and (max-width: $--mobile-width) {
+@media only screen and (max-width: $mobile-width) {
   .el-container.mapContainer {
     // moves the sideView above the map
     flex-direction: column;
   }
 
   .el-button.sideButton {
-    margin-top: 0.1em;
+    margin-top: 0.6em;
     margin-left: 0.1em;
     margin-right: 0em;
     margin-bottom: 0em;
-    left: 2.6em;
+    left: 3.5em;
     // Make icon point up & down
     .el-icon-s-unfold,
     .el-icon-s-fold {
@@ -354,8 +328,8 @@ export default {
   }
 }
 .resetMapButton {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
+    sans-serif;
   display: flex;
   align-items: center;
   position: absolute;
