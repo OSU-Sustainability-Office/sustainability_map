@@ -7,7 +7,7 @@
   <el-row class="sus-nav">
     <!--:span="8"-->
     <el-col class="sus-nav-item" :xs="7" :sm="7" :md="5" :lg="4" :xl="3">
-      <svgLogo class="sus-nav-image" width="auto" alt="" @click="$router.push({ path: '/' })" />
+      <svgLogo class="sus-nav-image" width="100%" alt="" @click="$router.push({ path: '/' })" />
     </el-col>
     <el-col class="sus-title sus-nav-item" :xs="7" :sm="12" :md="14" :lg="16" :xl="18">
       <h1>Sustainability Map</h1>

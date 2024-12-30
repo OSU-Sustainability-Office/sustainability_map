@@ -7,11 +7,7 @@ An interactive map showing the sustainability features available at Oregon State
 - Clone the repo
 - Use nvm to get node version 18 (`nvm install 18 && nvm use 18`)
 - `npm install`
-- `npm run serve` to test-run the website
-
-## Notes about the build process:
-
-The source code (under `src`) gets automatically bundled by vue-cli (which uses webpack) into compact static assets under `public`, additional static assets dependent on outside sources (e.g. OSU building geometry from Open Street Maps) get created before the vue-cli webpack build via scripts under the `util` directory.
+- `npm run dev` to test-run the website
 
 ## Helpful References for Development
 

@@ -45,6 +45,9 @@
     "sass": "^1.82.0",
     "vite": "^6.0.4"
   },
+  "overrides": {
+    "@xmldom/xmldom": "^0.8.10"
+  },
   "eslintConfig": {
     "root": true,
     "env": {
@@ -55,9 +58,7 @@
       "eslint:recommended"
     ],
     "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
+    "parserOptions": {}
   },
   "postcss": {
     "plugins": {
