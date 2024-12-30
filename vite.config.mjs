@@ -27,6 +27,9 @@ export default ({ mode }) => {
       postcss: {
         plugins: [autoprefixer()]
       }
+    },
+    server: {
+      port: 3000
     }
   })
 }
