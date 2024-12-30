@@ -9,10 +9,6 @@ An interactive map showing the sustainability features available at Oregon State
 - `npm install`
 - `npm run dev` to test-run the website
 
-## Notes about the build process:
-
-The source code (under `src`) gets automatically bundled by vue-cli (which uses webpack) into compact static assets under `public`, additional static assets dependent on outside sources (e.g. OSU building geometry from Open Street Maps) get created before the vue-cli webpack build via scripts under the `util` directory.
-
 ## Helpful References for Development
 
 - [Hjson Reference](https://hjson.github.io/)
