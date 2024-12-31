@@ -145,7 +145,7 @@ export default {
 
           const featureMarker = L.marker(latlng, {
             icon: L.icon({
-              iconUrl: `images/categories/${icon}.png`,
+              iconUrl: `${import.meta.env.VITE_HOST_ADDRESS}/images/categories/${icon}.png`,
               iconSize: [21, 21], // [27, 27],
               iconAncor: [13, 27],
               popupAnchor: [-20, -20]

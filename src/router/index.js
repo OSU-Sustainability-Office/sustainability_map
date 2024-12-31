@@ -23,7 +23,7 @@ export default createRouter({
     },
     {
       path: '/:pathMatch(.*)*',
-      component: notfound
+      redirect: '/'
     }
   ]
 })
