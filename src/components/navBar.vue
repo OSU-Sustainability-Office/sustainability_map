@@ -51,7 +51,7 @@
                   <strong>{{ name }}: </strong>
                 </el-header>
                 <el-main class="result">
-                  {{ info }}
+                  <span v-html="info"></span>
                 </el-main>
               </el-container>
             </el-dropdown-item>
