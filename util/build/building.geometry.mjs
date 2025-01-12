@@ -6,7 +6,12 @@
 import axios from 'axios'
 import osmtogeojson from 'osmtogeojson'
 import fs from 'fs'
+import { fileURLToPath } from 'url'
 import path from 'path'
+
+// Get the directory of the current file
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Query selects all OSU university buildings @ corvallis
 const overpass_query =
@@ -14,7 +19,7 @@ const overpass_query =
 const overpass_api = 'https://overpass.kumi.systems/api/interpreter' // 'https://lz4.overpass-api.de/api/interpreter'
 
 // Downloads JSON OSM features and converts them to GeoJSON
-async function DownloadBuildingFeatures(query, api) {
+async function DownloadBuildingFeatures (query, api) {
   const result = await axios({
     method: 'post',
     url: api,
