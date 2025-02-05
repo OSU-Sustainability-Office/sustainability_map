@@ -9,7 +9,7 @@ import map from '@/components/map/map.vue'
 import sideView from '@/components/map/sideView.vue'
 
 export default createRouter({
-  history: createWebHistory('/sustainability_map/'),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
