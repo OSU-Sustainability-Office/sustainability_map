@@ -9,6 +9,11 @@ An interactive map showing the sustainability features available at Oregon State
 - `npm install`
 - `npm run dev` to test-run the website
 
+## Site URLS
+
+- Production Deployment URL: https://osu-sustainability-office.github.io/sustainability_map
+- Test Deployment URL: http://sustainability-map.s3-website-us-west-2.amazonaws.com/
+
 ## Helpful References for Development
 
 - [Hjson Reference](https://hjson.github.io/)
