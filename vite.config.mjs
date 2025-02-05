@@ -10,15 +10,11 @@ export default ({ mode }) => {
 
   return defineConfig({
     plugins: [vue(), svgLoader(), hjsonPlugin()],
-    base: '/sustainability_map/',
+    base: process.env.VITE_HOST_ADDRESS,
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src')
       }
-    },
-    build: {
-      outDir: 'dist/sustainability_map',
-      emptyOutDir: true
     },
     css: {
       preprocessorOptions: {
