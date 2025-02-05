@@ -10,7 +10,7 @@ export default ({ mode }) => {
 
   return defineConfig({
     plugins: [vue(), svgLoader(), hjsonPlugin()],
-    base: mode === 'staging' ? '/' : process.env.VITE_HOST_ADDRESS,
+    base: process.env.VITE_HOST_ADDRESS,
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src')
