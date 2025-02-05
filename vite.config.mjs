@@ -16,9 +16,6 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, 'src')
       }
     },
-    define: {
-      __BASE_HREF__: JSON.stringify(process.env.VITE_HOST_ADDRESS || '/')
-    },
     css: {
       preprocessorOptions: {
         scss: {
