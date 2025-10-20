@@ -42,8 +42,8 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-strict-vue": "^1.0.0",
     "eslint-plugin-vue": "^8.7.1",
-    "prettier": "^2.7.1",
-    "sass": "^1.82.0",
+    "prettier": "^3.6.2",
+    "sass": "^1.93.2",
     "vite": "^6.0.4"
   },
   "overrides": {
