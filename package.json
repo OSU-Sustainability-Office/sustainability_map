@@ -1,5 +1,6 @@
 {
   "name": "sustainability-map",
+  "type": "module",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -9,9 +10,12 @@
     "build-stage": "vite build --mode staging",
     "serve": "vite preview",
     "prebuild": "node util/build/*.mjs",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-    "prettier": "prettier --write **/*.{js,ts,tsx,json,html,md,css,scss,vue}",
-    "format": "npm-run-all --continue-on-error prettier \"lint -- --fix\""
+    "lint": "eslint --fix src",
+    "prettier": "prettier --write \"**/*.{js,json,html,md,css,scss,vue}\"",
+    "format": "npm-run-all --continue-on-error prettier lint",
+    "format:check": "npm-run-all prettier:check lint:check",
+    "prettier:check": "prettier --check \"**/*.{js,json,html,md,css,scss,vue}\"",
+    "lint:check": "eslint src --max-warnings=0"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -25,25 +29,21 @@
     "osmtogeojson": "^3.0.0-beta.5",
     "vite-svg-loader": "^5.1.0",
     "vue": "^3.5.13",
-    "vue-i18n": "^9.0.0",
     "vue-leaflet": "^0.1.0",
     "vue-router": "^4.2.0",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "^3.5.13",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-strict-vue": "^1.0.0",
-    "eslint-plugin-vue": "^8.7.1",
-    "prettier": "^2.7.1",
-    "sass": "^1.82.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-vue": "^10.5.0",
+    "prettier": "^3.6.2",
+    "sass": "^1.93.2",
     "vite": "^6.0.4"
   },
   "overrides": {

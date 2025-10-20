@@ -56,7 +56,7 @@ export default {
     LGeoJson,
     sideView
   },
-  data () {
+  data() {
     return {
       // Map attributions start
       zoom: 15.5,
@@ -217,23 +217,23 @@ export default {
   },
   methods: {
     // Map updaters
-    boundsUpdated (bounds) {
+    boundsUpdated(bounds) {
       this.bounds = bounds
     },
-    centerUpdated (center) {
+    centerUpdated(center) {
       this.center = center
     },
-    getPoint (index) {
+    getPoint(index) {
       return this.getPoints[index]
     },
-    zoomUpdated (zoom) {
+    zoomUpdated(zoom) {
       this.zoom = zoom
     },
-    updateMapRef () {
+    updateMapRef() {
       this.map = this.$refs.map.leafletObject
     },
     // ported in from energy-dashboard repo
-    resetMap () {
+    resetMap() {
       this.map.setView(L.latLng(44.5638, -123.2815), 15.5)
     }
   }
@@ -328,8 +328,8 @@ export default {
   }
 }
 .resetMapButton {
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial,
-    sans-serif;
+  font-family:
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   display: flex;
   align-items: center;
   position: absolute;
