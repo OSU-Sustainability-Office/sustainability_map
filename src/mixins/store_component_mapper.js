@@ -7,7 +7,7 @@ import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   props: ['nameSpace'],
-  beforeCreate () {
+  beforeCreate() {
     const moduleName = `${this.$options.propsData.nameSpace}/`
     const getterKeys = Reflect.ownKeys(this.$store.getters).reduce((prev, current) => {
       const splitString = current.split(moduleName)

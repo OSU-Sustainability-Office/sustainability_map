@@ -7,7 +7,7 @@
 
 import Hjson from 'hjson'
 
-function hjsonPlugin() {
+export default function hjsonPlugin() {
   return {
     name: 'vite-plugin-hjson',
     transform(src, id) {
@@ -22,4 +22,3 @@ function hjsonPlugin() {
   }
 }
 
-module.exports = hjsonPlugin

@@ -22,11 +22,11 @@ export default {
   components: {
     navigbar
   },
-  async created () {},
-  data () {
+  async created() {},
+  data() {
     return {}
   },
-  beforeDestroy () {},
+  beforeUnmount() {},
   methods: {},
   watch: {}
 }
@@ -37,8 +37,10 @@ export default {
 @font-face {
   font-family: 'StratumNo2';
   /* !!NOTE: CHANGE THE PREFIX WHEN DEPLOYING ON DOMAIN NAME*/
-  src: url('#{$font-path}StratumNo2-Bold.woff2') format('woff2'),
-    url('#{$font-path}StratumNo2-Bold.woff') format('woff'), url('#{$font-path}StratumNo2-Bold.ttf') format('truetype'),
+  src:
+    url('#{$font-path}StratumNo2-Bold.woff2') format('woff2'),
+    url('#{$font-path}StratumNo2-Bold.woff') format('woff'),
+    url('#{$font-path}StratumNo2-Bold.ttf') format('truetype'),
     url('#{$font-path}StratumNo2-Bold.svg#StratumNo2-Bold') format('svg');
   font-weight: bold;
   font-style: normal;
